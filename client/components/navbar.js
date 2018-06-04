@@ -8,11 +8,9 @@ import { Menu, Container, Button } from 'semantic-ui-react';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <Menu inverted fixed="top">
-
-     <Menu.Item header>
-       Games Stacked
-     </Menu.Item>
-
+    <Menu.Item header>
+      Games Stacked
+    </Menu.Item>
     <Menu.Menu position='right'>
       <Menu.Item as={Link} to="/cart">
         Login
