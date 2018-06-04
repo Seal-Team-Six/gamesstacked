@@ -6,6 +6,8 @@ import history from './history'
 import store from './reducers/store'
 import App from './app'
 
+import 'semantic-ui-css/semantic.min.css';
+
 // establishes socket connection
 import './socket'
 
