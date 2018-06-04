@@ -3,9 +3,51 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+
   email: {
     type: Sequelize.STRING,
     unique: true,
+    allowNull: false
+  },
+  imageUrl: {
+    type: Sequelize.TEXT,
+    defaultValue: 'http://www.elmwoodmeatplant.com/images/New/S-Navy-White-Leather-New-Era-Fitted-Cap-830142.jpg'
+},
+
+  address: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  city: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zipCode: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  phone: {
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   password: {
@@ -26,7 +68,9 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
-  }
+  },
+
+
 })
 
 module.exports = User
