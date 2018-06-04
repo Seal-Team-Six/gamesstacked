@@ -19,3 +19,24 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 )
+
+// let render = () => {
+//  ReactDOM.render(
+//   <Provider store={store}>
+//     <Router history={history}>
+//       <App />
+//     </Router>
+//   </Provider>,
+//   document.getElementById('app')
+// )
+// }
+
+// if (module.hot) {
+//  module
+//    .hot
+//    .accept('./app', () => {
+//      setTimeout(render)
+//    })
+// }
+
+// render()
