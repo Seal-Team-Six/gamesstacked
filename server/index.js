@@ -21,14 +21,12 @@ module.exports = app
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
-if (process.env.NODE_ENV !== 'production') require('../secrets')
+if (process.env.NODE_ENV !== 'production') 
+  require('../secrets')
 
-// passport registration
+  // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
-passport.deserializeUser((id, done) =>
-  db.models.user.findById(id)
-    .then(user => done(null, user))
-    .catch(done))
+passport.deserializeUser((id, done) => db.models.user.findById(id).then(user => done(null, user)).catch(done))
 
 const createApp = () => {
   // logging middleware
@@ -36,7 +34,7 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.urlencoded({extended: true}))
 
   // compression middleware
   app.use(compression())
@@ -78,7 +76,9 @@ const createApp = () => {
   app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
-    res.status(err.status || 500).send(err.message || 'Internal server error.')
+    res
+      .status(err.status || 500)
+      .send(err.message || 'Internal server error.')
   })
 }
 
@@ -94,11 +94,12 @@ const startListening = () => {
 const syncDb = () => db.sync()
 
 // This evaluates as true when this file is run directly from the command line,
-// i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
-// It will evaluate false when this module is required by another module - for example,
-// if we wanted to require our app in a test spec
+// i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or
+// 'nodemon server', etc) It will evaluate false when this module is required by
+// another module - for example, if we wanted to require our app in a test spec
 if (require.main === module) {
-  sessionStore.sync()
+  sessionStore
+    .sync()
     .then(syncDb)
     .then(createApp)
     .then(startListening)
