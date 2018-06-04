@@ -1,4 +1,5 @@
 const User = require('./user')
+const Genre = require('./genre')
 const Product = require('./product')
 const db = require('../db')
 
@@ -18,5 +19,6 @@ const db = require('../db')
 module.exports = {
   db,
   User,
-  Product
+  Product,
+  Genre
 }
