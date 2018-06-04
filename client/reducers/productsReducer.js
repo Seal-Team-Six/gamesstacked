@@ -3,6 +3,7 @@ const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 const initialState = {
   products: [
     { id: 1, name: 'Super Mario Bros', price: 0, inStock: 100 },
+    { id: 2, name: 'Final Fantasy', price: 0, inStock: 100 },
   ]
 }
 
