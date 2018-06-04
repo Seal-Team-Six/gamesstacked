@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Product from './Product';
+import ProductsList from './ProductsList';
 
 class Products extends React.Component {
 	render () {
@@ -8,16 +8,7 @@ class Products extends React.Component {
 
 		return (
 			<div>
-				{
-					products.map(product => {
-						return (
-							<Product 
-								key={product.id}
-								product={product}
-							/>
-						)
-					})
-				}
+				<ProductsList products={products} />
 			</div>
 		)
 	}
