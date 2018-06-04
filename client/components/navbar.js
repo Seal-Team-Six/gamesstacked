@@ -7,29 +7,22 @@ import {logout} from '../reducers/store'
 import { Menu, Container, Button } from 'semantic-ui-react';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-
-
-  <div>
-        <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
+  <Menu inverted fixed="top">
+    <Menu.Item header>
+      Games Stacked
+    </Menu.Item>
+    <Menu.Menu position='right'>
+      <Menu.Item as={Link} to="/cart">
+        Login
+      </Menu.Item>
+      <Menu.Item as={Link} to="/cart">
+        Register
+      </Menu.Item>
+      <Menu.Item as={Link} to="/cart">
+        Cart (0)
+      </Menu.Item>
+    </Menu.Menu>
+  </Menu>
 )
 
 
@@ -60,19 +53,22 @@ Navbar.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired
 }
 
-  // <Menu inverted fixed="top">
-  //   <Menu.Item header>
-  //     Games Stacked
-  //   </Menu.Item>
-  //   <Menu.Menu position='right'>
-  //     <Menu.Item as={Link} to="/cart">
-  //       Login
-  //     </Menu.Item>
-  //     <Menu.Item as={Link} to="/cart">
-  //       Register
-  //     </Menu.Item>
-  //     <Menu.Item as={Link} to="/cart">
-  //       Cart (0)
-  //     </Menu.Item>
-  //   </Menu.Menu>
-  // </Menu>
+    // <h1>BOILERMAKER</h1>
+    // <nav>
+    //   {isLoggedIn ? (
+    //     <div>
+    //       {/* The navbar will show these links after you log in */}
+    //       <Link to="/home">Home</Link>
+    //       <a href="#" onClick={handleClick}>
+    //         Logout
+    //       </a>
+    //     </div>
+    //   ) : (
+    //     <div>
+    //       {/* The navbar will show these links before you log in */}
+    //       <Link to="/login">Login</Link>
+    //       <Link to="/signup">Sign Up</Link>
+    //     </div>
+    //   )}
+    // </nav>
+    // <hr />
