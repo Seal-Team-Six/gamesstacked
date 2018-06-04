@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 
 const initialState = {
@@ -9,10 +11,17 @@ const initialState = {
 
 export const fetchProducts = () => {
 	return dispatch => {
-		dispatch({
-			type: FETCH_PRODUCTS,
-			payload: 'res.data'
-		})
+		axios
+			.get('/api/products')
+			.then(res => {
+				dispatch({
+					type: FETCH_PRODUCTS,
+					payload: res.data,
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 }
 

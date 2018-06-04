@@ -8,7 +8,9 @@ class Products extends React.Component {
 
 		return (
 			<div>
-				<ProductsList products={products} />
+				<ProductsList 
+					products={products} 
+				/>
 			</div>
 		)
 	}
