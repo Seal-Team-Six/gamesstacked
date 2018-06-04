@@ -5,6 +5,7 @@ const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 const FETCH_PRODUCTS_FAIL    = 'FETCH_PRODUCTS_FAIL';
 const DELETE_PRODUCT         = 'DELETE_PRODUCT';
 const EDIT_PRODUCT           = 'EDIT_PRODUCT';
+const NEW_PRODUCT            = 'NEW_PRODUCT';
 
 const initialState = {
   products: [
@@ -58,7 +59,7 @@ const reducer = (state=initialState, action) => {
     	return {
     		...state,
     		products: state.products.filter(product => {
-    			return product.id !== action.payload
+    			return product.id !== action.payload.id
     		})
     	}
     case EDIT_PRODUCT:
