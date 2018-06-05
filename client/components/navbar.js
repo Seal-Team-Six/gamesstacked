@@ -4,17 +4,20 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
 
-import { Menu, Container, Button } from 'semantic-ui-react';
+import {Menu, Container, Button} from 'semantic-ui-react';
 
 class Navbar extends React.Component {
-  renderSessionLinks () {
-    const { isLoggedIn } = this.props;
+  renderSessionLinks() {
+    const {isLoggedIn} = this.props;
 
     if (isLoggedIn) {
-      return [
-        <Menu.Item key={1} as={Link} to="/logout">
-          Logout
-        </Menu.Item>
+      return [ < Menu.Item key = {
+          1
+        }
+        as = {
+          Link
+        }
+        to = "/logout" > Logout < /Menu.Item>
       ]
     } else {
       return [
@@ -32,36 +35,32 @@ class Navbar extends React.Component {
     return (
       <Menu inverted fixed="top">
         <Menu.Item header as={Link} to="/">
-          Games Stacked
-        </Menu.Item>
+ Games Stacked < /Menu.Item>
         <Menu.Menu position='right'>
           { this.renderSessionLinks() }
-          <Menu.Item as={Link} to="/cart">
-            Cart (0)
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
-    )
-  }
-}
-
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
-
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
+          <Menu.Item as={Link} to="/cart ">
+ Cart(0) < /Menu.Item>
+        </Menu.Menu > </Menu>)
+      }
     }
-  }
-}
 
-export default connect(mapState, mapDispatch)(Navbar)
+    const mapState = state => {
+      return {
+        isLoggedIn: !!state.user.id
+      }
+    }
 
-Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-}
+    const mapDispatch = dispatch => {
+      return {
+        handleClick() {
+          dispatch(logout())
+        }
+      }
+    }
+
+    export default connect(mapState, mapDispatch)(Navbar)
+
+    Navbar.propTypes = {
+      handleClick: PropTypes.func.isRequired,
+      isLoggedIn: PropTypes.bool.isRequired
+    }
