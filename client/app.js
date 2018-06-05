@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
@@ -13,7 +14,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('products', this.props.products)
+
     return (
       <Layout>
         <Navbar/>
@@ -36,4 +37,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

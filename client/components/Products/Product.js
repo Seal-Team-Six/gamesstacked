@@ -1,21 +1,29 @@
 import React from 'react';
-import {Card, Button} from 'semantic-ui-react';
+import {Link} from 'react-router-dom'
+import {Card, Image} from 'semantic-ui-react';
 
-import AddToCart from '../UI/AddToCart';
+const Product = (props) => {
 
-class Product extends React.Component {
-		extra() {
-				return <AddToCart/>
-		}
+		const {product} = props
 
-		render() {
-				const {product} = this.props;
-				return (<Card
-						image={product.cover && product.cover.url}
-						header={product.name}
-						meta={`$${product.price}`}
-						extra={this.extra()}/>)
-		}
+		return (
+				<Link to={`/product/${product.id}`}>
+						<Card>
+								<Image src={product.cover && `http://${product.cover.url}`}/>
+								<Card.Content>
+										<Card.Header>{product.name}</Card.Header>
+										<Card.Meta>
+												{product.price}
+										</Card.Meta>
+								</Card.Content>
+								<Card.Content extra>
+										{Math.floor(product.totalRating) !== 0
+												? 'Rating: ' + Math.floor(product.totalRating)
+												: 'No rating for this game.'}
+								</Card.Content>
+						</Card>
+				</Link>
+		)
 }
 
-export default Product;
+export default Product
