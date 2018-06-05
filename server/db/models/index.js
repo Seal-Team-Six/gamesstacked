@@ -21,9 +21,9 @@ const db = require('../db');
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
 Product.belongsToMany(Genre, { through: 'productgenre' })
 Genre.belongsToMany(Product, { through: 'productgenre' })
-
 //Cart.belongsTo(User);
 // User.hasMany(Cart);
 // CartItems.belongsTo(Cart);
