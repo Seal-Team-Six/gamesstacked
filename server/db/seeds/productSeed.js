@@ -750,9 +750,8 @@ const products = [
 
 const productSeed = async () => {
   try {
-    console.log('syncing db')
-    await db.sync({ force: true })
-    console.log('db synced')
+    console.log('syncing product db')
+    console.log('product db synced')
     const createdProducts = await Product.bulkCreate(products, {
       returning: true,
     })
@@ -781,10 +780,10 @@ const productSeed = async () => {
   } catch (err) {
     console.error(err)
   } finally {
-    console.log('Shutting connection')
-    db.close()
-    console.log('db close')
+    console.log('Shutting product connection')
+    console.log('product db close')
   }
 }
 
-productSeed()
+module.exports = productSeed
+

@@ -1,5 +1,5 @@
-const { User } = require('./models');
-const db = require('./');
+const { User } = require('../models');
+const db = require('../');
 
 const faker = require('faker');
 
@@ -13,9 +13,9 @@ const random = function(min = 0, max) {
 };
 
 // Database seed
-db
-  .sync({ force: true })
-  .then(() => {
+
+const userSeed = async () => {
+  try {
     const UserData = [];
 
     // Create Silly Name Universities and Faker addresses
@@ -34,16 +34,15 @@ db
       });
     }
 
-    return User.bulkCreate(UserData, { returning: true });
-  })
-
-  .then(() => {
+    await User.bulkCreate(UserData, { returning: true });
     console.log('[SUCCESS]: Database synced successfully.');
-  })
-  .catch(err => {
+  } catch (err) {
     console.log('[ERROR]: Database not synced successfully.');
     console.log(err);
-  })
-  .finally(() => {
-    db.close();
-  });
+  } finally {
+    console.log('Shutting genre connection')
+    console.log('Genre db closed')
+  }
+}
+
+module.exports = userSeed
