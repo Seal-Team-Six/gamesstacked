@@ -10,13 +10,12 @@ class Product extends React.Component {
 
 	render () {
 		const { product } = this.props;
-
+		console.log(product)
 		return (
 			<Card
-		    image='/assets/images/avatar/large/elliot.jpg'
+		    image={product.cover.url}
 		    header={product.name}
 		    meta='Friend'
-		    description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
 		    extra={this.extra()}
 		  />
 		)
