@@ -1,17 +1,17 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding-top: 48px;
   font-size: 14px;
 }
 
 .ui.menu {
-	font-family: 'Roboto', sans-serif;
-	font-size: 0.8em;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.75em;
 }
 
 .ui.menu a.item {
 	text-transform: uppercase;
-	font-weight: 300;
+	font-weight: 500;
 	letter-spacing: 1px;
 }
 
