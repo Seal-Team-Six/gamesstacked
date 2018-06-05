@@ -1,17 +1,30 @@
 body {
+<<<<<<< HEAD
   font-family: 'Roboto', sans-serif;
+=======
+  font-family: 'Montserrat', sans-serif;
+>>>>>>> 538f6d7e90fd66810cda05e10adb617513c96a18
   padding-top: 48px;
   font-size: 14px;
 }
 
 .ui.menu {
+<<<<<<< HEAD
 	font-family: 'Roboto', sans-serif;
 	font-size: 0.8em;
+=======
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.75em;
+>>>>>>> 538f6d7e90fd66810cda05e10adb617513c96a18
 }
 
 .ui.menu a.item {
 	text-transform: uppercase;
+<<<<<<< HEAD
 	font-weight: 300;
+=======
+	font-weight: 500;
+>>>>>>> 538f6d7e90fd66810cda05e10adb617513c96a18
 	letter-spacing: 1px;
 }
 

@@ -7,11 +7,9 @@ class Products extends React.Component {
 		const { products } = this.props;
 
 		return (
-			<div>
-				<ProductsList 
-					products={products} 
-				/>
-			</div>
+			<ProductsList 
+				products={products} 
+			/>
 		)
 	}
 }
