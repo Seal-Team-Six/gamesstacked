@@ -1,5 +1,5 @@
-const { User } = require('./models');
-const db = require('./');
+const { User } = require('../models');
+const db = require('../');
 
 const faker = require('faker');
 
@@ -30,7 +30,7 @@ db
         state: `${faker.address.state()}`,
         zipCode: `${faker.address.zipCode()}`,
         phone: `${faker.phone.phoneNumber()}`,
-        password: `${faker.internet.password()}`
+        password: `password`,
       });
     }
 

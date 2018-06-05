@@ -8,12 +8,17 @@ import Products from './components/Products';
 import Home from './containers/Home';
 import Cart from './containers/Cart';
 
+import { setCart } from './reducers/cartReducer';
+
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount () {
-    this.props.loadInitialData()
+    const { me, setCart, user } = this.props;
+
+    me()
+    setCart(user.id)
   }
 
   render () {
@@ -47,26 +52,19 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
-  }
-}
-
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData () {
-      dispatch(me())
-    }
+    isLoggedIn: !!state.user.id,
+    user: state.user
   }
 }
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes))
+export default withRouter(connect(mapState, { me, setCart })(Routes))
 
 /**
  * PROP TYPES
  */
 Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired,
+  // loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
