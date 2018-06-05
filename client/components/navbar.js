@@ -31,7 +31,7 @@ class Navbar extends React.Component {
   render () {
     return (
       <Menu inverted fixed="top">
-        <Menu.Item header>
+        <Menu.Item header as={Link} to="/">
           Games Stacked
         </Menu.Item>
         <Menu.Menu position='right'>
