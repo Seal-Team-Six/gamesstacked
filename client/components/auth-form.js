@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
 
 import { Icon, Button } from 'semantic-ui-react';
-import GoogleButton from './UI/GoogleButton';
+import SocialButton from './UI/SocialButton';
 
 /**
  * COMPONENT
@@ -28,9 +28,11 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">
-        <GoogleButton displayName={displayName}/>
-      </a>
+      <SocialButton 
+        href='/auth/google' 
+        displayName={displayName} 
+        name='google plus' 
+      />
     </div>
   )
 }
