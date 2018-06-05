@@ -1,4 +1,5 @@
 import axios from 'axios';
+import data from '../data';
 
 const REQUEST_PRODUCTS       = 'REQUEST_PRODUCTS';
 const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
@@ -8,10 +9,7 @@ const EDIT_PRODUCT           = 'EDIT_PRODUCT';
 const NEW_PRODUCT            = 'NEW_PRODUCT';
 
 const initialState = {
-  products: [
-    { id: 1, name: 'Super Mario Bros', price: 0, inStock: 100 },
-    { id: 2, name: 'Final Fantasy', price: 0, inStock: 100 },
-  ],
+  products: data,
   isLoading: false,
   error: false,
 }
@@ -78,7 +76,6 @@ const reducer = (state=initialState, action) => {
 }
 
 export default reducer;
-
 
 
 
