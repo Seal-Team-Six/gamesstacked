@@ -4,39 +4,38 @@ const db = require('../db')
 const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   slug: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   summary: {
     type: Sequelize.TEXT,
-    allowNull: true
+    allowNull: true,
   },
   totalRating: {
     type: Sequelize.DECIMAL,
-    allowNull: true
+    allowNull: true,
   },
   price: {
     type: Sequelize.DECIMAL,
-    allowNull: false
+    allowNull: false,
   },
   inventory: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  images: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false,
-    validate: {
-      isUrl: true
-    }
+  screenshots: {
+    type: Sequelize.ARRAY(Sequelize.JSONB),
   },
   videos: {
-    type: Sequelize.STRING,
-    allowNull: true
-  }
+    type: Sequelize.JSONB,
+    allowNull: true,
+  },
+  cover: {
+    type: Sequelize.JSONB,
+  },
 })
 
 module.exports = Product
