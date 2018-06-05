@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
 
+import { Icon, Button } from 'semantic-ui-react';
+import GoogleButton from './UI/GoogleButton';
+
 /**
  * COMPONENT
  */
@@ -25,7 +28,9 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <a href="/auth/google">
+        <GoogleButton displayName={displayName}/>
+      </a>
     </div>
   )
 }
