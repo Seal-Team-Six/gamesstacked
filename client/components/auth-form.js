@@ -1,7 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import {auth} from '../reducers/store'
+
+import { Icon, Button } from 'semantic-ui-react';
+import SocialButton from './UI/SocialButton';
 
 /**
  * COMPONENT
@@ -25,7 +28,12 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <SocialButton 
+        href='/auth/google' 
+        displayName={displayName} 
+        className='google plus'
+        name='Google'
+      />
     </div>
   )
 }

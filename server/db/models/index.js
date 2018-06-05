@@ -1,8 +1,12 @@
 'use strict';
 
-const User = require('./user');
+const User = require('./User');
 const Cart = require('./Cart');
 const CartItems = require('./CartItems');
+
+const Genre = require('./genre');
+const Product = require('./product');
+const db = require('../db');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -24,7 +28,10 @@ CartItems.belongsTo(Cart);
 Cart.hasMany(CartItems);
 
 module.exports = {
+  db,
   User,
+  Product,
+  Genre,
   Cart,
   CartItems
 };
