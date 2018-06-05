@@ -31,7 +31,8 @@ const AuthForm = (props) => {
       <SocialButton 
         href='/auth/google' 
         displayName={displayName} 
-        name='google plus' 
+        className='google plus'
+        name='Google'
       />
     </div>
   )

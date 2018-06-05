@@ -3,12 +3,12 @@ import { Button, Icon } from 'semantic-ui-react';
 
 class SocialButton extends React.Component {
 	render () {
-		const { name, displayName, href } = this.props;
+		const { className, displayName, href, name } = this.props;
 
 		return (
 			<a href={href}>
-				<Button color={name}>
-	        <Icon name={name} /> {displayName} with Google
+				<Button color={className}>
+	        <Icon name={className} /> {displayName} with {name}
 	      </Button>
 	    </a>
 		)
