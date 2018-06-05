@@ -1,8 +1,8 @@
 'use strict';
 
-const User = require('./User');
-const Cart = require('./Cart');
-const CartItems = require('./CartItems');
+const User = require('./user');
+const Cart = require('./cart');
+const CartItems = require('./cartItems');
 
 const Genre = require('./genre');
 const Product = require('./product');
