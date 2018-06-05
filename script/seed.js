@@ -1,4 +1,3 @@
-'use strict'
 
 const db = require('../server/db/')
 const genreSeed = require('../server/db/seeds/genreSeed')
