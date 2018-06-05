@@ -1,36 +1,42 @@
-import React from 'react'
-import { connect } from 'react-redux' 
-
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
+import {fetchProducts} from './reducers/productsReducer'
+import {setCart} from './reducers/cartReducer';
 
-import { setCart } from './reducers/cartReducer';
+class App extends Component {
+  componentDidMount() {
+    const {getProducts} = this.props;
 
+    getProducts()
+  }
 
-class App extends React.Component {
-	componentDidMount () {
-		const { setCart, user } = this.props;
+  render() {
 
-		// setCart(user.id)
-	}
-
-  render () {
-  	return (
-	    <Layout>
-	      <Navbar />
-	      <Routes />
-	    </Layout>
-	  )
+    return (
+      <Layout>
+        <Navbar/>
+        <Routes/>
+      </Layout>
+    )
   }
 }
 
-function mapStateToProps (state) {
-	const { user } = state.user;
+const mapStateToProps = state => {
+  const {products} = state.products
+  return {products}
 
-	return {
-		user
-	}
 }
 
-export default connect(mapStateToProps, { setCart })(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    getProducts: () => {
+      dispatch(fetchProducts())
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

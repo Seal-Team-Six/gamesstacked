@@ -20,6 +20,20 @@ router.get('/:id', async(req, res, next) => {
   }
 })
 
+router.post('/', async(req, res, next) => {
+  try {
+    const newProduct = await
+    Product.create(req.body)
+    if (newProduct) {
+      res.json(newProduct)
+    } else {
+      res.sendStatus(400)
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.delete('/:id', async(req, res, next) => {
   try {
     const deletedProduct = await Product.destroy({
