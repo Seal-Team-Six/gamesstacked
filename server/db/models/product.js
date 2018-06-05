@@ -27,7 +27,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   images: {
-    type: Sequelize.STRING,
+    type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false,
     validate: {
       isUrl: true
