@@ -10,9 +10,8 @@ class Product extends React.Component {
 
 		render() {
 				const {product} = this.props;
-
 				return (<Card
-						image={product.images[0]}
+						image={product.cover && product.cover.url}
 						header={product.name}
 						meta={`$${product.price}`}
 						extra={this.extra()}/>)
