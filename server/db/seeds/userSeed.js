@@ -14,7 +14,7 @@ const random = function(min = 0, max) {
 
 // Database seed
 db
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     const UserData = [];
 

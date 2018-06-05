@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Button, List } from 'semantic-ui-react';
+import { Card, Button, List, Image } from 'semantic-ui-react';
 
 
 class CartItem extends React.Component {
   render() {
     const { cartItem } = this.props;
-    console.log(cartItem);
+
     return (
       <List.Item>
         <List.Content floated="right">

@@ -24,8 +24,13 @@ const db = require('../db');
 
 Cart.belongsTo(User);
 User.hasMany(Cart);
+
 CartItems.belongsTo(Cart);
 Cart.hasMany(CartItems);
+
+CartItems.belongsTo(Product);
+Product.hasMany(CartItems);
+
 Product.belongsToMany(Genre, { through: 'productgenre' })
 Genre.belongsToMany(Product, { through: 'productgenre' })
 
