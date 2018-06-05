@@ -6,24 +6,44 @@ import {logout} from '../reducers/store'
 
 import { Menu, Container, Button } from 'semantic-ui-react';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <Menu inverted fixed="top">
-    <Menu.Item header>
-      Games Stacked
-    </Menu.Item>
-    <Menu.Menu position='right'>
-      <Menu.Item as={Link} to="/cart">
-        Login
-      </Menu.Item>
-      <Menu.Item as={Link} to="/cart">
-        Register
-      </Menu.Item>
-      <Menu.Item as={Link} to="/cart">
-        Cart (0)
-      </Menu.Item>
-    </Menu.Menu>
-  </Menu>
-)
+class Navbar extends React.Component {
+  renderSessionLinks () {
+    const { isLoggedIn } = this.props;
+
+    if (isLoggedIn) {
+      return [
+        <Menu.Item key={1} as={Link} to="/logout">
+          Logout
+        </Menu.Item>
+      ]
+    } else {
+      return [
+        <Menu.Item key={1} as={Link} to="/login">
+          Login
+        </Menu.Item>,
+        <Menu.Item key={2} as={Link} to="/register">
+          Register
+        </Menu.Item>
+      ]
+    }
+  }
+
+  render () {
+    return (
+      <Menu inverted fixed="top">
+        <Menu.Item header>
+          Games Stacked
+        </Menu.Item>
+        <Menu.Menu position='right'>
+          { this.renderSessionLinks() }
+          <Menu.Item as={Link} to="/cart">
+            Cart (0)
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+    )
+  }
+}
 
 
 /**
