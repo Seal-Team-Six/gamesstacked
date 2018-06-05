@@ -1,11 +1,12 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 
 class Layout extends React.Component {
 	render () {
 		return (
-			<div>
+			<Container>
 				{ this.props.children }
-			</div>
+			</Container>
 		)
 	}
 }
