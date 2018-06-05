@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { List } from 'semantic-ui-react';
 import CartItem from './CartItem';
+
 class CartItems extends React.Component {
   render() {
-    const { CartItems } = this.props;
+    const { cartItems } = this.props;
 
     return (
       <List divided verticalAlign="middle">
-        {CartItems.map(cartItem => <CartItem />)}
+        { 
+        	cartItems.map(cartItem => {
+        		return (
+        			<CartItem 
+        				key={cartItem.id} 
+        				cartItem={cartItem} 
+        			/>
+        		)
+        	}) 
+      	}
       </List>
     );
   }
 }
 
-export default CartItemsList;
+export default CartItems;

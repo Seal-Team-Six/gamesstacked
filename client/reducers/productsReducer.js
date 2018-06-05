@@ -9,7 +9,7 @@ const EDIT_PRODUCT           = 'EDIT_PRODUCT';
 const NEW_PRODUCT            = 'NEW_PRODUCT';
 
 const initialState = {
-  products: data,
+  products: [],
   isLoading: false,
   error: false,
 }
