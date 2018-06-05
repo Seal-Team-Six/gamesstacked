@@ -25,7 +25,10 @@ describe('Product model', () => {
       url: 'images.igdb.com/igdb/image/upload/t_screenshot_big/hivpg7wyyuhicfdtma9t.jpg',
     },
   }
-  beforeEach(() => db.sync())
+  beforeEach(() => db.sync({force: true}))
+  afterEach(() => {
+    db.close()
+  })
   describe('product', () => {
     describe('hasAName', () => {
       let superMarioBros
