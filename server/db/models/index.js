@@ -22,10 +22,17 @@ const db = require('../db');
  * instead of: const User = require('../db/models/user')
  */
 
+// This is a comment to test travis
+
 Cart.belongsTo(User);
 User.hasMany(Cart);
+
 CartItems.belongsTo(Cart);
 Cart.hasMany(CartItems);
+
+CartItems.belongsTo(Product);
+Product.hasMany(CartItems);
+
 Product.belongsToMany(Genre, { through: 'productgenre' })
 Genre.belongsToMany(Product, { through: 'productgenre' })
 

@@ -17,7 +17,10 @@ export const setCart = (data) => {
 			.then(res => {
 				dispatch({
 					type: SET_CART,
-					payload: res.data[0].id
+					payload: {
+						id: res.data[0].id,
+						cartItems: res.data[0].cartItems,
+					}
 				})
 			})
 			.catch(err => {
@@ -31,7 +34,8 @@ const reducer = (state=initialState, action) => {
 		case SET_CART:
 			return {
 				...state,
-				cartId: action.payload
+				cartId: action.payload.id,
+				cartItems: action.payload.cartItems
 			}
 		case SET_ITEMS:
 			return {
