@@ -26,16 +26,15 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  images: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isUrl: true
-    }
+  screenshots: {
+    type: Sequelize.ARRAY(Sequelize.JSONB),
   },
   videos: {
-    type: Sequelize.STRING,
+    type: Sequelize.JSONB,
     allowNull: true
+  },
+  cover: {
+    type: Sequelize.JSONB
   }
 })
 
