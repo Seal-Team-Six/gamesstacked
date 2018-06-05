@@ -1,8 +1,8 @@
 'use strict';
 
 const User = require('./user')
-//const Cart = require('./cart')
-//const CartItems = require('./cartItems');
+const Cart = require('./Cart')
+const CartItems = require('./CartItems');
 
 const Genre = require('./genre');
 const Product = require('./product');
@@ -22,18 +22,18 @@ const db = require('../db');
  * instead of: const User = require('../db/models/user')
  */
 
+Cart.belongsTo(User);
+User.hasMany(Cart);
+CartItems.belongsTo(Cart);
+Cart.hasMany(CartItems);
 Product.belongsToMany(Genre, { through: 'productgenre' })
 Genre.belongsToMany(Product, { through: 'productgenre' })
-//Cart.belongsTo(User);
-// User.hasMany(Cart);
-// CartItems.belongsTo(Cart);
-//Cart.hasMany(CartItems);
 
 module.exports = {
   db,
   User,
   Product,
   Genre,
-  //Cart,
- // CartItems
+  Cart,
+ 	CartItems
 };

@@ -30,7 +30,7 @@ const userSeed = async () => {
         state: `${faker.address.state()}`,
         zipCode: `${faker.address.zipCode()}`,
         phone: `${faker.phone.phoneNumber()}`,
-        password: `${faker.internet.password()}`
+        password: `password`,
       });
     }
 

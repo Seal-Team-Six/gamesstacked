@@ -17,7 +17,7 @@ export const setCart = (data) => {
 			.then(res => {
 				dispatch({
 					type: SET_CART,
-					payload: res.data,
+					payload: res.data[0].id
 				})
 			})
 			.catch(err => {
