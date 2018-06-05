@@ -5,12 +5,13 @@ import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
 import {fetchProducts} from './reducers/productsReducer'
+import {setCart} from './reducers/cartReducer';
 
 class App extends Component {
   componentDidMount() {
-    this
-      .props
-      .getProducts()
+    const {getProducts} = this.props;
+
+    getProducts()
   }
 
   render() {
@@ -21,12 +22,13 @@ class App extends Component {
         <Routes/>
       </Layout>
     )
-
   }
 }
 
 const mapStateToProps = state => {
-  return {products: state.products}
+  const {products} = state.products
+  return {products}
+
 }
 
 const mapDispatchToProps = dispatch => {

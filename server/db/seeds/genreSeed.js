@@ -27,18 +27,14 @@ const genres = [
 const genreSeed = async () => {
   try {
     console.log('syncing genre db')
-    await db.sync({force:true})
     console.log('genre db synced')
     await Genre.bulkCreate(genres)
   } catch (err) {
     console.error(err)
   } finally {
     console.log('Shutting genre connection')
-    db.close()
     console.log('Genre db closed')
   }
 }
-
-genreSeed()
 
 module.exports = genreSeed
