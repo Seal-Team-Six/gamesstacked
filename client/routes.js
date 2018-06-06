@@ -20,10 +20,7 @@ class Routes extends Component {
     const {me, setCart, user} = this.props;
 
     me()
-    if (user.id) {
-
-      setCart(user.id)
-    }
+    setCart(user.id)
   }
 
   render() {
@@ -35,8 +32,8 @@ class Routes extends Component {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Signup}/>
         <Route exact path="/products" component={Products}/>
+        <Route exact path="/cart" component={Cart}/>
         <Route exact path="/product/:id" component={ProductDetails}/> {isLoggedIn && <Switch>
-          <Route exact path="/cart" component={Cart}/> {/* Routes placed here are only available after logging in */}
           <Route path="/home" component={UserHome}/>
         </Switch>
 }

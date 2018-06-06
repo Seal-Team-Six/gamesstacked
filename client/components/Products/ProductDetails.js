@@ -26,7 +26,6 @@ class ProductDetails extends Component {
 			match: { params } 
 		} = this.props;
 
-    console.log('product details', this.props.selectedProduct)
     if (!this.props.selectedProduct.id) {
       return (
         <div>..loading</div>
@@ -39,7 +38,7 @@ class ProductDetails extends Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
-              <Button primary onClick={() => addToCart(params.id, cartId)}>Add To Cart</Button>
+              <Button primary onClick={() => addToCart(params.id, cartId, null)}>Add To Cart</Button>
             </Grid.Column>
           </Grid.Row>
 
@@ -78,6 +77,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeProduct: () => {
       dispatch(resetProduct())
+    },
+    addToCart: (productId, cartId, userId) => {
+      dispatch(addToCart(productId, cartId, userId))
     }
   }
 }

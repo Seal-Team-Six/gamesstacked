@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const ADD_ITEM    = 'ADD_ITEM';
+const ADD_ITEM_LOCAL = 'ADD_ITEM_LOCAL';
 const SET_CART    = 'SET_CART';
 const SET_ITEMS   = 'SET_ITEMS';
 const DELETE_ITEM = 'DELETE_ITEM';
@@ -10,38 +11,71 @@ const initialState = {
 	cartItems: []
 }
 
-export const setCart = (data) => {
+export const setCart = (userId) => {
 	return dispatch => {
-		axios
-			.post('/api/cart', data)
-			.then(res => {
-				dispatch({
-					type: SET_CART,
-					payload: {
-						id: res.data[0].id,
-						cartItems: res.data[0].cartItems,
-					}
+		if (userId) {
+			axios
+				.post('/api/cart', userId)
+				.then(res => {
+					dispatch({
+						type: SET_CART,
+						payload: {
+							id: res.data[0].id,
+							cartItems: res.data[0].cartItems,
+						}
+					})
 				})
-			})
-			.catch(err => {
-				console.log(err)
-			})
+				.catch(err => {
+					console.log(err)
+				})
+		} else if (!localStorage.getItem('cart')) {
+			console.log('cart created in localStorage')
+			localStorage
+				.setItem(
+					'cart', 
+					JSON.stringify(
+						{ 
+							id: 'guestUserCart', 
+							cartItems: []
+						})
+					)
+		} 
+		
 	}
 }
 
-export const addToCart = (productId, cartId) => {
+export const addToCart = (productId, cartId, userId) => {
 	return dispatch => {
-		axios
-			.post('/api/cart_items', { productId, cartId })
-			.then(res => {
-				dispatch({
-					type: ADD_ITEM,
-					payload: res.data
+
+		if (userId) {
+			axios
+				.post('/api/cart_items', { productId, cartId })
+				.then(res => {
+					dispatch({
+						type: ADD_ITEM,
+						payload: res.data
+					})
 				})
+				.catch(err => {
+					console.log(err)
+				})
+		} else {
+			let localCart = JSON.parse(localStorage.getItem('cart'))
+			localCart.cartItems.push({id: productId})
+
+			localStorage
+				.setItem(
+					'cart', 
+					JSON.stringify(
+							localCart
+						)
+					)
+
+			dispatch({
+				type: ADD_ITEM,
+				payload: productId
 			})
-			.catch(err => {
-				console.log(err)
-			})
+		}
 	}
 }
 
