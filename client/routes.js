@@ -21,7 +21,10 @@ class Routes extends Component {
     const {me, setCart, user} = this.props;
 
     me()
-    setCart(user.id)
+    if (user.id) {
+
+      setCart(user.id)
+    }
   }
 
   render() {
