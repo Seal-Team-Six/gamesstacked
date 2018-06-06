@@ -29,6 +29,22 @@ export const setCart = (data) => {
 	}
 }
 
+export const addToCart = (productId, cartId) => {
+	return dispatch => {
+		axios
+			.post('/api/cart_items', { productId, cartId })
+			.then(res => {
+				dispatch({
+					type: ADD_ITEM,
+					payload: res.data
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+}
+
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case SET_CART:
@@ -45,7 +61,7 @@ const reducer = (state=initialState, action) => {
 		case ADD_ITEM:
 			return {
 				...state,
-				cartItems: action.saved ? [ ...state.cartItems, action.payload ] : [ ...state.cartItems ]
+				cartItems: [ ...state.cartItems, action.payload ]
 			}
 		case DELETE_ITEM:
 			return {

@@ -3,6 +3,8 @@ import {Grid, Image, Button} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchProduct, resetProduct} from '../../reducers/productsReducer';
 
+import { addToCart } from '../../reducers/cartReducer'
+
 class ProductDetails extends Component {
 
   componentDidMount() {
@@ -18,6 +20,12 @@ class ProductDetails extends Component {
   }
 
   render() {
+  	const { 
+			cartId, 
+			addToCart, 
+			match: { params } 
+		} = this.props;
+
     console.log('product details', this.props.selectedProduct)
     if (!this.props.selectedProduct.id) {
       return (
@@ -30,19 +38,20 @@ class ProductDetails extends Component {
         <Grid celled>
           <Grid.Row>
             <Grid.Column width={16}>
-              < Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
+              <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
+              <Button primary onClick={() => addToCart(params.id, cartId)}>Add To Cart</Button>
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>
             <Grid.Column width={3}>
-              < Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
+              <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
             </Grid.Column>
             <Grid.Column width={10}>
-              < Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
+              <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
             </Grid.Column>
             <Grid.Column width={3}>
-              < Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
+              <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -53,7 +62,13 @@ class ProductDetails extends Component {
 }
 
 const mapStateToProps = state => {
-  return {selectedProduct: state.products.selectedProduct}
+	const { cartId } = state.cart;
+	const { selectedProduct } = state.products;
+
+  return {
+  	selectedProduct,
+  	cartId,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -67,3 +82,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
+
+
+
+
+
+
+
