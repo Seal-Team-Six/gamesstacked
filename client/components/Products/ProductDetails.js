@@ -21,7 +21,8 @@ class ProductDetails extends Component {
 
   render() {
   	const { 
-			cartId, 
+			cartId,
+      user,
 			addToCart, 
 			match: { params } 
 		} = this.props;
@@ -38,7 +39,7 @@ class ProductDetails extends Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <Image src="https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg"/>
-              <Button primary onClick={() => addToCart(params.id, cartId, null)}>Add To Cart</Button>
+              <Button primary onClick={() => addToCart(params.id, cartId, user.id)}>Add To Cart</Button>
             </Grid.Column>
           </Grid.Row>
 
@@ -67,6 +68,7 @@ const mapStateToProps = state => {
   return {
   	selectedProduct,
   	cartId,
+    user: state.user
   }
 }
 

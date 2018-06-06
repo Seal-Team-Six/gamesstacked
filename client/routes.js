@@ -10,21 +10,34 @@ import Cart from './containers/Cart';
 import ProductDetails from './components/Products/ProductDetails'
 import moduleName from '../client/components/Products/'
 
-import {setCart} from './reducers/cartReducer';
+import {setCart, setItems} from './reducers/cartReducer';
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    const {me, setCart, user} = this.props;
+    const {me, setCart, user, setItems} = this.props;
 
     me()
-    setCart(user.id)
+    // setCart(user.id)
+    // setItems()
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { setCart } = this.props;
+
+    if (nextProps.user.id !== this.props.user.id) {
+      setCart(nextProps.user.id)
+    }
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, user} = this.props
+
+    if (!user.id) {
+      return <div>Loading</div>
+    }
 
     return (
       <Switch>
@@ -59,7 +72,7 @@ const mapState = (state) => {
 
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
-export default withRouter(connect(mapState, {me, setCart})(Routes))
+export default withRouter(connect(mapState, {me, setCart, setItems})(Routes))
 
 /**
  * PROP TYPES

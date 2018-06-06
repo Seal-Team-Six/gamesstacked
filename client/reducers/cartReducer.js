@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const ADD_ITEM    = 'ADD_ITEM';
-const ADD_ITEM_LOCAL = 'ADD_ITEM_LOCAL';
 const SET_CART    = 'SET_CART';
 const SET_ITEMS   = 'SET_ITEMS';
 const DELETE_ITEM = 'DELETE_ITEM';
@@ -61,7 +60,7 @@ export const addToCart = (productId, cartId, userId) => {
 				})
 		} else {
 			let localCart = JSON.parse(localStorage.getItem('cart'))
-			localCart.cartItems.push({id: productId})
+			localCart.cartItems.push({ id: localCart.cartItems.length, productId })
 
 			localStorage
 				.setItem(
@@ -73,9 +72,19 @@ export const addToCart = (productId, cartId, userId) => {
 
 			dispatch({
 				type: ADD_ITEM,
-				payload: productId
+				payload: { productId }
 			})
 		}
+	}
+}
+
+export const setItems = () => {
+	const localCart = JSON.parse(localStorage.getItem('cart'))
+	return dispatch => {
+		dispatch({
+			type: SET_ITEMS,
+			payload: localCart.cartItems
+		})
 	}
 }
 
