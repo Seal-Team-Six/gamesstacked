@@ -9,6 +9,7 @@ import Home from './containers/Home';
 import Cart from './containers/Cart';
 import ProductDetails from './components/Products/ProductDetails'
 import moduleName from '../client/components/Products/'
+import CartSideBar from './components/Cart/CartSideBar'
 
 import {setCart} from './reducers/cartReducer';
 
@@ -30,6 +31,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/testside" component={CartSideBar}/>
         <Route exact path="/register" component={Signup}/>
         <Route exact path="/products" component={Products}/>
         <Route exact path="/product/:id" component={ProductDetails}/> {isLoggedIn && <Switch>
