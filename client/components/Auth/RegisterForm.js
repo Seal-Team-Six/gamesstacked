@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { auth } from '../reducers/store';
-
+import { auth, notGoogleRegister } from '../../reducers/store';
 import { Icon, Button } from 'semantic-ui-react';
-import SocialButton from './UI/SocialButton';
+import SocialButton from '../UI/SocialButton';
+// import Signup from '../auth-form'
 
 /**
  * COMPONENT
@@ -14,6 +14,7 @@ const RegForm = props => {
 
   return (
     <div>
+      This is reg form
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="firstName">
@@ -90,6 +91,11 @@ const RegForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+
+      <div>
+      {/* <Signup /> */}
+
+      </div>
       <SocialButton
         href="/auth/google"
         displayName={displayName}
@@ -107,13 +113,7 @@ const RegForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = state => {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.user.error
-  };
-};
+
 
 const mapSignup = state => {
   return {
@@ -141,10 +141,11 @@ const mapDispatch = dispatch => {
 
       const email = evt.target.email.value;
       dispatch(
-        auth(
-          email,
+        
+        notGoogleRegister(
+          {email,
           password,
-          formName,
+          
           firstName,
           lastName,
           imageUrl,
@@ -152,28 +153,23 @@ const mapDispatch = dispatch => {
           city,
           state,
           zipCode,
-          phone
+          phone},formName
         )
       );
     }
   };
 };
 
-export const Login = connect(
-  mapLogin,
-  mapDispatch
-)(RegForm);
-export const Signup = connect(
-  mapSignup,
-  mapDispatch
-)(RegForm);
+
+export const RegisterForm = connect(mapSignup,
+mapDispatch)(RegForm);
 
 /**
  * PROP TYPES
  */
-RegForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
-};
+// RegisterForm.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   displayName: PropTypes.string.isRequired,
+//   handleSubmit: PropTypes.func.isRequired,
+//   error: PropTypes.object
+// };
