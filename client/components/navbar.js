@@ -11,22 +11,25 @@ class Navbar extends React.Component {
     const {isLoggedIn} = this.props;
 
     if (isLoggedIn) {
-      return [ <Menu.Item key = {
-          1
-        }
-        as = {
-          Link
-        }
-        to ="/logout"> Logout </Menu.Item>
-      ]
+      return (
+        <Link to="logout">
+          <Menu.Item key = {1}>
+            Logout
+          </Menu.Item>
+        </Link>
+      )
     } else {
       return [
-        <Menu.Item key={1} as={Link} to="/login">
-          Login
-        </Menu.Item>,
-        <Menu.Item key={2} as={Link} to="/register">
-          Register
-        </Menu.Item>
+        <Link key={1} to="/login">
+          <Menu.Item>
+            Login
+          </Menu.Item>
+        </Link>,
+        <Link key={2} to="/register">
+          <Menu.Item>
+           Register
+          </Menu.Item>
+        </Link>
       ]
     }
   }
@@ -36,15 +39,19 @@ class Navbar extends React.Component {
 
     return (
       <Menu inverted fixed="top">
-        <Menu.Item header as={Link} to="/">
-          Games Stacked 
+        <Link to="/">
+        <Menu.Item header>
+          Games Stacked
         </Menu.Item>
-        <Menu.Menu position='right'>
+        </Link>
+        <Menu.Menu position="right">
           { this.renderSessionLinks() }
-          <Menu.Item as={Link} to="/cart ">
-            Cart({cartItems.length}) 
+          <Link to="/cart">
+          <Menu.Item>
+            Cart({cartItems.length})
           </Menu.Item>
-        </Menu.Menu> 
+          </Link>
+        </Menu.Menu>
       </Menu>
     )
   }
