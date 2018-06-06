@@ -21,8 +21,8 @@ router.post('/', (req, res, next) => {
 			},
 			include: [
 				{
-					model: CartItems
-				}
+					model: CartItems, include: [ { model: Product } ]
+				},
 			]
 		})
 		.then(cart => {

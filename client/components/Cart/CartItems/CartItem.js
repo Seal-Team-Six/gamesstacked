@@ -5,7 +5,7 @@ import { Card, Button, List, Image } from 'semantic-ui-react';
 
 class CartItem extends React.Component {
   render() {
-    const { cartItem, product } = this.props;
+    const { product } = this.props.cartItem;
 
     return (
       <List.Item>
@@ -19,14 +19,4 @@ class CartItem extends React.Component {
   }
 }
 
-function mapStateToProps (state, ownProps) {
-  const { products } = state.products;
-
-  return {
-    product: products.find(product => {
-      return product.id === ownProps.cartItem.productId
-    })
-  }
-}
-
-export default connect(mapStateToProps)(CartItem);
+export default CartItem;

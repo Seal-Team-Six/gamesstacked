@@ -50,9 +50,11 @@ class Cart extends React.Component {
 
 function mapStateToProps (state) {
 	const { cartItems } = state.cart;
+	const { products } = state.products;
 
 	return {
-		cartItems
+		cartItems,
+		products,
 	}
 }
 
