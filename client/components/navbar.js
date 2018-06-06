@@ -42,7 +42,7 @@ class Navbar extends React.Component {
         <Menu.Menu position='right'>
           { this.renderSessionLinks() }
           <Menu.Item as={Link} to="/cart ">
-            Cart({ cartItems.length }) 
+            Cart(0) 
           </Menu.Item>
         </Menu.Menu> 
       </Menu>
@@ -53,7 +53,7 @@ class Navbar extends React.Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    cartItems: state.cart.cartItems
+    // cartItems: state.cart.cartItems
   }
 }
 
