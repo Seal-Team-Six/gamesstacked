@@ -91,11 +91,7 @@ const RegForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-
-      <div>
-      {/* <Signup /> */}
-
-      </div>
+      <div>{/* <Signup /> */}</div>
       <SocialButton
         href="/auth/google"
         displayName={displayName}
@@ -113,7 +109,6 @@ const RegForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-
 
 const mapSignup = state => {
   return {
@@ -141,28 +136,31 @@ const mapDispatch = dispatch => {
 
       const email = evt.target.email.value;
       dispatch(
-        
         notGoogleRegister(
-          {email,
-          password,
-          
-          firstName,
-          lastName,
-          imageUrl,
-          address,
-          city,
-          state,
-          zipCode,
-          phone},formName
+          {
+            email,
+            password,
+
+            firstName,
+            lastName,
+            imageUrl,
+            address,
+            city,
+            state,
+            zipCode,
+            phone
+          },
+          formName
         )
       );
     }
   };
 };
 
-
-export const RegisterForm = connect(mapSignup,
-mapDispatch)(RegForm);
+export const RegisterForm = connect(
+  mapSignup,
+  mapDispatch
+)(RegForm);
 
 /**
  * PROP TYPES

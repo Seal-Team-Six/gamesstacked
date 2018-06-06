@@ -32,23 +32,23 @@ const User = db.define('user', {
 
   address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   city: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   state: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   zipCode: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   phone: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   password: {
     type: Sequelize.STRING,
