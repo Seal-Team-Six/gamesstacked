@@ -1,13 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {Grid, Image, Button} from 'semantic-ui-react'
 
-class ProductDetails extends Component {
-  render() {
-    return (
-      <div>
-        this is the products details page
-      </div>
-    )
-  }
+const ProductDetails = () => {
+
+  return (
+    <div>
+      <Grid.Column key={1}>
+        <Image src='https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg'/>
+        <Button primary>Add To Cart</Button>
+      </Grid.Column>
+    </div>
+  )
+
 }
 
 export default ProductDetails
