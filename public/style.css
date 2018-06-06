@@ -4,6 +4,10 @@ body {
   font-size: 14px;
 }
 
+img {
+  width: 100%;
+}
+
 .ui.menu {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8em;
@@ -45,4 +49,41 @@ form div {
 
 .cart-items .no-items {
   text-align: center;
+}
+
+.product-hero {
+  margin-top: -1.5em;
+  max-height: 40vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-hero img {
+  filter: blur(0.3em);
+}
+
+.product-cover {
+  position: absolute;
+  top: 15vh;
+  width: 20vw;
+}
+
+.product-content h1 {
+  position: absolute;
+  top: 26vh;
+  left: 33vw;
+  color: #fff;
+  font-size: 4em;
+  text-shadow: 1px 1px 1px rgb(88, 88, 88);
+}
+
+.product-content p {
+  position: absolute;
+  top: 45vh;
+  left: 33vw;
+  width: 59vw;
+}
+
+.product-cover > .product-cover-button {
+  margin-top: 1em;
 }

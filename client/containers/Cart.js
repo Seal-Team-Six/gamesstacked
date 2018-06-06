@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CartItems from '../components/Cart/CartItems/CartItems';
 
-import { Button } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 
 class Cart extends React.Component {
 	renderCartItems () {
@@ -38,12 +38,14 @@ class Cart extends React.Component {
 		const { cartItems } = this.props;
 
 		return (
-			<div className="cart">
-				<h2>Shopping Cart { this.itemCount() }</h2>
-				<div className="cart-items">
-					{ this.renderCartItems() }
+			<Container>
+				<div className="cart">
+					<h2>Shopping Cart { this.itemCount() }</h2>
+					<div className="cart-items">
+						{ this.renderCartItems() }
+					</div>
 				</div>
-			</div>
+			</Container>
 		)
 	}
 }
