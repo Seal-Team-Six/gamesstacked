@@ -10,25 +10,25 @@ import Cart from './containers/Cart';
 import ProductDetails from './components/Products/ProductDetails'
 import moduleName from '../client/components/Products/'
 import CartSideBar from './components/Cart/CartSideBar'
+import { RegisterForm } from './components/Auth/RegisterForm';
 
-import {setCart} from './reducers/cartReducer';
+import { setCart } from './reducers/cartReducer';
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    const {me, setCart, user} = this.props;
+    const { me, setCart, user } = this.props;
 
     me()
     if (user.id) {
-
       setCart(user.id)
     }
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props;
 
     return (
       <Switch>
@@ -36,7 +36,7 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         {/* THIS IS A TEST ROUTER TO TEST THE SIDE BAR COMPONENT */}
         <Route exact path="/testside" component={CartSideBar} />
-        <Route exact path="/register" component={Signup} />
+        <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} /> {/* Routes placed here are only available after logging in */}
@@ -48,26 +48,31 @@ class Routes extends Component {
         }
         {/* Displays our Login component as a fallback */}
       </Switch>
-    )
+    );
   }
 }
 
 /**
  * CONTAINER
  */
-const mapState = (state) => {
+const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user
     // that has a truthy id. Otherwise, state.user will be an empty object, and
     // state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     user: state.user
-  }
-}
+  };
+};
 
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
-export default withRouter(connect(mapState, {me, setCart})(Routes))
+export default withRouter(
+  connect(
+    mapState,
+    { me, setCart }
+  )(Routes)
+);
 
 /**
  * PROP TYPES
@@ -75,4 +80,4 @@ export default withRouter(connect(mapState, {me, setCart})(Routes))
 Routes.propTypes = {
   // loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
-}
+};
