@@ -25,3 +25,17 @@ router.post('/', (req, res, next) => {
 		})
 })
 
+router.delete('/:id', (req, res, next) => {
+	CartItems
+		.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(item => {
+			res.status(204).end()
+		})
+		.catch(err => {
+			next(err)
+		})
+})

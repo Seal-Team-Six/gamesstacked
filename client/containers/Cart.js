@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartItems from '../components/Cart/CartItems/CartItems';
+import TableCart from '../components/Cart/TableCart';
 
-import { Button, Container } from 'semantic-ui-react';
+import { Button, Container, Table } from 'semantic-ui-react';
 
 class Cart extends React.Component {
 	renderCartItems () {
@@ -17,9 +18,11 @@ class Cart extends React.Component {
 			)
 		} else {
 			return (
-				<CartItems 
-					cartItems={cartItems} 
-				/>
+				<TableCart>
+					<CartItems 
+						cartItems={cartItems} 
+					/>
+				</TableCart>
 			)
 		}
 	}

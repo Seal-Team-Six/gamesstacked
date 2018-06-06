@@ -88,6 +88,22 @@ export const setItems = () => {
 	}
 }
 
+export const deleteItem = (id) => {
+	return dispatch => {
+		axios
+			.delete(`/api/cart_items/${id}`)
+			.then(res => {
+				dispatch({
+					type: DELETE_ITEM,
+					payload: id
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+}
+
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case SET_CART:
@@ -109,10 +125,9 @@ const reducer = (state=initialState, action) => {
 		case DELETE_ITEM:
 			return {
 				...state,
-				cartItems: [ 
-					...state.cartItems.slice(0, action.payload),  
-					...state.cartItems.slice(action.payload + 1)
-				]
+				cartItems: state.cartItems.filter(item => {
+					return item.id !== action.payload
+				})
 			}
 		default:
 			return state;
