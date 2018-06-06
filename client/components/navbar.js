@@ -11,13 +11,13 @@ class Navbar extends React.Component {
     const {isLoggedIn} = this.props;
 
     if (isLoggedIn) {
-      return [ < Menu.Item key = {
+      return [ <Menu.Item key = {
           1
         }
         as = {
           Link
         }
-        to = "/logout" > Logout < /Menu.Item>
+        to ="/logout"> Logout </Menu.Item>
       ]
     } else {
       return [
@@ -32,35 +32,42 @@ class Navbar extends React.Component {
   }
 
   render () {
+    const { cartItems } = this.props;
+
     return (
       <Menu inverted fixed="top">
         <Menu.Item header as={Link} to="/">
- Games Stacked < /Menu.Item>
+          Games Stacked 
+        </Menu.Item>
         <Menu.Menu position='right'>
           { this.renderSessionLinks() }
           <Menu.Item as={Link} to="/cart ">
- Cart(0) < /Menu.Item>
-        </Menu.Menu > </Menu>)
-      }
-    }
+            Cart({ cartItems.length }) 
+          </Menu.Item>
+        </Menu.Menu> 
+      </Menu>
+    )
+  }
+}
 
-    const mapState = state => {
-      return {
-        isLoggedIn: !!state.user.id
-      }
-    }
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id,
+    cartItems: state.cart.cartItems
+  }
+}
 
-    const mapDispatch = dispatch => {
-      return {
-        handleClick() {
-          dispatch(logout())
-        }
-      }
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
     }
+  }
+}
 
-    export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(Navbar)
 
-    Navbar.propTypes = {
-      handleClick: PropTypes.func.isRequired,
-      isLoggedIn: PropTypes.bool.isRequired
-    }
+Navbar.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
+}
