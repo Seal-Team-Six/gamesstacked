@@ -8,18 +8,18 @@ class ProductsList extends React.Component {
 
 				return (
 						<div>
-								<Container>
-										<Grid columns={4}>
-												{products.map(product => {
-														return (
-																<Grid.Column key={product.id}>
-																		<Product product={product}/>
-																</Grid.Column>
-														)
-												})
+
+								<Grid columns={4}>
+										{products.map(product => {
+												return (
+														<Grid.Column key={product.id}>
+																<Product product={product}/>
+														</Grid.Column>
+												)
+										})
 }
-										</Grid>
-								</Container>
+								</Grid>
+
 						</div>
 				)
 		}
