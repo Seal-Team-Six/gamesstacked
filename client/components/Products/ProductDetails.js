@@ -1,17 +1,33 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {Grid, Image, Button} from 'semantic-ui-react'
 
-const ProductDetails = () => {
+import { addToCart } from '../../reducers/cartReducer'
+
+const ProductDetails = (props) => {
+	const { 
+		cartId, 
+		addToCart, 
+		match: { params } 
+	} = props;
 
   return (
     <div>
       <Grid.Column key={1}>
         <Image src='https://i.ytimg.com/vi/DKbkKJWYT6E/maxresdefault.jpg'/>
-        <Button primary>Add To Cart</Button>
+        <Button primary onClick={() => addToCart(params.id, cartId)}>Add To Cart</Button>
       </Grid.Column>
     </div>
   )
 
 }
 
-export default ProductDetails
+function mapStateToProps (state) {
+	const { cartId } = state.cart;
+
+	return {
+		cartId
+	}
+}
+
+export default connect(mapStateToProps, { addToCart })(ProductDetails)
