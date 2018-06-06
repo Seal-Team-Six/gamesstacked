@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Cart, CartItems } = require('../db/models')
+const { Cart, CartItems, Product } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -21,8 +21,8 @@ router.post('/', (req, res, next) => {
 			},
 			include: [
 				{
-					model: CartItems
-				}
+					model: CartItems, include: [ { model: Product } ]
+				},
 			]
 		})
 		.then(cart => {
