@@ -6,9 +6,12 @@ const FETCH_PRODUCTS_FAIL = 'FETCH_PRODUCTS_FAIL';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const EDIT_PRODUCT = 'EDIT_PRODUCT';
 const NEW_PRODUCT = 'NEW_PRODUCT';
+const FETCH_SELECTED_PRODUCT = 'FETCH_SELECTED_PRODUCT'
+const RESET_PRODUCT = 'RESET_PRODUCT'
 
 const initialState = {
 		products: [],
+		selectedProduct: {},
 		isLoading: false,
 		error: false
 }
@@ -23,6 +26,25 @@ export const fetchProducts = () => {
 						.catch(err => {
 								console.log(err)
 						})
+		}
+}
+
+export const fetchProduct = (id) => {
+		return dispatch => {
+				axios
+						.get(`/api/products/${id}`)
+						.then(res => {
+								dispatch({type: FETCH_SELECTED_PRODUCT, payload: res.data})
+						})
+						.catch(err => {
+								console.log(err)
+						})
+		}
+}
+
+export const resetProduct = (id) => {
+		return dispatch => {
+				dispatch({type: RESET_PRODUCT})
 		}
 }
 
@@ -73,6 +95,19 @@ const reducer = (state = initialState, action) => {
 												return product
 										})
 						}
+
+				case FETCH_SELECTED_PRODUCT:
+						return {
+								...state,
+								selectedProduct: action.payload
+						}
+
+				case RESET_PRODUCT:
+						return {
+								...state,
+								selectedProduct: {}
+						}
+
 				default:
 						return state;
 		}
