@@ -6,10 +6,36 @@ router.post('/', (req, res, next) => {
 	CartItems
 		.create(req.body)
 		.then(item => {
-			res.send(item)
+			CartItems
+				.findOne({
+					where: {
+						id: item.id
+					},
+					include: [
+						{
+							model: Product
+						}
+					]
+				}).then(newItem => {
+					res.send(newItem)
+				})
 		})
 		.catch(err => {
 			next(err)
 		})
 })
 
+router.delete('/:id', (req, res, next) => {
+	CartItems
+		.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(item => {
+			res.status(204).end()
+		})
+		.catch(err => {
+			next(err)
+		})
+})

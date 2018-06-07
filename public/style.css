@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  padding-top: 48px;
+  padding-top: 7vh;
   font-size: 14px;
   color: #737373;
 }
@@ -11,7 +11,7 @@ img {
 
 .ui.menu {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.8em;
+  font-size: 1.2em;
 }
 
 .ui.menu a.item {
@@ -89,4 +89,8 @@ form div {
 
 .rating p {
   font-size: 4em;
+}
+
+.extras {
+  padding: 1em 0;
 }

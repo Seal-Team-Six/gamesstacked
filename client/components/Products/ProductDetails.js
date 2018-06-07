@@ -7,10 +7,11 @@ import {
   Statistic,
   Embed
 } from 'semantic-ui-react'
-import Gallery from 'react-grid-gallery'
 import {connect} from 'react-redux'
 import {fetchProduct, resetProduct} from '../../reducers/productsReducer';
 import {addToCart} from '../../reducers/cartReducer'
+
+import ProductExtras from './ProductExtras'
 
 class ProductDetails extends Component {
 
@@ -33,19 +34,6 @@ class ProductDetails extends Component {
 
     const {selectedProduct} = this.props
 
-    const images = selectedProduct.screenshots && selectedProduct
-      .screenshots
-      .map(screenshot => {
-        return ({
-          id: `${screenshot.id}`,
-          src: `http://${screenshot.url}`,
-          thumbnail: `http://${screenshot.url}`,
-          thumbnailWidth: 320,
-          thumbnailHeight: 174,
-          isSelected: false
-        })
-      })
-
     const ratings = (score) => {
       if (score > 75) {
         return 'green'
@@ -56,14 +44,11 @@ class ProductDetails extends Component {
       }
     }
 
-    console.log('!!!', selectedProduct)
-
     if (!this.props.selectedProduct.id) {
       return (
         <div>..loading</div>
       )
     }
-
     return (
       <div>
         <Grid.Column className="product-hero" key={16}>
@@ -105,31 +90,8 @@ class ProductDetails extends Component {
                 </Statistic>
               </Grid.Column>
             </Grid.Row>
+            <ProductExtras selectedProduct={selectedProduct}/>
           </Grid>
-
-          <Grid.Column key={16}>
-            {selectedProduct && selectedProduct.videos
-              ? <div>
-                  <h4>Videos:</h4>
-                  <Embed
-                    id={selectedProduct.videos[0].video_id}
-                    placeholder={`http://${selectedProduct.cover.url}`}
-                    source='youtube'/>
-                </div>
-
-              : null}
-
-            {selectedProduct.screenshots && selectedProduct.screenshots.length
-              ? <div>
-                  <h4>Screenshots:</h4>
-                  <Gallery
-                    images={images}
-                    key={selectedProduct.id}
-                    backdropClosesModal={true}
-                    preloadNextImage={true}/>
-                </div>
-              : null}
-          </Grid.Column>
         </Container>
       </div>
 
@@ -139,9 +101,9 @@ class ProductDetails extends Component {
 
 const mapStateToProps = state => {
   const {cartId} = state.cart;
-  const {selectedProduct} = state.products
+  const {selectedProduct} = state.products;
 
-  return {selectedProduct, cartId}
+  return {selectedProduct, cartId, user: state.user}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -152,8 +114,8 @@ const mapDispatchToProps = dispatch => {
     removeProduct: () => {
       dispatch(resetProduct())
     },
-    addToCart: () => {
-      dispatch(addToCart())
+    addToCart: (productId, cartId, userId) => {
+      dispatch(addToCart(productId, cartId, userId))
     }
   }
 }

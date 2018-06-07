@@ -12,18 +12,26 @@ import moduleName from '../client/components/Products/'
 import CartSideBar from './components/Cart/CartSideBar'
 import { RegisterForm } from './components/Auth/RegisterForm';
 
-import { setCart } from './reducers/cartReducer';
+
+import {setCart, setItems} from './reducers/cartReducer';
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    const { me, setCart, user } = this.props;
+    const {me, setCart, user, setItems} = this.props;
 
     me()
-    if (user.id) {
-      setCart(user.id)
+    // setCart(user.id)
+    // setItems()
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { setCart } = this.props;
+
+    if (nextProps.user.id !== this.props.user.id) {
+      setCart(nextProps.user.id)
     }
   }
 
@@ -33,6 +41,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+
         <Route exact path="/login" component={Login} />
         {/* THIS IS A TEST ROUTER TO TEST THE SIDE BAR COMPONENT */}
         <Route exact path="/testside" component={CartSideBar} />
@@ -67,12 +76,8 @@ const mapState = state => {
 
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
-export default withRouter(
-  connect(
-    mapState,
-    { me, setCart }
-  )(Routes)
-);
+
+export default withRouter(connect(mapState, {me, setCart, setItems})(Routes))
 
 /**
  * PROP TYPES

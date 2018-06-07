@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartItems from '../components/Cart/CartItems/CartItems';
+import TableCart from '../components/Cart/TableCart';
+import CartSummary from '../components/Cart/CartSummary';
 
-import { Button } from 'semantic-ui-react';
+import { Button, Container, Table } from 'semantic-ui-react';
 
 class Cart extends React.Component {
 	renderCartItems () {
-		const { cartItems } = this.props;
+		const { cartItems, totalPrice } = this.props;
 
 		if (!cartItems.length) {
 			return (
@@ -17,9 +19,14 @@ class Cart extends React.Component {
 			)
 		} else {
 			return (
-				<CartItems 
-					cartItems={cartItems} 
-				/>
+				<div>
+				<TableCart>
+					<CartItems 
+						cartItems={cartItems} 
+					/>
+				</TableCart>
+				<CartSummary totalPrice={totalPrice} />
+				</div>
 			)
 		}
 	}
@@ -35,26 +42,29 @@ class Cart extends React.Component {
 	}
 
 	render () {
-		const { cartItems } = this.props;
+		const { cartItems, totalPrice } = this.props;
 
 		return (
-			<div className="cart">
-				<h2>Shopping Cart { this.itemCount() }</h2>
-				<div className="cart-items">
-					{ this.renderCartItems() }
+			<Container>
+				<div className="cart">
+					<h2>Shopping Cart { this.itemCount() }</h2>
+					<div className="cart-items">
+						{ this.renderCartItems() }
+					</div>
 				</div>
-			</div>
+			</Container>
 		)
 	}
 }
 
 function mapStateToProps (state) {
-	const { cartItems } = state.cart;
+	const { cartItems, totalPrice } = state.cart;
 	const { products } = state.products;
 
 	return {
 		cartItems,
 		products,
+		totalPrice,
 	}
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, List, Image } from 'semantic-ui-react';
+import { Card, Button, Table, Image } from 'semantic-ui-react';
+
+import { deleteItem } from '../../../reducers/cartReducer';
 
 
 class CartItem extends React.Component {
@@ -8,15 +10,18 @@ class CartItem extends React.Component {
     const { product } = this.props.cartItem;
 
     return (
-      <List.Item>
-        <List.Content floated="right">
-          <List.Content>${product.price}</List.Content>
-        </List.Content>
-        <Image avatar src={`http://${product.cover.url}`} />
-        <List.Content>{product.name}</List.Content>
-      </List.Item>
+      <Table.Row>
+        <Table.Cell>
+          <Image verticalAlign='middle' size='tiny' src={`http://${product.cover.url}`} />
+        </Table.Cell>
+        <Table.Cell>{product.name}</Table.Cell>
+        <Table.Cell>
+          <div onClick={() => this.props.deleteItem(this.props.cartItem.id)}>Delete</div>
+        </Table.Cell>
+        <Table.Cell textAlign='right'>${ product.price }</Table.Cell>
+      </Table.Row>
     );
   }
 }
 
-export default CartItem;
+export default connect(null, { deleteItem })(CartItem);
