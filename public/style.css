@@ -2,6 +2,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   padding-top: 48px;
   font-size: 14px;
+  color: #737373;
 }
 
 img {
@@ -53,37 +54,39 @@ form div {
 
 .product-hero {
   margin-top: -1.5em;
-  max-height: 40vh;
+  max-height: 30vh;
   overflow: hidden;
   position: relative;
 }
 
 .product-hero img {
-  filter: blur(0.3em);
+  filter: blur(0.5em);
 }
 
-.product-cover {
-  position: absolute;
-  top: 15vh;
-  width: 20vw;
+.product-content {
+  padding: 1em 0 1em 0 !important;
+  vertical-align: bottom;
+}
+
+.product-content img {
+  margin-top: -10vh;
+  margin-bottom: 1vh;
 }
 
 .product-content h1 {
-  position: absolute;
-  top: 26vh;
+  /* top: 26vh;
   left: 33vw;
   color: #fff;
   font-size: 4em;
-  text-shadow: 1px 1px 1px rgb(88, 88, 88);
+  text-shadow: 1px 1px 1px rgb(88, 88, 88); */
 }
 
 .product-content p {
-  position: absolute;
-  top: 45vh;
+  /* top: 45vh;
   left: 33vw;
-  width: 59vw;
+  width: 59vw; */
 }
 
-.product-cover > .product-cover-button {
-  margin-top: 1em;
+.rating p {
+  font-size: 4em;
 }
