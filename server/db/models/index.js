@@ -50,6 +50,6 @@ module.exports = {
   Genre,
   Cart,
   CartItems,
-  Address
+  Address,
   Card,
 }
