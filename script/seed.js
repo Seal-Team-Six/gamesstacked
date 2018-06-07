@@ -2,10 +2,12 @@ const db = require('../server/db/')
 const genreSeed = require('../server/db/seeds/genreSeed')
 const productSeed = require('../server/db/seeds/productSeed')
 const userSeed = require('../server/db/seeds/userSeed')
+const cardSeed = require('../server/db/seeds/cardSeed')
 
 const seed = async () => {
   await db.sync({force: true})
   await userSeed()
+  await cardSeed()
   await genreSeed()
   await productSeed()
 }
