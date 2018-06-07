@@ -31,11 +31,11 @@ describe('User model', () => {
         })
       })
 
-      xit('returns true if the password is correct', () => {
+      it('returns true if the password is correct', () => {
         expect(cody.correctPassword('tacotaco')).to.be.equal(true)
       })
 
-      xit('returns false if the password is incorrect', () => {
+      it('returns false if the password is incorrect', () => {
         expect(cody.correctPassword('trex')).to.be.equal(false)
       })
     }) // end describe('correctPassword')
