@@ -38,7 +38,7 @@ class Cart extends React.Component {
 	}
 
 	render () {
-		const { cartItems } = this.props;
+		const { cartItems, totalPrice } = this.props;
 
 		return (
 			<Container>
@@ -47,6 +47,9 @@ class Cart extends React.Component {
 					<div className="cart-items">
 						{ this.renderCartItems() }
 					</div>
+					<div className="cart-summary">
+						{ totalPrice }
+					</div>
 				</div>
 			</Container>
 		)
@@ -54,12 +57,13 @@ class Cart extends React.Component {
 }
 
 function mapStateToProps (state) {
-	const { cartItems } = state.cart;
+	const { cartItems, totalPrice } = state.cart;
 	const { products } = state.products;
 
 	return {
 		cartItems,
 		products,
+		totalPrice,
 	}
 }
 

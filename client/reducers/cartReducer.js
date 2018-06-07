@@ -7,7 +7,8 @@ const DELETE_ITEM = 'DELETE_ITEM';
 
 const initialState = {
 	cartId: null,
-	cartItems: []
+	cartItems: [],
+	totalPrice: 0,
 }
 
 export const setCart = (userId) => {
@@ -107,10 +108,13 @@ export const deleteItem = (id) => {
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case SET_CART:
+			const items = action.payload.cartItems;
+
 			return {
 				...state,
 				cartId: action.payload.id,
-				cartItems: action.payload.cartItems
+				cartItems: items,
+				totalPrice: items.map(item => parseInt(item.product.price)).reduce((a, b) => a + b)
 			}
 		case SET_ITEMS:
 			return {
@@ -120,7 +124,8 @@ const reducer = (state=initialState, action) => {
 		case ADD_ITEM:
 			return {
 				...state,
-				cartItems: [ ...state.cartItems, action.payload ]
+				cartItems: [ ...state.cartItems, action.payload ],
+				totalPrice: state.totalPrice + parseInt(action.payload.product.price)
 			}
 		case DELETE_ITEM:
 			return {
