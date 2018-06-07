@@ -1,12 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Card, Button, Table, Image} from 'semantic-ui-react'
+import {Card, Button, Table, Image, Icon} from 'semantic-ui-react'
 
-import {deleteItem} from '../../../reducers/cartReducer'
+import {deleteItem, addQuantity} from '../../../reducers/cartReducer'
 
 class CartItem extends React.Component {
   render() {
-    const {product} = this.props.cartItem
+    const {
+      cartItem: {product, id, quantity},
+      deleteItem,
+      addQuantity
+    } = this.props
 
     return (
       <Table.Row>
@@ -19,9 +23,15 @@ class CartItem extends React.Component {
         </Table.Cell>
         <Table.Cell>{product.name}</Table.Cell>
         <Table.Cell>
-          <div onClick={() => this.props.deleteItem(this.props.cartItem.id)}>
-            Delete
-          </div>
+          <input
+            type="number"
+            name="quantity"
+            onChange={e => addQuantity(id, e.target.value)}
+            value={quantity}
+          />
+        </Table.Cell>
+        <Table.Cell>
+          <Icon onClick={() => deleteItem(id)} link name="delete" />
         </Table.Cell>
         <Table.Cell textAlign="right">${product.price}</Table.Cell>
       </Table.Row>
@@ -29,4 +39,7 @@ class CartItem extends React.Component {
   }
 }
 
-export default connect(null, {deleteItem})(CartItem)
+export default connect(null, {
+  deleteItem,
+  addQuantity
+})(CartItem)
