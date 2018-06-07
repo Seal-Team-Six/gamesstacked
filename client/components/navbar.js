@@ -12,7 +12,7 @@ class Navbar extends React.Component {
 
     if (isLoggedIn) {
       return (
-        <Link to="logout">
+        <Link to="/logout" onClick={this.props.handleClick}>
           <Menu.Item key={1}>Logout</Menu.Item>
         </Link>
       )
