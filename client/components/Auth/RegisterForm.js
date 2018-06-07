@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import { auth, notGoogleRegister } from '../../reducers/store';
-import { Icon, Button, Input, List, Container } from 'semantic-ui-react';
+import { Icon, Button, Input, List, Container, Form } from 'semantic-ui-react';
 import SocialButton from '../UI/SocialButton';
 // import Signup from '../auth-form'
 
@@ -18,26 +18,42 @@ const RegForm = props => {
       <div>
         <auth-form />
       </div>
-      
+      <div>
         <form onSubmit={handleSubmit} name={name}>
-          <Input name="firstName" type="text" placeholder="First Name" fluid />
-          <Input name="lastName" type="text" placeholder="Lase Name" fluid />
-          <Input name="email" type="text" placeholder="Email" fluid />
-          
-          <Input name="imageUrl" type="text" placeholder="Profile Pic Image Url" fluid />
-          <Input name="address" type="text" placeholder="Address" fluid />
-          <Input name="city" type="text" placeholder="City" fluid />
-          <Input name="state" type="text" placeholder="State" fluid />
-          <Input name="zipCode" type="text" placeholder="Zip Code" fluid />
+
+        <Form.Group widths="equal">
+     
+      {/* <Form.Field
+        id="form-input-control-last-name"
+        control={Input}
+        
+        placeholder="Last name"
+      /> */}
+          <Input name="firstName" type="text" placeholder="First Name"  />
+          <Input name="lastName" type="text" placeholder="Last Name"  />
+        </Form.Group>
+      <Form.Group>
+          <Input name="email" type="text" placeholder="Email"  />
+          <Input name="address" type="text" placeholder="Address" />
+      </Form.Group>
+
+          <Form.Group widths="equal">
+
+          <Input name="city" type="text" placeholder="City"  />
+          <Input name="state" type="text" placeholder="State"  />
+          <Input name="zipCode" type="text" placeholder="Zip Code"  />
+
+          </Form.Group>
           <Input name="phone" type="text" placeholder="Phone" fluid />
           <Input name="password" type="password" placeholder="Password" fluid />
 
+          <Input name="imageUrl" type="text" placeholder="Profile Pic Image Url" fluid />
           <div>
             <Button type="submit">{displayName}</Button>
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
-      
+      </div>
 
       <div>{/* <Signup /> */}</div>
       <SocialButton

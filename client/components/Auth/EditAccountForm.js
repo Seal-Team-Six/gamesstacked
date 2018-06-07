@@ -13,17 +13,12 @@ const EditForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div>
-      <h4>Register Without Google</h4>
-      <div>
-        <auth-form />
-      </div>
+        
       
         <form onSubmit={handleSubmit} name={name}>
           <Input name="firstName" type="text" placeholder="First Name" fluid />
           <Input name="lastName" type="text" placeholder="Lase Name" fluid />
           <Input name="email" type="text" placeholder="Email" fluid />
-          
           <Input name="imageUrl" type="text" placeholder="Profile Pic Image Url" fluid />
           <Input name="address" type="text" placeholder="Address" fluid />
           <Input name="city" type="text" placeholder="City" fluid />
@@ -39,24 +34,16 @@ const EditForm = props => {
         </form>
       
 
-      <div>{/* <Signup /> */}</div>
-      <SocialButton
-        href="/auth/google"
-        displayName={displayName}
-        className="google plus"
-        name="Google"
-      />
-    </div>
+    //   <div>{/* <Signup /> */}</div>
+    //   <SocialButton
+    //     href="/auth/google"
+    //     displayName={displayName}
+    //     className="google plus"
+    //     name="Google"
+    //   />
+    // </div>
   );
 };
-
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 
 const mapSignup = state => {
   return {
@@ -72,7 +59,6 @@ const mapDispatch = dispatch => {
       evt.preventDefault();
       const formName = evt.target.name;
       const password = evt.target.password.value;
-
       const firstName = evt.target.firstName.value;
       const lastName = evt.target.lastName.value;
       const imageUrl = evt.target.imageUrl.value;
@@ -81,7 +67,6 @@ const mapDispatch = dispatch => {
       const state = evt.target.state.value;
       const zipCode = evt.target.zipCode.value;
       const phone = evt.target.phone.value;
-
       const email = evt.target.email.value;
       dispatch(
         notGoogleRegister(
