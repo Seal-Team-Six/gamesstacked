@@ -14,19 +14,9 @@ const RegForm = props => {
 
   return (
     <div>
-      <h4>Register Without Google</h4>
-      <div>
-        <auth-form />
-      </div>
       <div>
         <form onSubmit={handleSubmit} name={name}>
           <Form.Group widths="equal">
-            {/* <Form.Field
-        id="form-input-control-last-name"
-        control={Input}
-        
-        placeholder="Last name"
-      /> */}
             <Input name="firstName" type="text" placeholder="First Name" />
             <Input name="lastName" type="text" placeholder="Last Name" />
           </Form.Group>
@@ -89,7 +79,6 @@ const mapDispatch = dispatch => {
       evt.preventDefault()
       const formName = evt.target.name
       const password = evt.target.password.value
-
       const firstName = evt.target.firstName.value
       const lastName = evt.target.lastName.value
       const imageUrl = evt.target.imageUrl.value
@@ -98,7 +87,6 @@ const mapDispatch = dispatch => {
       const state = evt.target.state.value
       const zipCode = evt.target.zipCode.value
       const phone = evt.target.phone.value
-
       const email = evt.target.email.value
       dispatch(
         notGoogleRegister(

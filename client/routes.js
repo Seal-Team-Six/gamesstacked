@@ -12,7 +12,7 @@ import moduleName from '../client/components/Products/'
 import CartSideBar from './components/Cart/CartSideBar'
 import {RegisterForm} from './components/Auth/RegisterForm'
 import {Account} from './components/Account/Account'
-import {setCart} from './reducers/cartReducer'
+import {setCart, setItemlls} from './reducers/cartReducer'
 
 /**
  * COMPONENT
