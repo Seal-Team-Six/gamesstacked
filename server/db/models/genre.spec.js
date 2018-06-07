@@ -5,7 +5,7 @@ const db = require('../index')
 const Genre = db.model('genre')
 
 describe('Genre model', () => {
-  beforeEach(async () => db.sync({force: true}))
+  beforeEach(() => db.sync({force: true}))
   describe('created genre', () => {
     let genre
 
