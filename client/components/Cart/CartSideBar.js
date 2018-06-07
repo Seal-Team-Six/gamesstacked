@@ -1,19 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Card, Checkbox, Divider, Button } from 'semantic-ui-react';
+import { Card, Checkbox, Divider, Button, List } from 'semantic-ui-react';
 
 class CartSideBar extends React.Component {
-  // NOTE: NEED TO HOOK UP THIS COMPONENT TO SHOPPING CART
   render() {
+    const { cartItems, totalPrice } = this.props;
+
     return (
       <Card>
         <Card.Content>
-          <Card.Header>Subitem (Numba item): ManyBucks</Card.Header>
-          <Checkbox label="This order contains a gift" />
+          <Card.Header>Order Summary</Card.Header>
+          <List divided verticalAlign='middle'>
+            <List.Item>
+              <List.Content floated='right'>
+                ${totalPrice.toFixed(2)}
+              </List.Content>
+              <List.Content>Subtotal ({cartItems.length})</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content floated='right'>
+                Free
+              </List.Content>
+              <List.Content>Shipping</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content floated='right'>
+                ${ totalPrice.toFixed(2) }
+              </List.Content>
+              <List.Content>Order Total</List.Content>
+            </List.Item>
+          </List>
           <Card.Description textAlign="center">
-          <Button fluid color="yellow">Proceed to Checkout</Button>
-          <Divider horizontal>or</Divider>
-          <Link to="/login">Sign in</Link> for more perks.
+            <Button fluid primary>Proceed to Checkout</Button>
+            <Divider horizontal>or</Divider>
+            <Link to="/login">Sign in</Link> for more perks.
           </Card.Description>
         </Card.Content>
       </Card>

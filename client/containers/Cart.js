@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import CartItems from '../components/Cart/CartItems/CartItems';
 import TableCart from '../components/Cart/TableCart';
 import CartSummary from '../components/Cart/CartSummary';
+import CartSideBar from '../components/Cart/CartSideBar';
 
-import { Button, Container, Table } from 'semantic-ui-react';
+import { Button, Container, Table, Grid } from 'semantic-ui-react';
 
 class Cart extends React.Component {
 	renderCartItems () {
@@ -19,14 +20,21 @@ class Cart extends React.Component {
 			)
 		} else {
 			return (
-				<div>
-				<TableCart>
-					<CartItems 
-						cartItems={cartItems} 
-					/>
-				</TableCart>
-				<CartSummary totalPrice={totalPrice} />
-				</div>
+				<Grid>
+					<Grid.Column width={12}>
+						<TableCart>
+							<CartItems 
+								cartItems={cartItems} 
+							/>
+						</TableCart>	
+					</Grid.Column>
+					<Grid.Column width={4}>
+						<CartSideBar 
+							cartItems={cartItems} 
+							totalPrice={totalPrice}
+						/>
+					</Grid.Column>
+				</Grid>
 			)
 		}
 	}

@@ -114,7 +114,7 @@ const reducer = (state=initialState, action) => {
 				...state,
 				cartId: action.payload.id,
 				cartItems: items,
-				totalPrice: items.length ? items.map(item => parseInt(item.product.price)).reduce((a, b) => a + b) : 0
+				totalPrice: items.length ? items.map(item => parseFloat(item.product.price)).reduce((a, b) => a + b) : 0
 			}
 		case SET_ITEMS:
 			return {
@@ -125,14 +125,17 @@ const reducer = (state=initialState, action) => {
 			return {
 				...state,
 				cartItems: [ ...state.cartItems, action.payload ],
-				totalPrice: state.totalPrice + parseInt(action.payload.product.price)
+				totalPrice: state.totalPrice + parseFloat(action.payload.product.price)
 			}
 		case DELETE_ITEM:
+			const item = state.cartItems.find(item => item.id === action.payload)
+
 			return {
 				...state,
 				cartItems: state.cartItems.filter(item => {
 					return item.id !== action.payload
-				})
+				}),
+				totalPrice: state.totalPrice - item.product.price
 			}
 		default:
 			return state;
