@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const ADD_ITEM = 'ADD_ITEM'
 const SET_CART = 'SET_CART'
+const RESET_CART = 'RESET_CART'
 const SET_ITEMS = 'SET_ITEMS'
 const DELETE_ITEM = 'DELETE_ITEM'
 const ADD_QUANTITY = 'ADD_QUANTITY'
@@ -112,6 +113,14 @@ export const addQuantity = (id, quantity) => {
   }
 }
 
+export const resetCart = () => {
+  return dispatch => {
+    dispatch({
+      type: RESET_CART
+    })
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART:
@@ -126,6 +135,12 @@ const reducer = (state = initialState, action) => {
               .map(item => parseFloat(item.product.price) * item.quantity)
               .reduce((a, b) => a + b)
           : 0
+      }
+    case RESET_CART:
+      return {
+        ...state,
+        cartItems: [],
+        totalPrice: 0
       }
     case SET_ITEMS:
       return {

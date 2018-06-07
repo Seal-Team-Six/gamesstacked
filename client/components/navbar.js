@@ -3,18 +3,26 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
+import {resetCart} from '../reducers/cartReducer'
 
 import {Menu, Container, Button} from 'semantic-ui-react'
 
 class Navbar extends React.Component {
+  handleLogOut = () => {
+    const {handleClick, deleteCart} = this.props
+
+    handleClick()
+    deleteCart()
+  }
+
   renderSessionLinks() {
     const {isLoggedIn} = this.props
 
     if (isLoggedIn) {
       return [
-        <Link key={1} to="logout">
+        <a onClick={this.handleLogOut} key={1}>
           <Menu.Item>Logout</Menu.Item>
-        </Link>,
+        </a>,
 
         <Link key={2} to="/user">
           <Menu.Item>Account</Menu.Item>
@@ -60,8 +68,12 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleClick() {
+    handleClick: () => {
       dispatch(logout())
+    },
+
+    deleteCart: () => {
+      dispatch(resetCart())
     }
   }
 }
