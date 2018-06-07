@@ -25,6 +25,7 @@ class RegForm extends Component {
     return (
       <Form.Group>
         <Input type={type} placeholder={label} {...input} />
+        <div className="error">{touched ? error : ''}</div>
       </Form.Group>
     )
   }
@@ -93,7 +94,36 @@ const mapDispatch = dispatch => {
     }
   }
 }
-function validate() {}
+function validate(formProps) {
+  const errors = {},
+    vowels = ['a', 'e', 'i', 'o']
+
+  // Required fields
+  FIELDS.forEach(field => {
+    const firstLetter = field.name.split('')[0]
+
+    if (!formProps[field.name]) {
+      const an = vowels.includes(firstLetter) ? 'an' : 'a'
+      errors[field.name] = `Please enter ${an} ${field.label.toLowerCase()}`
+    }
+  })
+
+  // Password and confirmation must match
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Passwords must match!'
+  }
+
+  if (formProps.email && !formProps.email.includes('@')) {
+    errors.email = 'Must be in email format'
+  }
+
+  // Password length must be 6 or more characters in length
+  if (formProps.password && formProps.password.length < 6) {
+    errors.password = 'Password must be 6 characters in length'
+  }
+
+  return errors
+}
 const form = reduxForm({
   form: 'register',
   validate: validate
