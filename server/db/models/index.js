@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
 const User = require('./user')
 const Cart = require('./Cart')
-const CartItems = require('./CartItems');
+const CartItems = require('./CartItems')
 
-const Genre = require('./genre');
-const Product = require('./product');
-const db = require('../db');
+const Genre = require('./genre')
+const Product = require('./product')
+const db = require('../db')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -24,17 +24,17 @@ const db = require('../db');
 
 // This is a comment to test travis
 
-Cart.belongsTo(User);
-User.hasMany(Cart);
+Cart.belongsTo(User)
+User.hasMany(Cart)
 
-CartItems.belongsTo(Cart);
-Cart.hasMany(CartItems);
+CartItems.belongsTo(Cart)
+Cart.hasMany(CartItems)
 
-CartItems.belongsTo(Product);
-Product.hasMany(CartItems);
+CartItems.belongsTo(Product)
+Product.hasMany(CartItems)
 
-Product.belongsToMany(Genre, { through: 'productgenre' })
-Genre.belongsToMany(Product, { through: 'productgenre' })
+Product.belongsToMany(Genre, {through: 'productgenre'})
+Genre.belongsToMany(Product, {through: 'productgenre'})
 
 module.exports = {
   db,
@@ -42,5 +42,5 @@ module.exports = {
   Product,
   Genre,
   Cart,
- 	CartItems
-};
+  CartItems
+}

@@ -21,12 +21,16 @@ module.exports = app
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
-if (process.env.NODE_ENV !== 'production') 
-  require('../secrets')
+if (process.env.NODE_ENV !== 'production') require('../secrets')
 
-  // passport registration
+// passport registration
 passport.serializeUser((user, done) => done(null, user.id))
-passport.deserializeUser((id, done) => db.models.user.findById(id).then(user => done(null, user)).catch(done))
+passport.deserializeUser((id, done) =>
+  db.models.user
+    .findById(id)
+    .then(user => done(null, user))
+    .catch(done)
+)
 
 const createApp = () => {
   // logging middleware
@@ -40,12 +44,14 @@ const createApp = () => {
   app.use(compression())
 
   // session middleware with passport
-  app.use(session({
-    secret: process.env.SESSION_SECRET || 'my best friend is Cody',
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false
-  }))
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+      store: sessionStore,
+      resave: false,
+      saveUninitialized: false
+    })
+  )
   app.use(passport.initialize())
   app.use(passport.session())
 
@@ -76,15 +82,15 @@ const createApp = () => {
   app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
-    res
-      .status(err.status || 500)
-      .send(err.message || 'Internal server error.')
+    res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
 }
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
+  const server = app.listen(PORT, () =>
+    console.log(`Mixing it up on port ${PORT}`)
+  )
 
   // set up our socket control center
   const io = socketio(server)
