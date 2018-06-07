@@ -4,52 +4,42 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
 
-import {Menu, Container, Button} from 'semantic-ui-react';
+import {Menu, Container, Button} from 'semantic-ui-react'
 
 class Navbar extends React.Component {
   renderSessionLinks() {
-    const {isLoggedIn} = this.props;
+    const {isLoggedIn} = this.props
 
     if (isLoggedIn) {
       return (
         <Link to="logout">
-          <Menu.Item key = {1}>
-            Logout
-          </Menu.Item>
+          <Menu.Item key={1}>Logout</Menu.Item>
         </Link>
       )
     } else {
       return [
         <Link key={1} to="/login">
-          <Menu.Item>
-            Login
-          </Menu.Item>
+          <Menu.Item>Login</Menu.Item>
         </Link>,
         <Link key={2} to="/register">
-          <Menu.Item>
-           Register
-          </Menu.Item>
+          <Menu.Item>Register</Menu.Item>
         </Link>
       ]
     }
   }
 
-  render () {
-    const { cartItems } = this.props;
+  render() {
+    const {cartItems} = this.props
 
     return (
       <Menu inverted fixed="top">
         <Link to="/">
-        <Menu.Item header>
-          Games Stacked
-        </Menu.Item>
+          <Menu.Item header>Games Stacked</Menu.Item>
         </Link>
         <Menu.Menu position="right">
-          { this.renderSessionLinks() }
+          {this.renderSessionLinks()}
           <Link to="/cart">
-          <Menu.Item>
-            Cart({cartItems.length})
-          </Menu.Item>
+            <Menu.Item>Cart({cartItems.length})</Menu.Item>
           </Link>
         </Menu.Menu>
       </Menu>

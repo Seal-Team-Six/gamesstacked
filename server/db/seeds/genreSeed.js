@@ -1,27 +1,27 @@
 const db = require('../db')
-const { Genre } = require('../models')
+const {Genre} = require('../models')
 
 const genres = [
-  { genre: 'Sport' },
-  { genre: 'Role-playing (RPG)' },
-  { genre: 'Adventure' },
-  { genre: 'Point-and-click' },
-  { genre: 'Simulator' },
-  { genre: 'Arcade' },
-  { genre: 'Tactical' },
-  { genre: 'Quiz/Trivia' },
-  { genre: 'Platform' },
-  { genre: 'Racing' },
-  { genre: 'Indie' },
-  { genre: 'Turn-based strategy (TBS)' },
-  { genre: 'Puzzle' },
-  { genre: "Hack and slash/Beat 'em up" },
-  { genre: 'Fighting' },
-  { genre: 'Strategy' },
-  { genre: 'Real Time Strategy (RTS)' },
-  { genre: 'Pinball' },
-  { genre: 'Shooter' },
-  { genre: 'Music' },
+  {genre: 'Sport'},
+  {genre: 'Role-playing (RPG)'},
+  {genre: 'Adventure'},
+  {genre: 'Point-and-click'},
+  {genre: 'Simulator'},
+  {genre: 'Arcade'},
+  {genre: 'Tactical'},
+  {genre: 'Quiz/Trivia'},
+  {genre: 'Platform'},
+  {genre: 'Racing'},
+  {genre: 'Indie'},
+  {genre: 'Turn-based strategy (TBS)'},
+  {genre: 'Puzzle'},
+  {genre: "Hack and slash/Beat 'em up"},
+  {genre: 'Fighting'},
+  {genre: 'Strategy'},
+  {genre: 'Real Time Strategy (RTS)'},
+  {genre: 'Pinball'},
+  {genre: 'Shooter'},
+  {genre: 'Music'}
 ]
 
 const genreSeed = async () => {
