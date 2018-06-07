@@ -42,25 +42,29 @@ export const auth = (email, password, method) => dispatch =>
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
-      export const notGoogleRegister = (formData, method) =>
-  dispatch =>
-    axios.post(`/auth/${method}`,  formData )
-      .then(res => {
+export const notGoogleRegister = (formData, method) => dispatch =>
+  axios
+    .post(`/auth/${method}`, formData)
+    .then(
+      res => {
         dispatch(getUser(res.data))
         history.push('/home')
-      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
+      },
+      authError => {
+        // rare example: a good use case for parallel (non-catch) error handler
         dispatch(getUser({error: authError}))
-      })
-      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+      }
+    )
+    .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
-export const logout = () =>
-  dispatch =>
-    axios.post('/auth/logout')
-      .then(_ => {
-        dispatch(removeUser())
-        history.push('/login')
-      })
-      .catch(err => console.log(err))
+export const logout = () => dispatch =>
+  axios
+    .post('/auth/logout')
+    .then(_ => {
+      dispatch(removeUser())
+      history.push('/login')
+    })
+    .catch(err => console.log(err))
 
 /**
  * REDUCER

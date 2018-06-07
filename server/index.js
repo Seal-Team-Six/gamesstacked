@@ -21,12 +21,16 @@ module.exports = app
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
-if (process.env.NODE_ENV !== 'production') 
-  require('../secrets')
+if (process.env.NODE_ENV !== 'production') require('../secrets')
 
-  // passport registration
+// passport registration
 passport.serializeUser((user, done) => done(null, user.id))
-passport.deserializeUser((id, done) => db.models.user.findById(id).then(user => done(null, user)).catch(done))
+passport.deserializeUser((id, done) =>
+  db.models.user
+    .findById(id)
+    .then(user => done(null, user))
+    .catch(done)
+)
 
 const createApp = () => {
   // logging middleware
@@ -78,9 +82,7 @@ const createApp = () => {
   app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
-    res
-      .status(err.status || 500)
-      .send(err.message || 'Internal server error.')
+    res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
 }
 

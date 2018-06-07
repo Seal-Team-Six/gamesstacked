@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
 
-import { Icon, Button } from 'semantic-ui-react';
-import SocialButton from './UI/SocialButton';
+import {Icon, Button} from 'semantic-ui-react'
+import SocialButton from './UI/SocialButton'
 
 /**
  * COMPONENT
@@ -32,11 +32,11 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <SocialButton 
-        href='/auth/google' 
-        displayName={displayName} 
-        className='google plus'
-        name='Google'
+      <SocialButton
+        href="/auth/google"
+        displayName={displayName}
+        className="google plus"
+        name="Google"
       />
     </div>
   )
