@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const ADD_ITEM    = 'ADD_ITEM';
-const SET_CART    = 'SET_CART';
-const SET_ITEMS   = 'SET_ITEMS';
-const DELETE_ITEM = 'DELETE_ITEM';
+const ADD_ITEM     = 'ADD_ITEM';
+const SET_CART     = 'SET_CART';
+const SET_ITEMS    = 'SET_ITEMS';
+const DELETE_ITEM  = 'DELETE_ITEM';
+const ADD_QUANTITY = 'ADD_QUANTITY';
 
 const initialState = {
 	cartId: null,
@@ -105,6 +106,22 @@ export const deleteItem = (id) => {
 	}
 }
 
+export const addQuantity = (id) => {
+	return dispatch => {
+		axios
+			.put(`/api/cart_items/${id}`)
+			.then(res => {
+				dispatch({
+					type: ADD_QUANTITY,
+					payload: res.data.item
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+}
+
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case SET_CART:
@@ -137,6 +154,16 @@ const reducer = (state=initialState, action) => {
 				}),
 				totalPrice: state.totalPrice - item.product.price
 			}
+		// case ADD_QUANTITY:
+		// 	return {
+		// 		...state,
+		// 		cartItems: state.cartItems.map(item => {
+		// 			if (item.id === action.payload.id) {
+		// 				return action.payload
+		// 			}
+		// 			return item
+		// 		})
+		// 	}
 		default:
 			return state;
 	}

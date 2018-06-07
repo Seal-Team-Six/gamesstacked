@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import CartItems from '../components/Cart/CartItems/CartItems';
 import TableCart from '../components/Cart/TableCart';
 import CartSummary from '../components/Cart/CartSummary';
@@ -15,7 +16,7 @@ class Cart extends React.Component {
 			return (
 				<div className="no-items">
 					<h3>You have no items in your shopping cart!</h3>
-					<Button primary>Continue Shopping</Button>
+					<Link to='/'><Button primary>Continue Shopping</Button></Link>
 				</div>
 			)
 		} else {

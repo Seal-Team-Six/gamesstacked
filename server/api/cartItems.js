@@ -39,3 +39,15 @@ router.delete('/:id', (req, res, next) => {
 			next(err)
 		})
 })
+
+router.put('/:id', (req, res, next) => {
+	CartItems
+		.findById(req.params.id)
+		.then(item => {
+			item.update(req.body)
+			res.send({ message: 'Item updated.', item })
+		})
+		.catch(err => {
+			return next(err)
+		})
+})
