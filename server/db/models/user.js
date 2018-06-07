@@ -106,12 +106,10 @@ const setSaltAndPassword = users => {
         user.password = User.encryptPassword(user.password(), user.salt())
       }
     })
-  } else {
-    if (users.changed('password')) {
+  } else if (users.changed('password')) {
       users.salt = User.generateSalt()
       users.password = User.encryptPassword(users.password(), users.salt())
     }
-  }
 }
 
 User.beforeCreate(setSaltAndPassword)
