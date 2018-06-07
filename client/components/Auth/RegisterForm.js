@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { auth, notGoogleRegister } from '../../reducers/store';
-import { Icon, Button } from 'semantic-ui-react';
+import { Icon, Button, Input, List, Container } from 'semantic-ui-react';
 import SocialButton from '../UI/SocialButton';
 // import Signup from '../auth-form'
 
@@ -14,83 +14,31 @@ const RegForm = props => {
 
   return (
     <div>
-      This is reg form
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="firstName">
-            <small>First Name</small>
-          </label>
-          <input name="firstName" type="text" />
-        </div>
+      <h4>Register Without Google</h4>
+      <div>
+        <auth-form />
+      </div>
+      
+        <form onSubmit={handleSubmit} name={name}>
+          <Input name="firstName" type="text" placeholder="First Name" fluid />
+          <Input name="lastName" type="text" placeholder="Lase Name" fluid />
+          <Input name="email" type="text" placeholder="Email" fluid />
+          
+          <Input name="imageUrl" type="text" placeholder="Profile Pic Image Url" fluid />
+          <Input name="address" type="text" placeholder="Address" fluid />
+          <Input name="city" type="text" placeholder="City" fluid />
+          <Input name="state" type="text" placeholder="State" fluid />
+          <Input name="zipCode" type="text" placeholder="Zip Code" fluid />
+          <Input name="phone" type="text" placeholder="Phone" fluid />
+          <Input name="password" type="password" placeholder="Password" fluid />
 
-        <div>
-          <label htmlFor="lastName">
-            <small>Last Name</small>
-          </label>
-          <input name="lastName" type="text" />
-        </div>
+          <div>
+            <Button type="submit">{displayName}</Button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      
 
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="imageUrl">
-            <small>Image Url</small>
-          </label>
-          <input name="imageUrl" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="address">
-            <small>Address</small>
-          </label>
-          <input name="address" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="city">
-            <small>City</small>
-          </label>
-          <input name="city" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="state">
-            <small>State</small>
-          </label>
-          <input name="state" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="zipCode">
-            <small>Zip Code</small>
-          </label>
-          <input name="zipCode" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="phone">
-            <small>Phone</small>
-          </label>
-          <input name="phone" type="text" />
-        </div>
-
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
       <div>{/* <Signup /> */}</div>
       <SocialButton
         href="/auth/google"
@@ -140,7 +88,6 @@ const mapDispatch = dispatch => {
           {
             email,
             password,
-
             firstName,
             lastName,
             imageUrl,
