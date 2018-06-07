@@ -23,7 +23,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const {cartId, addToCart, match: {params}} = this.props
+    const {user, cartId, addToCart, match: {params}} = this.props
 
     const {selectedProduct} = this.props
 
@@ -69,7 +69,7 @@ class ProductDetails extends Component {
                 <Button
                   className="product-cover-button"
                   primary
-                  onClick={() => addToCart(params.id, cartId)}
+                  onClick={() => addToCart(params.id, cartId, user.id)}
                   fluid
                   positive
                 >

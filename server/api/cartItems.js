@@ -36,3 +36,23 @@ router.delete('/:id', (req, res, next) => {
       next(err)
     })
 })
+
+router.put('/:id', (req, res, next) => {
+  CartItems.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Product
+      }
+    ]
+  })
+    .then(item => {
+      item.update(req.body)
+      res.send({message: 'Item updated.', item})
+    })
+    .catch(err => {
+      return next(err)
+    })
+})
