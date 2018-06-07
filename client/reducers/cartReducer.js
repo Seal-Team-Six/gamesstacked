@@ -114,7 +114,7 @@ const reducer = (state=initialState, action) => {
 				...state,
 				cartId: action.payload.id,
 				cartItems: items,
-				totalPrice: items.map(item => parseInt(item.product.price)).reduce((a, b) => a + b)
+				totalPrice: items.length ? items.map(item => parseInt(item.product.price)).reduce((a, b) => a + b) : 0
 			}
 		case SET_ITEMS:
 			return {
