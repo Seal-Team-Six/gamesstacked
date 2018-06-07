@@ -4,6 +4,7 @@ const ADD_ITEM = 'ADD_ITEM'
 const SET_CART = 'SET_CART'
 const SET_ITEMS = 'SET_ITEMS'
 const DELETE_ITEM = 'DELETE_ITEM'
+const ADD_QUANTITY = 'ADD_QUANTITY'
 
 const initialState = {
   cartId: null,
@@ -95,6 +96,22 @@ export const deleteItem = id => {
   }
 }
 
+export const addQuantity = (id, quantity) => {
+  return dispatch => {
+    axios
+      .put(`/api/cart_items/${id}`, {quantity})
+      .then(res => {
+        dispatch({
+          type: ADD_QUANTITY,
+          payload: res.data.item
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART:
@@ -106,7 +123,7 @@ const reducer = (state = initialState, action) => {
         cartItems: items,
         totalPrice: items.length
           ? items
-              .map(item => parseInt(item.product.price))
+              .map(item => parseFloat(item.product.price) * item.quantity)
               .reduce((a, b) => a + b)
           : 0
       }
@@ -119,14 +136,35 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-        totalPrice: state.totalPrice + parseInt(action.payload.product.price)
+        totalPrice: state.totalPrice + parseFloat(action.payload.product.price)
       }
     case DELETE_ITEM:
+      const item = state.cartItems.find(item => item.id === action.payload)
+
       return {
         ...state,
         cartItems: state.cartItems.filter(item => {
           return item.id !== action.payload
-        })
+        }),
+        totalPrice: state.totalPrice - item.product.price
+      }
+    case ADD_QUANTITY:
+      const cartItem = state.cartItems.find(
+        item => item.id === action.payload.id
+      )
+
+      return {
+        ...state,
+        cartItems: state.cartItems.map(item => {
+          if (item.id === action.payload.id) {
+            return action.payload
+          }
+          return item
+        }),
+        totalPrice:
+          state.totalPrice +
+          parseFloat(action.payload.product.price) *
+            (action.payload.quantity - cartItem.quantity)
       }
     default:
       return state

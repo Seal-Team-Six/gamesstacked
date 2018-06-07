@@ -10,6 +10,7 @@ class TableCart extends React.Component {
             <Table.HeaderCell />
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
+            <Table.HeaderCell>Remove</Table.HeaderCell>
             <Table.HeaderCell textAlign="right">Price</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
