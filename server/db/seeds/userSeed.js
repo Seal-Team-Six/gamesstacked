@@ -25,10 +25,6 @@ const userSeed = async () => {
         lastName: `${faker.name.lastName()}`,
         email: `${faker.internet.email()}`,
         imageUrl: `${faker.image.imageUrl()}`,
-        address: `${faker.address.streetAddress()} ${faker.address.streetName()}`,
-        city: `${faker.address.city()}`,
-        state: `${faker.address.state()}`,
-        zipCode: `${faker.address.zipCode()}`,
         phone: `${faker.phone.phoneNumber()}`,
         password: `password`
       })

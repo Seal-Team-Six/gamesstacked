@@ -30,22 +30,6 @@ const User = db.define('user', {
       'http://www.elmwoodmeatplant.com/images/New/S-Navy-White-Leather-New-Era-Fitted-Cap-830142.jpg'
   },
 
-  address: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  city: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  state: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  zipCode: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
   phone: {
     type: Sequelize.STRING,
     allowNull: true
