@@ -123,7 +123,7 @@ const reducer = (state = initialState, action) => {
         cartItems: items,
         totalPrice: items.length
           ? items
-              .map(item => parseFloat(item.product.price))
+              .map(item => parseFloat(item.product.price) * item.quantity)
               .reduce((a, b) => a + b)
           : 0
       }
@@ -149,6 +149,10 @@ const reducer = (state = initialState, action) => {
         totalPrice: state.totalPrice - item.product.price
       }
     case ADD_QUANTITY:
+      const cartItem = state.cartItems.find(
+        item => item.id === action.payload.id
+      )
+
       return {
         ...state,
         cartItems: state.cartItems.map(item => {
@@ -156,7 +160,11 @@ const reducer = (state = initialState, action) => {
             return action.payload
           }
           return item
-        })
+        }),
+        totalPrice:
+          state.totalPrice +
+          parseFloat(action.payload.product.price) *
+            (action.payload.quantity - cartItem.quantity)
       }
     default:
       return state

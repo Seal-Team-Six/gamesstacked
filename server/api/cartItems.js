@@ -38,8 +38,16 @@ router.delete('/:id', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-  console.log(req.body)
-  CartItems.findById(req.params.id)
+  CartItems.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Product
+      }
+    ]
+  })
     .then(item => {
       item.update(req.body)
       res.send({message: 'Item updated.', item})

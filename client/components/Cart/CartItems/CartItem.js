@@ -27,6 +27,7 @@ class CartItem extends React.Component {
             type="number"
             name="quantity"
             onChange={e => addQuantity(id, e.target.value)}
+            value={quantity}
           />
         </Table.Cell>
         <Table.Cell>
