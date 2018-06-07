@@ -18,7 +18,7 @@ class Navbar extends React.Component {
           </Menu.Item>
         </Link>,
 
-        <Link key = {2} to="/home">
+        <Link key = {2} to="/user">
           <Menu.Item>
             Account
           </Menu.Item>
