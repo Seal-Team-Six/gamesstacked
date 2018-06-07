@@ -1,4 +1,4 @@
-const { expect } = require('chai')
+const {expect} = require('chai')
 const db = require('../index')
 
 const Product = db.model('product')
@@ -14,16 +14,19 @@ describe('Product model', () => {
     inventory: 4,
     screenshots: [
       {
-        url: 'images.igdb.com/igdb/image/upload/t_screenshot_big/jdawjmjvjr3ncwukwyud.jpg',
+        url:
+          'images.igdb.com/igdb/image/upload/t_screenshot_big/jdawjmjvjr3ncwukwyud.jpg'
       },
       {
-        url: 'images.igdb.com/igdb/image/upload/t_screenshot_big/vx8qaybealaigmk6euyc.jpg',
-      },
+        url:
+          'images.igdb.com/igdb/image/upload/t_screenshot_big/vx8qaybealaigmk6euyc.jpg'
+      }
     ],
     videos: null,
     cover: {
-      url: 'images.igdb.com/igdb/image/upload/t_screenshot_big/hivpg7wyyuhicfdtma9t.jpg',
-    },
+      url:
+        'images.igdb.com/igdb/image/upload/t_screenshot_big/hivpg7wyyuhicfdtma9t.jpg'
+    }
   }
   beforeEach(() => db.sync({force: true}))
   afterEach(() => {
@@ -33,7 +36,7 @@ describe('Product model', () => {
     describe('hasAName', () => {
       let superMarioBros
       beforeEach(async () => {
-        const ge = await Genre.create({ genre: 'Platform' })
+        const ge = await Genre.create({genre: 'Platform'})
         superMarioBros = await Product.create(data)
         await superMarioBros.setGenres(ge)
       })
