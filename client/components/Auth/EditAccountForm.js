@@ -1,95 +1,140 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 // import PropTypes from 'prop-types';
-import { auth, notGoogleRegister } from '../../reducers/store';
-import { Icon, Button, Input, List, Container } from 'semantic-ui-react';
-import SocialButton from '../UI/SocialButton';
-// import Signup from '../auth-form'
+import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
+import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
+import SocialButton from '../UI/SocialButton'
+
+import {Field, reduxForm, initialize} from 'redux-form'
 
 /**
  * COMPONENT
  */
-const EditForm = props => {
-  const { name, displayName, handleSubmit, error } = props;
 
-  return (
-        
-      
-        <form onSubmit={handleSubmit} name={name}>
-          <Input name="firstName" type="text" placeholder="First Name" fluid />
-          <Input name="lastName" type="text" placeholder="Lase Name" fluid />
-          <Input name="email" type="text" placeholder="Email" fluid />
-          <Input name="imageUrl" type="text" placeholder="Profile Pic Image Url" fluid />
-          <Input name="address" type="text" placeholder="Address" fluid />
-          <Input name="city" type="text" placeholder="City" fluid />
-          <Input name="state" type="text" placeholder="State" fluid />
-          <Input name="zipCode" type="text" placeholder="Zip Code" fluid />
-          <Input name="phone" type="text" placeholder="Phone" fluid />
-          <Input name="password" type="password" placeholder="Password" fluid />
+const FIELDS = [
+  {label: 'First Name', name: 'firstName'},
+  {label: 'Last Name', name: 'lastName'},
+  {label: 'Email', name: 'email'}
+  //   {label: 'Password', name: 'password'},
+  //   {label: 'Password Confirmation', name: 'passwordConfirm'}
+]
 
-          <div>
-            <Button type="submit">{displayName}</Button>
-          </div>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
-      
+class EditForm extends Component {
+  componentDidMount() {
+    this.handleInitialize()
+  }
 
-    //   <div>{/* <Signup /> */}</div>
-    //   <SocialButton
-    //     href="/auth/google"
-    //     displayName={displayName}
-    //     className="google plus"
-    //     name="Google"
-    //   />
-    // </div>
-  );
-};
+  handleInitialize() {
+    const initData = {
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      email: this.props.user.email
+    }
+    this.props.initialize(initData)
+  }
 
-const mapSignup = state => {
+  renderField(field) {
+    const {label, type, input, meta: {error, touched}} = field
+    // console.log(field)
+
+    return (
+      <Form.Group>
+        <Input type={type} placeholder={label} {...input} />
+        <div className="error">{touched ? error : ''}</div>
+      </Form.Group>
+    )
+  }
+
+  render() {
+    const {name, displayName, handleSubmit, error, user} = this.props
+    console.log('%%%%%%%%%', this.props.user)
+    return (
+      <div>
+        <div>
+          <Container>
+            <Form
+              onSubmit={handleSubmit(this.props.onHandleSubmit.bind(this))}
+              name={name}
+            >
+              {FIELDS.map(field => {
+                return (
+                  <Field
+                    key={field.label}
+                    type={field.name.includes('password') ? 'password' : 'text'}
+                    component={this.renderField}
+                    label={field.label}
+                    name={field.name}
+                    value={user[field.name.value]}
+                  />
+                )
+              })}
+              <div>
+                <Button type="submit">Submit Changes</Button>
+              </div>
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+            <SocialButton
+              href="/auth/google"
+              displayName={displayName}
+              className="google plus"
+              name="Google"
+            />
+          </Container>
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
     error: state.user.error
-  };
-};
+  }
+}
 
-const mapDispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit(evt) {
-      evt.preventDefault();
-      const formName = evt.target.name;
-      const password = evt.target.password.value;
-      const firstName = evt.target.firstName.value;
-      const lastName = evt.target.lastName.value;
-      const imageUrl = evt.target.imageUrl.value;
-      const address = evt.target.address.value;
-      const city = evt.target.city.value;
-      const state = evt.target.state.value;
-      const zipCode = evt.target.zipCode.value;
-      const phone = evt.target.phone.value;
-      const email = evt.target.email.value;
-      dispatch(
-        notGoogleRegister(
-          {
-            email,
-            password,
-            firstName,
-            lastName,
-            imageUrl,
-            address,
-            city,
-            state,
-            zipCode,
-            phone
-          },
-          formName
-        )
-      );
+    onHandleSubmit(formProps) {
+      dispatch(notGoogleEdit(this.props.user.id, formProps))
     }
-  };
-};
+  }
+}
+function validate(formProps) {
+  const errors = {},
+    vowels = ['a', 'e', 'i', 'o']
 
-export const EditAccountForm = connect(
-  mapSignup,
-  mapDispatch
-)(EditForm);
+  // Required fields
+  FIELDS.forEach(field => {
+    const firstLetter = field.name.split('')[0]
+
+    if (!formProps[field.name]) {
+      const an = vowels.includes(firstLetter) ? 'an' : 'a'
+      errors[field.name] = `Please enter ${an} ${field.label.toLowerCase()}`
+    }
+  })
+
+  // Password and confirmation must match
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Passwords must match!'
+  }
+
+  if (formProps.email && !formProps.email.includes('@')) {
+    errors.email = 'Must be in email format'
+  }
+
+  // Password length must be 6 or more characters in length
+  if (formProps.password && formProps.password.length < 6) {
+    errors.password = 'Password must be 6 characters in length'
+  }
+
+  return errors
+}
+const form = reduxForm({
+  form: 'register',
+  validate: validate
+})(EditForm)
+export const EditAccountForm = connect(mapStateToProps, mapDispatchToProps)(
+  form
+)
