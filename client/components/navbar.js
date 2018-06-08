@@ -19,11 +19,15 @@ class Navbar extends React.Component {
     const {isLoggedIn} = this.props
 
     if (isLoggedIn) {
-      return (
-        <a onClick={this.handleLogOut}>
-          <Menu.Item key={1}>Logout</Menu.Item>
-        </a>
-      )
+      return [
+        <a onClick={this.handleLogOut} key={1}>
+          <Menu.Item>Logout</Menu.Item>
+        </a>,
+
+        <Link key={2} to="/user">
+          <Menu.Item>Account</Menu.Item>
+        </Link>
+      ]
     } else {
       return [
         <Link key={1} to="/login">
