@@ -94,3 +94,19 @@ form div {
 .extras {
   padding: 1em 0;
 }
+
+.resizeMed {
+  width: 150px;
+  height: auto;
+  z-index: auto;
+}
+
+.accountDiv {
+  -moz-column-count: auto;
+  -moz-column-gap: 20px;
+  -webkit-column-count: auto;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 10px;
+  list-style-type: none;
+}
