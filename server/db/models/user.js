@@ -27,7 +27,7 @@ const User = db.define('user', {
   imageUrl: {
     type: Sequelize.TEXT,
     defaultValue:
-      'http://www.elmwoodmeatplant.com/images/New/S-Navy-White-Leather-New-Era-Fitted-Cap-830142.jpg'
+      'https://pbs.twimg.com/profile_images/1431161157/guy-fawkes_400x400.jpeg'
   },
 
   phone: {

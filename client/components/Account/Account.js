@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
+import {Container} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -24,20 +25,22 @@ export class Account extends Component {
     const user = this.props.user
 
     return (
-      <div>
-        <div className="accountDiv">
-          <img className="resizeMed" src={user.imageUrl} />
-          <h3>Welcome, {user.firstName}</h3>
-          <p>You spent a lot of money last time. Please do so again!</p>
-        </div>
-
+      <Container>
         <div>
-          <button onClick={this.toggleHidden.bind(this)}>
-            Edit Account Info
-          </button>
-          {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
+          <div className="accountDiv">
+            <img className="resizeMed" src={user.imageUrl} />
+            <h3>Welcome, {user.firstName}</h3>
+            <p>You spent a lot of money last time. Please do so again!</p>
+          </div>
+
+          <div>
+            <button onClick={this.toggleHidden.bind(this)}>
+              Edit Account Info
+            </button>
+            {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
+          </div>
         </div>
-      </div>
+      </Container>
     )
   }
 }
