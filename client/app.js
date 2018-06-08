@@ -5,7 +5,8 @@ import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
 import {fetchProducts} from './reducers/productsReducer'
-import {setCart} from './reducers/cartReducer'
+
+import CartModal from './components/Cart/CartModal'
 
 class App extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <Layout>
+        <CartModal />
         <Navbar />
         <Routes />
       </Layout>

@@ -11,19 +11,19 @@ import ProductDetails from './components/Products/ProductDetails'
 import moduleName from '../client/components/Products/'
 import CartSideBar from './components/Cart/CartSideBar'
 import {RegisterForm} from './components/Auth/RegisterForm'
+
+import {setCart, setItems, requestCart} from './reducers/cartReducer'
 import {Account} from './components/Account/Account'
-import {setCart, setItems} from './reducers/cartReducer'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    const {me, setCart, user, setItems} = this.props
+    const {me, requestCart} = this.props
 
     me()
-    // setCart(user.id)
-    // setItems()
+    requestCart()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,12 +41,10 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/login" component={Login} />
-        {/* THIS IS A TEST ROUTER TO TEST THE SIDE BAR COMPONENT */}
-        <Route exact path="/testside" component={CartSideBar} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/cart" component={Cart} />{' '}
+        <Route exact path="/cart" component={Cart} />
         {/* Routes placed here are only available after logging in */}
         <Route
           exact
@@ -59,6 +57,8 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/checkout/address" component="" />
+            <Route exact path="/checkout/credit" component="" />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -84,7 +84,14 @@ const mapState = state => {
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
 
-export default withRouter(connect(mapState, {me, setCart, setItems})(Routes))
+export default withRouter(
+  connect(mapState, {
+    me,
+    setCart,
+    setItems,
+    requestCart
+  })(Routes)
+)
 
 /**
  * PROP TYPES
