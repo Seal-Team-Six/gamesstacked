@@ -41,17 +41,17 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/login" component={Login} />
-        {/* THIS IS A TEST ROUTER TO TEST THE SIDE BAR COMPONENT */}
-        <Route exact path="/testside" component={CartSideBar} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/cart" component={Cart} />{' '}
+        <Route exact path="/cart" component={Cart} />
         {/* Routes placed here are only available after logging in */}
         <Redirect to="/products" />
         {isLoggedIn && (
           <Switch>
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/checkout/address" component="" />
+            <Route exact path="/checkout/credit" component="" />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
