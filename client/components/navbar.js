@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
 import {resetCart} from '../reducers/cartReducer'
 
-import {Menu, Container, Button} from 'semantic-ui-react'
+import {Menu, Container, Button, Dropdown} from 'semantic-ui-react'
 
 class Navbar extends React.Component {
   handleLogOut = () => {

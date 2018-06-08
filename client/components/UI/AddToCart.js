@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Button} from 'semantic-ui-react'
 
 import {addToCart, addQuantity} from '../../reducers/cartReducer'
+import {toggleModal} from '../../reducers/modalReducer'
 
 class AddToCart extends React.Component {
   addOrEdit(id, cartId, userId) {
@@ -11,7 +12,8 @@ class AddToCart extends React.Component {
       isCartLoading,
       selectedProduct,
       addQuantity,
-      addToCart
+      addToCart,
+      toggleModal
     } = this.props
 
     if (isCartLoading) {
@@ -27,6 +29,8 @@ class AddToCart extends React.Component {
     } else {
       addToCart(id, cartId, userId)
     }
+
+    toggleModal()
   }
 
   render() {
@@ -61,5 +65,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   addToCart,
-  addQuantity
+  addQuantity,
+  toggleModal
 })(AddToCart)
