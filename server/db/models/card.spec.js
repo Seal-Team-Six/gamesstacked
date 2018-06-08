@@ -9,6 +9,7 @@ describe('CreditCard model', () => {
 
     beforeEach(async () => {
       card = await Card.create({
+        name: 'Sum 1',
         number: '4111111111111111',
         exp: '03/20',
         CVV: '111'
@@ -23,6 +24,9 @@ describe('CreditCard model', () => {
     })
     it('returns the correct exp date', () => {
       expect(card.exp).to.be.equal('03/20')
+    })
+    it('returns the correct name', () => {
+      expect(card.name).to.be.equal('Sum 1')
     })
   })
 })

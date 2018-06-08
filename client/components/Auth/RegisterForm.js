@@ -45,7 +45,7 @@ class RegForm extends Component {
                 return (
                   <Field
                     key={field.label}
-                    type="text"
+                    type={field.name.includes('password') ? 'password' : 'text'}
                     component={this.renderField}
                     label={field.label}
                     name={field.name}

@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Card, Checkbox, Divider, Button, List} from 'semantic-ui-react'
+import {Card, Divider, Button, List} from 'semantic-ui-react'
 
 class CartSideBar extends React.Component {
   render() {
-    const {cartItems, totalPrice} = this.props
+    const {cartItems, totalPrice, path, title} = this.props
 
     return (
       <Card>
@@ -29,9 +29,11 @@ class CartSideBar extends React.Component {
             </List.Item>
           </List>
           <Card.Description textAlign="center">
-            <Button fluid primary>
-              Proceed to Checkout
-            </Button>
+            <Link to={path}>
+              <Button fluid primary>
+                {title}
+              </Button>
+            </Link>
             <Divider horizontal>or</Divider>
             <Link to="/login">Sign in</Link> for more perks.
           </Card.Description>

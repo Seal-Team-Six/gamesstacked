@@ -3,7 +3,6 @@ import {Grid, Embed, Divider} from 'semantic-ui-react'
 import Gallery from 'react-grid-gallery'
 
 const ProductExtras = props => {
-  console.log(props)
   const {selectedProduct} = props
 
   const images =
