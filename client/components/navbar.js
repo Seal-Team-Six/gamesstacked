@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
 
-import {Menu, Container, Button} from 'semantic-ui-react'
+import {Menu, Icon} from 'semantic-ui-react'
 
 class Navbar extends React.Component {
   renderSessionLinks() {
@@ -34,7 +34,10 @@ class Navbar extends React.Component {
     return (
       <Menu inverted fixed="top">
         <Link to="/">
-          <Menu.Item header>Games Stacked</Menu.Item>
+          <Menu.Item header>
+            <Icon name="gamepad" size="large" />
+            Games Stacked
+          </Menu.Item>
         </Link>
         <Menu.Menu position="right">
           {this.renderSessionLinks()}
