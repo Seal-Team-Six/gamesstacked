@@ -31,17 +31,6 @@ router.post('/signup', (req, res, next) => {
       }
     })
 })
-////////////////////// This will be the route to edit account info
-router.put('/:id', function(req, res, next) {
-  User.update(req.body, {
-    where: {
-      id: req.params.id
-    },
-    returning: true
-  })
-    .then(test => res.status(201).json(test[1][0]))
-    .catch(next);
-});
 
 router.post('/logout', (req, res) => {
   req.logout()

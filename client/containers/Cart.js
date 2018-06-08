@@ -5,10 +5,19 @@ import CartItems from '../components/Cart/CartItems/CartItems'
 import TableCart from '../components/Cart/TableCart'
 import CartSummary from '../components/Cart/CartSummary'
 import CartSideBar from '../components/Cart/CartSideBar'
+import {toggleModal} from '../reducers/modalReducer'
 
 import {Button, Container, Table, Grid} from 'semantic-ui-react'
 
 class Cart extends React.Component {
+  componentDidMount() {
+    const {toggleModal, showModal} = this.props
+
+    if (showModal) {
+      toggleModal()
+    }
+  }
+
   renderCartItems() {
     const {cartItems, totalPrice} = this.props
 
@@ -30,7 +39,12 @@ class Cart extends React.Component {
             </TableCart>
           </Grid.Column>
           <Grid.Column width={4}>
-            <CartSideBar cartItems={cartItems} totalPrice={totalPrice} />
+            <CartSideBar
+              cartItems={cartItems}
+              totalPrice={totalPrice}
+              path="/checkout"
+              title="Proceed to Checkout"
+            />
           </Grid.Column>
         </Grid>
       )
@@ -62,12 +76,14 @@ class Cart extends React.Component {
 function mapStateToProps(state) {
   const {cartItems, totalPrice} = state.cart
   const {products} = state.products
+  const {showModal} = state.modal
 
   return {
     cartItems,
     products,
-    totalPrice
+    totalPrice,
+    showModal
   }
 }
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps, {toggleModal})(Cart)

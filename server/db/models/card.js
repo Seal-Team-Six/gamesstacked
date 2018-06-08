@@ -3,6 +3,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Card = db.define('card', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   number: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -29,6 +33,9 @@ const Card = db.define('card', {
   exp: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  display: {
+    type: Sequelize.STRING
   }
 })
 
@@ -59,12 +66,14 @@ const setSaltNumberCVV = cards => {
     cards.forEach(card => {
       if (card.changed('number') || card.changed('CVV')) {
         card.salt = Card.generateSalt()
+        card.display = card.number().slice(-4)
         card.number = Card.encryptNumberCVV(card.number(), card.salt())
         card.CVV = Card.encryptNumberCVV(card.CVV(), card.salt())
       }
     })
   } else if (cards.changed('number') || cards.changed('CVV')) {
     cards.salt = Card.generateSalt()
+    cards.display = cards.number().slice(-4)
     cards.number = Card.encryptNumberCVV(cards.number(), cards.salt())
     cards.CVV = Card.encryptNumberCVV(cards.CVV(), cards.salt())
   }
