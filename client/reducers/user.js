@@ -42,9 +42,12 @@ export const auth = (email, password, method) => dispatch =>
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
-export const notGoogleRegister = (formData, method) => dispatch =>
+export const notGoogleRegister = (
+  {firstName, lastName, email, password},
+  method
+) => dispatch =>
   axios
-    .post(`/auth/${method}`, formData)
+    .post(`/auth/${method}`, {firstName, lastName, email, password})
     .then(
       res => {
         dispatch(getUser(res.data))

@@ -30,25 +30,9 @@ const User = db.define('user', {
       'http://www.elmwoodmeatplant.com/images/New/S-Navy-White-Leather-New-Era-Fitted-Cap-830142.jpg'
   },
 
-  address: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  city: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  state: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  zipCode: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
   phone: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   password: {
     type: Sequelize.STRING,
@@ -107,9 +91,9 @@ const setSaltAndPassword = users => {
       }
     })
   } else if (users.changed('password')) {
-      users.salt = User.generateSalt()
-      users.password = User.encryptPassword(users.password(), users.salt())
-    }
+    users.salt = User.generateSalt()
+    users.password = User.encryptPassword(users.password(), users.salt())
+  }
 }
 
 User.beforeCreate(setSaltAndPassword)

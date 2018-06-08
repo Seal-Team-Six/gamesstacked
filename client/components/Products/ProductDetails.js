@@ -5,7 +5,7 @@ import {
   Image,
   Button,
   Statistic,
-  Embed
+  Header
 } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchProduct, resetProduct} from '../../reducers/productsReducer'
@@ -28,12 +28,14 @@ class ProductDetails extends Component {
     const {selectedProduct} = this.props
 
     const ratings = score => {
-      if (score > 75) {
+      if (score >= 75) {
         return 'green'
       } else if (score > 50 && score < 74) {
         return 'orange'
-      } else {
+      } else if (score < 49 && score > 1) {
         return 'red'
+      } else {
+        return 'grey'
       }
     }
 
@@ -89,10 +91,18 @@ class ProductDetails extends Component {
                   <Statistic.Value>
                     {Math.floor(selectedProduct.totalRating) !== 0
                       ? Math.floor(selectedProduct.totalRating)
-                      : 'No rating for this game.'}
+                      : 'Rating not available'}
                   </Statistic.Value>
                   <Statistic.Label>User Rating</Statistic.Label>
                 </Statistic>
+                <Header as="h3">Price</Header>
+                <span>${selectedProduct.price}</span>
+                <Header as="h3">Inventory</Header>
+                {selectedProduct.inventory ? (
+                  <span>In Stock</span>
+                ) : (
+                  <span>Out of Stock</span>
+                )}
               </Grid.Column>
             </Grid.Row>
             <ProductExtras selectedProduct={selectedProduct} />
