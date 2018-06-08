@@ -1,5 +1,4 @@
 const faker = require('faker')
-const db = require('../db')
 const {Card} = require('../models')
 
 const cards = [
