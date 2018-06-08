@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const ADD_ITEM = 'ADD_ITEM'
+const REQUEST_CART = 'REQUEST_CART'
 const SET_CART = 'SET_CART'
 const RESET_CART = 'RESET_CART'
 const SET_ITEMS = 'SET_ITEMS'
@@ -10,7 +11,16 @@ const ADD_QUANTITY = 'ADD_QUANTITY'
 const initialState = {
   cartId: null,
   cartItems: [],
-  totalPrice: 0
+  totalPrice: 0,
+  isLoading: false
+}
+
+export const requestCart = () => {
+  return dispatch => {
+    dispatch({
+      type: REQUEST_CART
+    })
+  }
 }
 
 export const setCart = userId => {
@@ -123,12 +133,19 @@ export const resetCart = () => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case REQUEST_CART: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
     case SET_CART:
       const items = action.payload.cartItems
 
       return {
         ...state,
         cartId: action.payload.id,
+        isLoading: false,
         cartItems: items,
         totalPrice: items.length
           ? items
@@ -161,7 +178,7 @@ const reducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter(item => {
           return item.id !== action.payload
         }),
-        totalPrice: state.totalPrice - item.product.price
+        totalPrice: state.totalPrice - item.product.price * item.quantity
       }
     case ADD_QUANTITY:
       const cartItem = state.cartItems.find(
