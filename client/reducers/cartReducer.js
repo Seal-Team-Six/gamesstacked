@@ -178,7 +178,7 @@ const reducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter(item => {
           return item.id !== action.payload
         }),
-        totalPrice: state.totalPrice - item.product.price
+        totalPrice: state.totalPrice - item.product.price * item.quantity
       }
     case ADD_QUANTITY:
       const cartItem = state.cartItems.find(
