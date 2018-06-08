@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../reducers/store'
 import {resetCart} from '../reducers/cartReducer'
 
-import {Menu, Container, Button, Dropdown} from 'semantic-ui-react'
+import {Menu, Icon} from 'semantic-ui-react'
 
 class Navbar extends React.Component {
   handleLogOut = () => {
@@ -19,11 +19,15 @@ class Navbar extends React.Component {
     const {isLoggedIn} = this.props
 
     if (isLoggedIn) {
-      return (
-        <a onClick={this.handleLogOut}>
-          <Menu.Item key={1}>Logout</Menu.Item>
-        </a>
-      )
+      return [
+        <a onClick={this.handleLogOut} key={1}>
+          <Menu.Item>Logout</Menu.Item>
+        </a>,
+
+        <Link key={2} to="/user">
+          <Menu.Item>Account</Menu.Item>
+        </Link>
+      ]
     } else {
       return [
         <Link key={1} to="/login">
@@ -42,7 +46,10 @@ class Navbar extends React.Component {
     return (
       <Menu inverted fixed="top">
         <Link to="/">
-          <Menu.Item header>Games Stacked</Menu.Item>
+          <Menu.Item header>
+            <Icon name="gamepad" size="large" />
+            Games Stacked
+          </Menu.Item>
         </Link>
         <Menu.Menu position="right">
           {this.renderSessionLinks()}

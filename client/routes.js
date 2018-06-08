@@ -13,6 +13,7 @@ import CartSideBar from './components/Cart/CartSideBar'
 import {RegisterForm} from './components/Auth/RegisterForm'
 
 import {setCart, setItems, requestCart} from './reducers/cartReducer'
+import {Account} from './components/Account/Account'
 
 /**
  * COMPONENT
@@ -47,6 +48,13 @@ class Routes extends Component {
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} />{' '}
         {/* Routes placed here are only available after logging in */}
+        <Route
+          exact
+          path="/user"
+          render={history => (
+            <Account history={history} user={this.props.user} />
+          )}
+        />
         <Redirect to="/products" />
         {isLoggedIn && (
           <Switch>
@@ -54,6 +62,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
+        <Redirect to="/products" />
       </Switch>
     )
   }

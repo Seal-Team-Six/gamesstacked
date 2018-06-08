@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const EDIT_USER = 'EDIT_USER'
 
 /**
  * INITIAL STATE
@@ -17,6 +18,7 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const editUser = () => ({type: EDIT_USER})
 
 /**
  * THUNK CREATORS
@@ -42,9 +44,12 @@ export const auth = (email, password, method) => dispatch =>
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
-export const notGoogleRegister = (formData, method) => dispatch =>
+export const notGoogleRegister = (
+  {firstName, lastName, email, password},
+  method
+) => dispatch =>
   axios
-    .post(`/auth/${method}`, formData)
+    .post(`/auth/${method}`, {firstName, lastName, email, password})
     .then(
       res => {
         dispatch(getUser(res.data))
@@ -56,6 +61,14 @@ export const notGoogleRegister = (formData, method) => dispatch =>
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+export const notGoogleEdit = (id, user) => {
+  return async dispatch => {
+    const {data} = await axios.put(`/api/users/${id}`, user)
+    console.log('%%%%%% updated user on from server!')
+    dispatch(editUser(data))
+  }
+}
 
 export const logout = () => dispatch =>
   axios
@@ -75,6 +88,8 @@ export default function(state = defaultUser, action) {
       return action.user
     case REMOVE_USER:
       return defaultUser
+    case EDIT_USER:
+      return action.user //////this might not be the correct return
     default:
       return state
   }

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 // import PropTypes from 'prop-types';
-import {auth, notGoogleRegister} from '../../reducers/store'
+import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
 import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
 import SocialButton from '../UI/SocialButton'
-// import Signup from '../auth-form'
-import {Field, reduxForm} from 'redux-form'
+
+import {Field, reduxForm, initialize} from 'redux-form'
 
 /**
  * COMPONENT
@@ -14,14 +14,29 @@ import {Field, reduxForm} from 'redux-form'
 const FIELDS = [
   {label: 'First Name', name: 'firstName'},
   {label: 'Last Name', name: 'lastName'},
-  {label: 'Email', name: 'email'},
-  {label: 'Password', name: 'password'},
-  {label: 'Password Confirmation', name: 'passwordConfirm'}
+  {label: 'Email', name: 'email'}
+  //   {label: 'Password', name: 'password'},
+  //   {label: 'Password Confirmation', name: 'passwordConfirm'}
 ]
 
-class RegForm extends Component {
+class EditForm extends Component {
+  componentDidMount() {
+    this.handleInitialize()
+  }
+
+  handleInitialize() {
+    const initData = {
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      email: this.props.user.email
+    }
+    this.props.initialize(initData)
+  }
+
   renderField(field) {
     const {label, type, input, meta: {error, touched}} = field
+    // console.log(field)
+
     return (
       <Form.Group>
         <Input type={type} placeholder={label} {...input} />
@@ -31,8 +46,8 @@ class RegForm extends Component {
   }
 
   render() {
-    const {name, displayName, handleSubmit, error} = this.props
-
+    const {name, displayName, handleSubmit, error, user} = this.props
+    console.log('%%%%%%%%%', this.props.user)
     return (
       <div>
         <div>
@@ -49,11 +64,12 @@ class RegForm extends Component {
                     component={this.renderField}
                     label={field.label}
                     name={field.name}
+                    value={user[field.name.value]}
                   />
                 )
               })}
               <div>
-                <Button type="submit">{displayName}</Button>
+                <Button type="submit">Submit Changes</Button>
               </div>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
@@ -65,21 +81,12 @@ class RegForm extends Component {
             />
           </Container>
         </div>
-        <div>{/* <Signup /> */}</div>
       </div>
     )
   }
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
-
-const mapSignup = state => {
+const mapStateToProps = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
@@ -87,10 +94,10 @@ const mapSignup = state => {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     onHandleSubmit(formProps) {
-      dispatch(notGoogleRegister(formProps, 'signup'))
+      dispatch(notGoogleEdit(this.props.user.id, formProps))
     }
   }
 }
@@ -127,15 +134,7 @@ function validate(formProps) {
 const form = reduxForm({
   form: 'register',
   validate: validate
-})(RegForm)
-export const RegisterForm = connect(mapSignup, mapDispatch)(form)
-
-/**
- * PROP TYPES
- */
-// RegisterForm.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   displayName: PropTypes.string.isRequired,
-//   handleSubmit: PropTypes.func.isRequired,
-//   error: PropTypes.object
-// };
+})(EditForm)
+export const EditAccountForm = connect(mapStateToProps, mapDispatchToProps)(
+  form
+)

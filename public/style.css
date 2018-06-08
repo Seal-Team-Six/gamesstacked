@@ -127,3 +127,19 @@ form div {
   top: 0;
   background: rgba(255, 255, 255, 0.75);
 }
+
+.resizeMed {
+  width: 150px;
+  height: auto;
+  z-index: auto;
+}
+
+.accountDiv {
+  -moz-column-count: auto;
+  -moz-column-gap: 20px;
+  -webkit-column-count: auto;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 10px;
+  list-style-type: none;
+}
