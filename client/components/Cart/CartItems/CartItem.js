@@ -5,12 +5,16 @@ import {Card, Button, Table, Image, Icon} from 'semantic-ui-react'
 import {deleteItem, addQuantity} from '../../../reducers/cartReducer'
 
 class CartItem extends React.Component {
+  onInputChange(id, value) {
+    const {addQuantity} = this.props
+
+    if (parseInt(value) >= 1) {
+      addQuantity(id, value)
+    }
+  }
+
   render() {
-    const {
-      cartItem: {product, id, quantity},
-      deleteItem,
-      addQuantity
-    } = this.props
+    const {cartItem: {product, id, quantity}, deleteItem} = this.props
 
     return (
       <Table.Row>
@@ -26,7 +30,7 @@ class CartItem extends React.Component {
           <input
             type="number"
             name="quantity"
-            onChange={e => addQuantity(id, e.target.value)}
+            onChange={e => this.onInputChange(id, e.target.value)}
             value={quantity}
           />
         </Table.Cell>
