@@ -12,18 +12,17 @@ import moduleName from '../client/components/Products/'
 import CartSideBar from './components/Cart/CartSideBar'
 import {RegisterForm} from './components/Auth/RegisterForm'
 
-import {setCart, setItems} from './reducers/cartReducer'
+import {setCart, setItems, requestCart} from './reducers/cartReducer'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount() {
-    const {me, setCart, user, setItems} = this.props
+    const {me, requestCart} = this.props
 
     me()
-    // setCart(user.id)
-    // setItems()
+    requestCart()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -76,7 +75,14 @@ const mapState = state => {
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
 
-export default withRouter(connect(mapState, {me, setCart, setItems})(Routes))
+export default withRouter(
+  connect(mapState, {
+    me,
+    setCart,
+    setItems,
+    requestCart
+  })(Routes)
+)
 
 /**
  * PROP TYPES

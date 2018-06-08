@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchProduct, resetProduct} from '../../reducers/productsReducer'
-import {addToCart} from '../../reducers/cartReducer'
+import AddToCart from '../UI/AddToCart'
 
 import ProductExtras from './ProductExtras'
 
@@ -23,9 +23,14 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const {user, cartId, addToCart, match: {params}} = this.props
-
-    const {selectedProduct} = this.props
+    const {
+      selectedProduct,
+      user,
+      cartId,
+      addToCart,
+      match: {params},
+      match
+    } = this.props
 
     const ratings = score => {
       if (score > 75) {
@@ -66,15 +71,7 @@ class ProductDetails extends Component {
                   className="product-cover"
                   src={`http://${selectedProduct.cover.url}`}
                 />
-                <Button
-                  className="product-cover-button"
-                  primary
-                  onClick={() => addToCart(params.id, cartId, user.id)}
-                  fluid
-                  positive
-                >
-                  Add To Cart
-                </Button>
+                <AddToCart match={match} />
               </Grid.Column>
               <Grid.Column computer={8}>
                 <h1>{selectedProduct.name}</h1>
@@ -104,10 +101,16 @@ class ProductDetails extends Component {
 }
 
 const mapStateToProps = state => {
-  const {cartId} = state.cart
+  const {cartId, cartItems, isLoading} = state.cart
   const {selectedProduct} = state.products
 
-  return {selectedProduct, cartId, user: state.user}
+  return {
+    selectedProduct,
+    cartId,
+    user: state.user,
+    cartItems,
+    isCartLoading: isLoading
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -117,9 +120,6 @@ const mapDispatchToProps = dispatch => {
     },
     removeProduct: () => {
       dispatch(resetProduct())
-    },
-    addToCart: (productId, cartId, userId) => {
-      dispatch(addToCart(productId, cartId, userId))
     }
   }
 }
