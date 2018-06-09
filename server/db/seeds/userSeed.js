@@ -16,7 +16,16 @@ const random = function(min = 0, max) {
 
 const userSeed = async () => {
   try {
-    const UserData = []
+    const UserData = [
+      {
+        firstName: 'team6',
+        lastName: 'team6',
+        email: 'team6@6.com',
+        password: 'password',
+        imageUrl:
+          'https://pbs.twimg.com/profile_images/1431161157/guy-fawkes_400x400.jpeg'
+      }
+    ]
 
     // Create Silly Name Universities and Faker addresses
     for (let i = 0; i < 10; i++) {
@@ -24,7 +33,7 @@ const userSeed = async () => {
         firstName: `${faker.name.firstName()}`,
         lastName: `${faker.name.lastName()}`,
         email: `${faker.internet.email()}`,
-        imageUrl: `${faker.image.imageUrl()}`,
+        // imageUrl: `${faker.image.imageUrl()}`,
         // phone: `${faker.phone.phoneNumber()}`,
         password: `password`
       })
