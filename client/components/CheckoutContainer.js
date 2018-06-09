@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import Addresses from './Address/Addresses'
 
 class CheckoutContainer extends React.Component {
   componentDidMount() {
@@ -10,20 +11,14 @@ class CheckoutContainer extends React.Component {
     const {match} = this.props
     return (
       <div>
-        {match.path.path === '/checkout/address'
-        // TODO: ? RENDER ADDRESS :
-        // RENDER CREDITCARD
-        }
-        <div> + ADD CARD/ADDRESS </div>
+        <Addresses />
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    state
-  }
+  return {state}
 }
 
 // TODO: WRITE DISPATCH HERE
