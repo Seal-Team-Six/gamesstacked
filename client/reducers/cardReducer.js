@@ -6,10 +6,12 @@ const DELETE_CARD = 'DELETE_CARD'
 const EDIT_CARD = 'EDIT_CARD'
 const REQUEST_CARDS = 'REQUEST_CARDS'
 const ADD_CARD = 'ADD_CARD'
+const SELECT_CARD = 'SELECT_CARD'
 
 // INITIAL STATE
 const initialState = {
   cards: [],
+  selectedCard: {},
   isLoading: false
 }
 
@@ -78,6 +80,8 @@ export const addCard = formData => {
   }
 }
 
+export const selectCard = card => ({type: SELECT_CARD, payload: card})
+
 // REDUCER
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -117,7 +121,14 @@ const reducer = (state = initialState, action) => {
         cards: [action.payload, ...state.cards],
         isLoading: false
       }
+    case SELECT_CARD:
+      return {
+        ...state,
+        selectedCard: action.payload
+      }
     default:
       return state
   }
 }
+
+export default reducer
