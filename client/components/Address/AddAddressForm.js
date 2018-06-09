@@ -21,8 +21,8 @@ class NewAddressForm extends Component {
 
   handleInitialize() {
     const initData = {
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName
+      firstName: this.props.user.firstName
+      // lastName: this.props.user.lastName
     }
     this.props.initialize(initData)
   }
