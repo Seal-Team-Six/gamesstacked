@@ -155,3 +155,7 @@ form div {
   width: auto;
   max-width: 250px;
 }
+
+div.column.hidden {
+  display: none;
+}
