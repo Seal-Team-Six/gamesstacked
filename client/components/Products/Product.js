@@ -1,14 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Card, Image, Container} from 'semantic-ui-react'
+import {Card, Image} from 'semantic-ui-react'
 
 const Product = props => {
   const {product} = props
-
   return (
     <Link to={`/product/${product.id}`}>
-      <Card>
-        <Image src={product.cover && `http://${product.cover.url}`} />
+      <Card className="product-card" color="blue">
+        <Image
+          className="product-img"
+          src={product.cover && `http://${product.cover.url}`}
+        />
         <Card.Content>
           <Card.Header>{product.name}</Card.Header>
           <Card.Meta>{product.price}</Card.Meta>
