@@ -17,6 +17,7 @@ class AddToCart extends React.Component {
     } = this.props
 
     if (isCartLoading) {
+      console.log('YOU MUST LOG IN')
       return
     }
 

@@ -12,7 +12,8 @@ const initialState = {
   cartId: null,
   cartItems: [],
   totalPrice: 0,
-  isLoading: false
+  isLoading: false,
+  cartQuantity: 0
 }
 
 export const requestCart = () => {
@@ -168,7 +169,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-        totalPrice: state.totalPrice + parseFloat(action.payload.product.price)
+        totalPrice: state.totalPrice + parseFloat(action.payload.product.price),
+        cartQuantity: state.cartQuantity + 0
       }
     case DELETE_ITEM:
       const item = state.cartItems.find(item => item.id === action.payload)
