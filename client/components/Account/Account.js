@@ -30,7 +30,8 @@ export class Account extends Component {
           <div className="accountDiv">
             <img className="resizeMed" src={user.imageUrl} />
             <h3>Welcome, {user.firstName}</h3>
-            <p>You spent a lot of money last time. Please do so again!</p>
+            <p>You spent a lot of money last time.</p>
+            <p>Please do so again!</p>
           </div>
 
           <div>
