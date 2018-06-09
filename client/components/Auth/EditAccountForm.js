@@ -14,7 +14,8 @@ import {Field, reduxForm, initialize} from 'redux-form'
 const FIELDS = [
   {label: 'First Name', name: 'firstName'},
   {label: 'Last Name', name: 'lastName'},
-  {label: 'Email', name: 'email'}
+  {label: 'Email', name: 'email'},
+  {label: 'Image', name: 'imageUrl'}
   //   {label: 'Password', name: 'password'},
   //   {label: 'Password Confirmation', name: 'passwordConfirm'}
 ]
@@ -28,7 +29,8 @@ class EditForm extends Component {
     const initData = {
       firstName: this.props.user.firstName,
       lastName: this.props.user.lastName,
-      email: this.props.user.email
+      email: this.props.user.email,
+      imageUrl: this.props.user.imageUrl
     }
     this.props.initialize(initData)
   }
