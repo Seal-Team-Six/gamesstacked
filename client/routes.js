@@ -14,6 +14,7 @@ import {RegisterForm} from './components/Auth/RegisterForm'
 
 import {setCart, setItems, requestCart} from './reducers/cartReducer'
 import {Account} from './components/Account/Account'
+import CheckoutContainer from './components/CheckoutContainer'
 
 /**
  * COMPONENT
@@ -26,7 +27,7 @@ class Routes extends Component {
     requestCart()
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const {setCart} = this.props
 
     if (nextProps.user.id !== this.props.user.id) {
@@ -46,23 +47,32 @@ class Routes extends Component {
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} />
         {/* Routes placed here are only available after logging in */}
-        <Route
-          exact
-          path="/user"
-          render={history => (
-            <Account history={history} user={this.props.user} />
-          )}
-        />
-        <Redirect to="/products" />
         {isLoggedIn && (
           <Switch>
+            <Route
+              exact
+              path="/user"
+              render={history => (
+                <Account history={history} user={this.props.user} />
+              )}
+            />
             <Route exact path="/home" component={UserHome} />
-            <Route exact path="/checkout/address" component="" />
-            <Route exact path="/checkout/credit" component="" />
+            <Route
+              exact
+              path="/checkout/address"
+              component={CheckoutContainer}
+            />
+            <Route
+              exact
+              path="/checkout/credit"
+              component={CheckoutContainer}
+            />
+            <Route component={Products} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Redirect to="/products" />
+        <Route component={Products} />
+        {/* <Redirect to="/products" /> */}
       </Switch>
     )
   }
