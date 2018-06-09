@@ -81,6 +81,42 @@ export const addCard = formData => {
 // REDUCER
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case REQUEST_CARDS:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case GET_CARDS:
+      return {
+        ...state,
+        cards: action.payload,
+        isLoading: false
+      }
+    case DELETE_CARD:
+      return {
+        ...state,
+        cards: state.cards.filter(card => {
+          return card.id !== action.payload
+        }),
+        isLoading: false
+      }
+    case EDIT_CARD:
+      return {
+        ...state,
+        cards: state.cards.map(card => {
+          if (card.id === action.payload.id) {
+            return action.payload
+          }
+          return card
+        }),
+        isLoading: false
+      }
+    case ADD_CARD:
+      return {
+        ...state,
+        cards: [action.payload, ...state.cards],
+        isLoading: false
+      }
     default:
       return state
   }
