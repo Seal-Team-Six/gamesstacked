@@ -3,6 +3,7 @@ import axios from 'axios'
 const ADD_ITEM = 'ADD_ITEM'
 const REQUEST_CART = 'REQUEST_CART'
 const SET_CART = 'SET_CART'
+const SET_LOCAL_CART = 'SET_LOCAL_CART'
 const RESET_CART = 'RESET_CART'
 const SET_ITEMS = 'SET_ITEMS'
 const DELETE_ITEM = 'DELETE_ITEM'
@@ -51,6 +52,14 @@ export const setCart = userId => {
         })
       )
     }
+  }
+}
+
+export const setLocalCart = () => {
+  return dispatch => {
+    dispatch({
+      type: SET_LOCAL_CART
+    })
   }
 }
 
@@ -153,6 +162,11 @@ const reducer = (state = initialState, action) => {
               .map(item => parseFloat(item.product.price) * item.quantity)
               .reduce((a, b) => a + b)
           : 0
+      }
+    case SET_LOCAL_CART:
+      return {
+        ...state,
+        isLoading: false
       }
     case RESET_CART:
       return {

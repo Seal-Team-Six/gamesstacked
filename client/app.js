@@ -5,14 +5,34 @@ import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
 import {fetchProducts} from './reducers/productsReducer'
+import {me} from './reducers/store'
+import {
+  setCart,
+  setItems,
+  requestCart,
+  setLocalCart
+} from './reducers/cartReducer'
 
 import CartModal from './components/Cart/CartModal'
 
 class App extends Component {
   componentDidMount() {
-    const {getProducts} = this.props
+    const {
+      fetchProducts,
+      me,
+      requestCart,
+      currentUser,
+      setLocalCart,
+      setCart
+    } = this.props
 
-    getProducts()
+    me()
+    fetchProducts()
+    requestCart()
+
+    if (!currentUser) {
+      setLocalCart()
+    }
   }
 
   render() {
@@ -28,15 +48,21 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const {products} = state.products
-  return {products}
-}
+  const {user} = state.user
 
-const mapDispatchToProps = dispatch => {
   return {
-    getProducts: () => {
-      dispatch(fetchProducts())
-    }
+    products,
+    user,
+    currentUser: !!state.user.id
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(
+  connect(mapStateToProps, {
+    fetchProducts,
+    me,
+    requestCart,
+    setCart,
+    setLocalCart
+  })(App)
+)
