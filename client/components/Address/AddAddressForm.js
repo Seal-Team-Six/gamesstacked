@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {postAddress} from '../../reducers/store'
+import {postAddress} from '../../reducers/addressReducer'
 import {Button, Input, List, Container, Form, Divider} from 'semantic-ui-react'
 import {Field, reduxForm} from 'redux-form'
 
 const FIELDS = [
-  {label: 'First Name', name: 'fistName'},
+  {label: 'First Name', name: 'firstName'},
   {label: 'Last Name', name: 'lastName'},
   {label: 'Street', name: 'addressOne'},
   {label: 'Apt, Suite, Other', name: 'addressTwo'},
@@ -21,8 +21,9 @@ class NewAddressForm extends Component {
 
   handleInitialize() {
     const initData = {
-      firstName: this.props.user.firstName
+      // firstName: this.props.user.firstName,
       // lastName: this.props.user.lastName
+      userId: this.props.user.id
     }
     this.props.initialize(initData)
   }
@@ -41,7 +42,7 @@ class NewAddressForm extends Component {
 
   render() {
     const {name, displayName, handleSubmit, error, user} = this.props
-    console.log('%%%%%%%%%', this.props.user)
+    // console.log('%%%%%%%%%', this.props.user)
     return (
       <div>
         <div>
