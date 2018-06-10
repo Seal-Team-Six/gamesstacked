@@ -23,19 +23,29 @@ class App extends Component {
       requestCart,
       currentUser,
       setLocalCart,
-      setCart
+      setCart,
+      user
     } = this.props
 
     me()
     fetchProducts()
     requestCart()
-
+    // if (currentUser) { setCart(user.id) }
     if (!currentUser) {
       setLocalCart()
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    const {setCart, user} = this.props
+
+    if (nextProps.user.id !== user.id) {
+      setCart(nextProps.user.id)
+    }
+  }
+
   render() {
+    // if (!this.props.user.id) { return <div>Loading</div> }
     return (
       <Layout>
         <CartModal />
@@ -48,11 +58,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const {products} = state.products
-  const {user} = state.user
 
   return {
     products,
-    user,
+    user: state.user,
     currentUser: !!state.user.id
   }
 }
