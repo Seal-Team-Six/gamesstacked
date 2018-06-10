@@ -63,7 +63,14 @@ export const setLocalCart = () => {
       type: SET_CART,
       payload: {
         id: 'localCart',
-        cartItems: JSON.parse(localStorage.getItem('cart')).cartItems
+        cartItems: JSON.parse(localStorage.getItem('cart')).cartItems.map(
+          item => {
+            return {
+              ...item,
+              productId: Number(item.productId)
+            }
+          }
+        )
       }
     })
   }
@@ -88,7 +95,8 @@ export const addToCart = (productId, cartId, userId, product) => {
       localCart.cartItems.push({
         id: localCart.cartItems.length,
         productId,
-        product
+        product,
+        quantity: 1
       })
 
       localStorage.setItem('cart', JSON.stringify(localCart))
