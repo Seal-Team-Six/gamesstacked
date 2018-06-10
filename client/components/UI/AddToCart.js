@@ -6,7 +6,7 @@ import {addToCart, addQuantity} from '../../reducers/cartReducer'
 import {toggleModal} from '../../reducers/modalReducer'
 
 class AddToCart extends React.Component {
-  addOrEdit(id, cartId, userId) {
+  addOrEdit(id, cartId, userId, product) {
     const {
       cartItems,
       isCartLoading,
@@ -24,11 +24,10 @@ class AddToCart extends React.Component {
     const cartItem = cartItems.find(
       item => item.productId === selectedProduct.id
     )
-
     if (cartItem) {
       addQuantity(cartItem.id, cartItem.quantity + 1)
     } else {
-      addToCart(id, cartId, userId)
+      addToCart(id, cartId, userId, selectedProduct)
     }
 
     toggleModal()

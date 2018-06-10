@@ -30,7 +30,7 @@ class App extends Component {
     me()
     fetchProducts()
     requestCart()
-    // if (currentUser) { setCart(user.id) }
+
     if (!currentUser) {
       setLocalCart()
     }

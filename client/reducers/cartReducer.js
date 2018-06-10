@@ -42,8 +42,14 @@ export const setCart = userId => {
         .catch(err => {
           console.log(err)
         })
-    } else if (!localStorage.getItem('cart')) {
-      console.log('cart created in localStorage')
+    }
+  }
+}
+
+export const setLocalCart = () => {
+  return dispatch => {
+    if (!localStorage.getItem('cart')) {
+      console.log('[LOCALSTORAGE]: Cart created.')
       localStorage.setItem(
         'cart',
         JSON.stringify({
@@ -52,18 +58,18 @@ export const setCart = userId => {
         })
       )
     }
-  }
-}
 
-export const setLocalCart = () => {
-  return dispatch => {
     dispatch({
-      type: SET_LOCAL_CART
+      type: SET_CART,
+      payload: {
+        id: 'localCart',
+        cartItems: JSON.parse(localStorage.getItem('cart')).cartItems
+      }
     })
   }
 }
 
-export const addToCart = (productId, cartId, userId) => {
+export const addToCart = (productId, cartId, userId, product) => {
   return dispatch => {
     if (userId) {
       axios
@@ -79,13 +85,17 @@ export const addToCart = (productId, cartId, userId) => {
         })
     } else {
       let localCart = JSON.parse(localStorage.getItem('cart'))
-      localCart.cartItems.push({id: localCart.cartItems.length, productId})
+      localCart.cartItems.push({
+        id: localCart.cartItems.length,
+        productId,
+        product
+      })
 
       localStorage.setItem('cart', JSON.stringify(localCart))
 
       dispatch({
         type: ADD_ITEM,
-        payload: {productId}
+        payload: {productId: Number(productId), product, quantity: 1}
       })
     }
   }

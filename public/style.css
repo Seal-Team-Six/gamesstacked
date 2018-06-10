@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  padding-top: 7vh;
+  padding-top: 5em;
   font-size: 14px;
   color: #737373;
 }
@@ -142,4 +142,20 @@ form div {
   column-count: 3;
   column-gap: 10px;
   list-style-type: none;
+}
+
+.product-card {
+  width: 320px;
+  height: 380px;
+}
+
+.product-img {
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 250px;
+}
+
+div.column.hidden {
+  display: none;
 }

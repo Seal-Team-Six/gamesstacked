@@ -1,36 +1,28 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import PropTypes from 'prop-types';
-import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
-import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
-import SocialButton from '../UI/SocialButton'
-
-import {Field, reduxForm, initialize} from 'redux-form'
-
-/**
- * COMPONENT
- */
+import {postAddress} from '../../reducers/store'
+import {Button, Input, List, Container, Form, Divider} from 'semantic-ui-react'
+import {Field, reduxForm} from 'redux-form'
 
 const FIELDS = [
-  {label: 'First Name', name: 'firstName'},
+  {label: 'First Name', name: 'fistName'},
   {label: 'Last Name', name: 'lastName'},
-  {label: 'Email', name: 'email'},
-  {label: 'Image', name: 'imageUrl'}
-  //   {label: 'Password', name: 'password'},
-  //   {label: 'Password Confirmation', name: 'passwordConfirm'}
+  {label: 'Street', name: 'addressOne'},
+  {label: 'Apt, Suite, Other', name: 'addressTwo'},
+  {label: 'City', name: 'city'},
+  {label: 'State', name: 'state'},
+  {label: 'Zip Code', name: 'zip'}
 ]
 
-class EditForm extends Component {
+class NewAddressForm extends Component {
   componentDidMount() {
     this.handleInitialize()
   }
 
   handleInitialize() {
     const initData = {
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName,
-      email: this.props.user.email,
-      imageUrl: this.props.user.imageUrl
+      firstName: this.props.user.firstName
+      // lastName: this.props.user.lastName
     }
     this.props.initialize(initData)
   }
@@ -66,21 +58,15 @@ class EditForm extends Component {
                     component={this.renderField}
                     label={field.label}
                     name={field.name}
-                    value={user[field.name.value]}
+                    // value={address[field.name.value]}
                   />
                 )
               })}
               <div>
-                <Button type="submit">Submit Changes</Button>
+                <Button type="submit">Add Address</Button>
               </div>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
-            <SocialButton
-              href="/auth/google"
-              displayName={displayName}
-              className="google plus"
-              name="Google"
-            />
           </Container>
         </div>
       </div>
@@ -88,24 +74,17 @@ class EditForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     onHandleSubmit(formProps) {
-      dispatch(notGoogleEdit(this.props.user.id, formProps))
+      dispatch(postAddress(formProps))
     }
   }
 }
 function validate(formProps) {
   const errors = {},
-    vowels = ['a', 'e', 'i', 'o']
+    vowels = ['a', 'e', 'i', 'o'],
+    invalidChar = ['!' || '@' || '#' || '$' || '%' || '^' || '*']
 
   // Required fields
   FIELDS.forEach(field => {
@@ -117,26 +96,22 @@ function validate(formProps) {
     }
   })
 
-  // Password and confirmation must match
-  if (formProps.password !== formProps.passwordConfirm) {
-    errors.password = 'Passwords must match!'
+  // Address field must only contain valid characters
+  if (formProps.addressOne && formProps.addressOne.includes(invalidChar)) {
+    errors.addressOne = 'Must only contain valid characters, a-z, 1-9'
   }
 
-  if (formProps.email && !formProps.email.includes('@')) {
-    errors.email = 'Must be in email format'
+  if (formProps.addressTwo && formProps.addressTwo.includes(invalidChar)) {
+    errors.addressTwo = 'Must only contain valid characters, a-z, 1-9'
   }
-
-  // Password length must be 6 or more characters in length
-  if (formProps.password && formProps.password.length < 6) {
-    errors.password = 'Password must be 6 characters in length'
+  if (formProps.city && formProps.city.includes(invalidChar)) {
+    errors.addressTwo = 'Must only contain valid characters, a-z, 1-9'
   }
-
   return errors
 }
 const form = reduxForm({
-  form: 'register',
+  form: 'addAddress',
   validate: validate
-})(EditForm)
-export const EditAccountForm = connect(mapStateToProps, mapDispatchToProps)(
-  form
-)
+})(NewAddressForm)
+
+export const AddAddressForm = connect(null, mapDispatchToProps)(form)

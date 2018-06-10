@@ -18,28 +18,12 @@ import {
   setLocalCart
 } from './reducers/cartReducer'
 import {Account} from './components/Account/Account'
+import CheckoutContainer from './components/CheckoutContainer'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  // componentDidMount() {
-  //   const {me, requestCart, setLocalCart} = this.props
-
-  //   if (!this.props.isLoggedIn) {
-  //     setLocalCart()
-  //   }
-
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const {setCart} = this.props
-
-  //   if (nextProps.user.id !== this.props.user.id) {
-  //     setCart(nextProps.user.id)
-  //   }
-  // }
-
   render() {
     const {isLoggedIn} = this.props
 
@@ -47,28 +31,37 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/login" component={Login} />
-        {/* THIS IS A TEST ROUTER TO TEST THE SIDE BAR COMPONENT */}
-        <Route exact path="/testside" component={CartSideBar} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/cart" component={Cart} />{' '}
+        <Route exact path="/cart" component={Cart} />
         {/* Routes placed here are only available after logging in */}
-        <Route
-          exact
-          path="/user"
-          render={history => (
-            <Account history={history} user={this.props.user} />
-          )}
-        />
-        <Redirect to="/products" />
         {isLoggedIn && (
           <Switch>
+            <Route
+              exact
+              path="/user"
+              render={history => (
+                <Account history={history} user={this.props.user} />
+              )}
+            />
             <Route exact path="/home" component={UserHome} />
+            <Route
+              exact
+              path="/checkout/address"
+              component={CheckoutContainer}
+            />
+            <Route
+              exact
+              path="/checkout/credit"
+              component={CheckoutContainer}
+            />
+            <Route component={Products} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Redirect to="/products" />
+        <Route component={Products} />
+        {/* <Redirect to="/products" /> */}
       </Switch>
     )
   }
