@@ -5,7 +5,6 @@ import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
 import {fetchProducts} from './reducers/productsReducer'
-
 import CartModal from './components/Cart/CartModal'
 
 class App extends Component {
