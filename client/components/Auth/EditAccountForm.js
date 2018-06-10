@@ -49,7 +49,7 @@ class EditForm extends Component {
 
   render() {
     const {name, displayName, handleSubmit, error, user} = this.props
-    console.log('%%%%%%%%%', this.props.user)
+    // console.log('%%%%%%%%%', this.props.user)
     return (
       <div>
         <div>
