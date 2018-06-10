@@ -3,6 +3,7 @@ import axios from 'axios'
 const ADD_ITEM = 'ADD_ITEM'
 const REQUEST_CART = 'REQUEST_CART'
 const SET_CART = 'SET_CART'
+const SET_LOCAL_CART = 'SET_LOCAL_CART'
 const RESET_CART = 'RESET_CART'
 const SET_ITEMS = 'SET_ITEMS'
 const DELETE_ITEM = 'DELETE_ITEM'
@@ -12,7 +13,8 @@ const initialState = {
   cartId: null,
   cartItems: [],
   totalPrice: 0,
-  isLoading: false
+  isLoading: false,
+  cartQuantity: 0
 }
 
 export const requestCart = () => {
@@ -40,8 +42,14 @@ export const setCart = userId => {
         .catch(err => {
           console.log(err)
         })
-    } else if (!localStorage.getItem('cart')) {
-      console.log('cart created in localStorage')
+    }
+  }
+}
+
+export const setLocalCart = () => {
+  return dispatch => {
+    if (!localStorage.getItem('cart')) {
+      console.log('[LOCALSTORAGE]: Cart created.')
       localStorage.setItem(
         'cart',
         JSON.stringify({
@@ -50,14 +58,29 @@ export const setCart = userId => {
         })
       )
     }
+
+    dispatch({
+      type: SET_CART,
+      payload: {
+        id: 'localCart',
+        cartItems: JSON.parse(localStorage.getItem('cart')).cartItems.map(
+          item => {
+            return {
+              ...item,
+              productId: Number(item.productId)
+            }
+          }
+        )
+      }
+    })
   }
 }
 
-export const addToCart = (productId, cartId, userId) => {
+export const addToCart = (productId, cartId, userId, product) => {
   return dispatch => {
     if (userId) {
       axios
-        .post('/api/cart_items', {productId, cartId})
+        .post('/api/cart_items', {productId, cartId, userId})
         .then(res => {
           dispatch({
             type: ADD_ITEM,
@@ -69,13 +92,18 @@ export const addToCart = (productId, cartId, userId) => {
         })
     } else {
       let localCart = JSON.parse(localStorage.getItem('cart'))
-      localCart.cartItems.push({id: localCart.cartItems.length, productId})
+      localCart.cartItems.push({
+        id: localCart.cartItems.length,
+        productId,
+        product,
+        quantity: 1
+      })
 
       localStorage.setItem('cart', JSON.stringify(localCart))
 
       dispatch({
         type: ADD_ITEM,
-        payload: {productId}
+        payload: {productId: Number(productId), product, quantity: 1}
       })
     }
   }
@@ -153,6 +181,11 @@ const reducer = (state = initialState, action) => {
               .reduce((a, b) => a + b)
           : 0
       }
+    case SET_LOCAL_CART:
+      return {
+        ...state,
+        isLoading: false
+      }
     case RESET_CART:
       return {
         ...state,
@@ -168,7 +201,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-        totalPrice: state.totalPrice + parseFloat(action.payload.product.price)
+        totalPrice: state.totalPrice + parseFloat(action.payload.product.price),
+        cartQuantity: state.cartQuantity + 0
       }
     case DELETE_ITEM:
       const item = state.cartItems.find(item => item.id === action.payload)
