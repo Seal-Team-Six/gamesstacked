@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 import {Grid, Card, Icon, Button, Divider, Container} from 'semantic-ui-react'
 import {AddAddressForm} from './AddAddressForm'
+// import store, {fetchAddresses} from '../../reducers/addressReducer'
 import {connect} from 'react-redux'
 
 class Addresses extends Component {
+  // componentDidMount(){
+  //   store.dispatch(fetchAddresses())
+  // }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -17,6 +22,8 @@ class Addresses extends Component {
   }
   render() {
     const user = this.props.user
+    // const userAddresses = this.props.addresses.filter(address => address.userId === parseInt(user.id))
+
     return (
       <Grid centered>
         <Grid.Column width={12}>
@@ -119,10 +126,12 @@ class Addresses extends Component {
       </Grid>
     )
   }
+  //////////////////Test address map
 }
 const mapState = state => {
   return {
     user: state.user
+    // address: state.addresses
   }
 }
 
