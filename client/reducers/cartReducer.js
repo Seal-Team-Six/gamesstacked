@@ -80,7 +80,7 @@ export const addToCart = (productId, cartId, userId, product) => {
   return dispatch => {
     if (userId) {
       axios
-        .post('/api/cart_items', {productId, cartId})
+        .post('/api/cart_items', {productId, cartId, userId})
         .then(res => {
           dispatch({
             type: ADD_ITEM,
