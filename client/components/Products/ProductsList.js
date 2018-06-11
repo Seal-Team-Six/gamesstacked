@@ -12,7 +12,12 @@ class ProductsList extends React.Component {
           <Grid columns={4}>
             {products.map(product => {
               return (
-                <Grid.Column key={product.id}>
+                <Grid.Column
+                  mobile={16}
+                  tablet={8}
+                  computer={4}
+                  key={product.id}
+                >
                   <Product product={product} />
                 </Grid.Column>
               )
