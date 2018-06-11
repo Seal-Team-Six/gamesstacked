@@ -7,6 +7,7 @@ import Products from './components/Products'
 import Cart from './containers/Cart'
 import ProductDetails from './components/Products/ProductDetails'
 import {RegisterForm} from './components/Auth/RegisterForm'
+import ThankYou from './components/ThankYou'
 
 import {
   setCart,
@@ -46,11 +47,6 @@ class Routes extends Component {
             <Route
               exact
               path="/checkout/address"
-              component={CheckoutContainer}
-            />
-            <Route
-              exact
-              path="/checkout/credit"
               component={CheckoutContainer}
             />
             <Route component={Products} />

@@ -20,7 +20,7 @@ class Checkout extends React.Component {
         currency: CURRENCY,
         amount
       })
-      history.push('/products')
+      history.push('/thankyou')
     } catch (err) {
       throw err
     }
