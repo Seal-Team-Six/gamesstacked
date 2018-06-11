@@ -159,3 +159,7 @@ form div {
 div.column.hidden {
   display: none;
 }
+
+.thank-you {
+  padding-top: 30vh;
+}
