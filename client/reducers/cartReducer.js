@@ -92,18 +92,19 @@ export const addToCart = (productId, cartId, userId, product) => {
         })
     } else {
       let localCart = JSON.parse(localStorage.getItem('cart'))
-      localCart.cartItems.push({
-        id: localCart.cartItems.length,
-        productId,
+      const item = {
+        id: localCart.cartItems[localCart.cartItems.length - 1].id + 1,
+        productId: Number(productId),
         product,
         quantity: 1
-      })
+      }
+      localCart.cartItems.push(item)
 
       localStorage.setItem('cart', JSON.stringify(localCart))
 
       dispatch({
         type: ADD_ITEM,
-        payload: {productId: Number(productId), product, quantity: 1}
+        payload: item
       })
     }
   }
@@ -119,19 +120,30 @@ export const setItems = () => {
   }
 }
 
-export const deleteItem = id => {
+export const deleteItem = (id, userId) => {
   return dispatch => {
-    axios
-      .delete(`/api/cart_items/${id}`)
-      .then(res => {
-        dispatch({
-          type: DELETE_ITEM,
-          payload: id
+    if (userId) {
+      axios
+        .delete(`/api/cart_items/${id}`)
+        .then(res => {
+          dispatch({
+            type: DELETE_ITEM,
+            payload: id
+          })
         })
+        .catch(err => {
+          console.log(err)
+        })
+    } else {
+      let localCart = JSON.parse(localStorage.getItem('cart'))
+      localCart.cartItems = localCart.cartItems.filter(item => item.id !== id)
+      localStorage.setItem('cart', JSON.stringify(localCart))
+
+      dispatch({
+        type: DELETE_ITEM,
+        payload: id
       })
-      .catch(err => {
-        console.log(err)
-      })
+    }
   }
 }
 
