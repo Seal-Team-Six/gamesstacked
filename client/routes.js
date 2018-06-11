@@ -3,13 +3,17 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
-import {me} from './reducers/store'
 import Products from './components/Products'
 import Cart from './containers/Cart'
 import ProductDetails from './components/Products/ProductDetails'
 import {RegisterForm} from './components/Auth/RegisterForm'
 
-import {setCart, setItems, requestCart} from './reducers/cartReducer'
+import {
+  setCart,
+  setItems,
+  requestCart,
+  setLocalCart
+} from './reducers/cartReducer'
 import {Account} from './components/Account/Account'
 import CheckoutContainer from './components/CheckoutContainer'
 
@@ -17,21 +21,6 @@ import CheckoutContainer from './components/CheckoutContainer'
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount() {
-    const {me, requestCart} = this.props
-
-    me()
-    requestCart()
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const {setCart} = this.props
-
-    if (nextProps.user.id !== this.props.user.id) {
-      setCart(nextProps.user.id)
-    }
-  }
-
   render() {
     const {isLoggedIn} = this.props
 
@@ -82,22 +71,14 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user
     // that has a truthy id. Otherwise, state.user will be an empty object, and
     // state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
-    user: state.user
+    isLoggedIn: !!state.user.id
   }
 }
 
 // The `withRouter` wrapper makes sure that updates are not blocked when the url
 // changes
 
-export default withRouter(
-  connect(mapState, {
-    me,
-    setCart,
-    setItems,
-    requestCart
-  })(Routes)
-)
+export default withRouter(connect(mapState)(Routes))
 
 /**
  * PROP TYPES
