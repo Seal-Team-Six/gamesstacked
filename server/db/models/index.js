@@ -30,7 +30,7 @@ const db = require('../db')
 Cart.belongsTo(User)
 User.hasMany(Cart)
 
-CartItems.belongsTo(Cart)
+CartItems.belongsTo(Cart, {onDelete: 'cascade'})
 Cart.hasMany(CartItems)
 
 CartItems.belongsTo(Product)
