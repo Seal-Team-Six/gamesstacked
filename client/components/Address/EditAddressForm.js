@@ -1,36 +1,68 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {postAddress} from '../../reducers/addressReducer'
-import {Button, Input, List, Container, Form, Divider} from 'semantic-ui-react'
+import {putAddress, closeModal} from '../../reducers/addressReducer'
+import {Button, Input, Container, Form} from 'semantic-ui-react'
 import {Field, reduxForm} from 'redux-form'
 
 const FIELDS = [
-  {label: 'First Name', name: 'firstName'},
-  {label: 'Last Name', name: 'lastName'},
-  {label: 'Street', name: 'addressOne'},
-  {label: 'Apt, Suite, Other', name: 'addressTwo'},
-  {label: 'City', name: 'city'},
-  {label: 'State', name: 'state'},
-  {label: 'Zip Code', name: 'zip'}
+  {
+    label: 'First Name',
+    name: 'firstName',
+    required: true
+  },
+  {
+    label: 'Last Name',
+    name: 'lastName',
+    required: true
+  },
+  {
+    label: 'Street',
+    name: 'addressOne',
+    required: true
+  },
+  {
+    label: 'Apt, Suite, Other',
+    name: 'addressTwo',
+    required: false
+  },
+  {
+    label: 'City',
+    name: 'city',
+    required: true
+  },
+  {
+    label: 'State',
+    name: 'state',
+    required: true
+  },
+  {
+    label: 'Zip Code',
+    name: 'zip',
+    required: true
+  }
 ]
 
-class NewAddressForm extends Component {
+class EditForm extends Component {
   componentDidMount() {
     this.handleInitialize()
   }
 
   handleInitialize() {
     const initData = {
-      // firstName: this.props.user.firstName,
-      // lastName: this.props.user.lastName
-      userId: this.props.user.id
+      firstName: this.props.userAddress[0].firstName,
+      lastName: this.props.userAddress[0].lastName,
+      addressOne: this.props.userAddress[0].addressOne,
+      addressTwo: this.props.userAddress[0].addressTwo,
+      city: this.props.userAddress[0].city,
+      state: this.props.userAddress[0].state,
+      zip: this.props.userAddress[0].zip
+      // userId: this.props.user.id
     }
     this.props.initialize(initData)
   }
 
   renderField(field) {
     const {label, type, input, meta: {error, touched}} = field
-    // console.log(field)
 
     return (
       <Form.Group>
@@ -41,8 +73,7 @@ class NewAddressForm extends Component {
   }
 
   render() {
-    const {name, displayName, handleSubmit, error, user} = this.props
-    // console.log('%%%%%%%%%', this.props.user)
+    const {name, handleSubmit, error, userAddress} = this.props
     return (
       <div>
         <div>
@@ -59,14 +90,14 @@ class NewAddressForm extends Component {
                     component={this.renderField}
                     label={field.label}
                     name={field.name}
-                    // value={address[field.name.value]}
+                    value={userAddress[0].firstName}
                   />
                 )
               })}
               <div>
                 <Button type="submit">Add Address</Button>
               </div>
-              {error && error.response && <div> {error.response.data} </div>}
+              {error && error.response && <div>{error.response.data}</div>}
             </Form>
           </Container>
         </div>
@@ -75,10 +106,12 @@ class NewAddressForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onHandleSubmit(formProps) {
-      dispatch(postAddress(formProps))
+    onHandleSubmit: formProps => {
+      const id = ownProps.userAddress[0].id
+      dispatch(putAddress(id, formProps))
+      dispatch(closeModal())
     }
   }
 }
@@ -91,7 +124,7 @@ function validate(formProps) {
   FIELDS.forEach(field => {
     const firstLetter = field.name.split('')[0]
 
-    if (!formProps[field.name]) {
+    if (!formProps[field.name] && field.required) {
       const an = vowels.includes(firstLetter) ? 'an' : 'a'
       errors[field.name] = `Please enter ${an} ${field.label.toLowerCase()}`
     }
@@ -102,17 +135,12 @@ function validate(formProps) {
     errors.addressOne = 'Must only contain valid characters, a-z, 1-9'
   }
 
-  if (formProps.addressTwo && formProps.addressTwo.includes(invalidChar)) {
-    errors.addressTwo = 'Must only contain valid characters, a-z, 1-9'
-  }
-  if (formProps.city && formProps.city.includes(invalidChar)) {
-    errors.addressTwo = 'Must only contain valid characters, a-z, 1-9'
-  }
+  // if (formProps.addressTwo && formProps.addressTwo.includes(invalidChar)) {
+  // errors.addressTwo = 'Must only contain valid characters, a-z, 1-9' } if
+  // (formProps.city && formProps.city.includes(invalidChar)) { errors.addressTwo
+  // = 'Must only contain valid characters, a-z, 1-9' }
   return errors
 }
-const form = reduxForm({
-  form: 'addAddress',
-  validate: validate
-})(NewAddressForm)
+const form = reduxForm({form: 'addAddress', validate: validate})(EditForm)
 
-export const AddAddressForm = connect(null, mapDispatchToProps)(form)
+export const EditAddressForm = connect(null, mapDispatchToProps)(form)
