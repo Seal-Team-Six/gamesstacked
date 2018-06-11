@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 
 /**
  * ACTION TYPES
@@ -8,12 +7,15 @@ const GOT_ADDRESS = 'GOT_ADDRESS'
 const MAKE_ADDRESS = 'MAKE_ADDRESS'
 const REMOVE_ADDRESS = 'REMOVE_ADDRESS'
 const EDIT_ADDRESS = 'EDIT_ADDRESS'
+const OPEN_MODAL = 'OPEN_MODAL'
+const CLOSE_MODAL = 'CLOSE_MODAL'
 
 /**
  * INITIAL STATE
  */
 const initialState = {
-  addresses: []
+  addresses: [],
+  open: false
 }
 
 /**
@@ -21,16 +23,21 @@ const initialState = {
  */
 const gotAddress = address => ({type: GOT_ADDRESS, address})
 const addAddress = address => ({type: MAKE_ADDRESS, address})
-const editAddress = editedAdress => ({type: EDIT_ADDRESS, editedAdress})
+const editAddress = editedAddress => ({type: EDIT_ADDRESS, editedAddress})
 const deleteAddress = deletedAddress => ({type: REMOVE_ADDRESS, deletedAddress})
+export const openModal = () => ({
+  type: OPEN_MODAL
+})
+export const closeModal = () => ({
+  type: CLOSE_MODAL
+})
 
 /**
  * THUNK CREATORS
  */
 export const fetchAddresses = address => {
   return async dispatch => {
-    const {data} = await axios.put(`/api/address`, address)
-    console.log('%%%%%% fetched users addresses from server!')
+    const {data} = await axios.get(`/api/address`, address)
     dispatch(gotAddress(data))
   }
 }
@@ -48,7 +55,6 @@ export const postAddress = address => {
 export const putAddress = (id, address) => {
   return async dispatch => {
     const {data} = await axios.put(`/api/address/${id}`, address)
-    console.log('%%%%%% updated Address on server!')
     dispatch(editAddress(data))
   }
 }
@@ -64,10 +70,14 @@ export const removeAddress = (id, address) => {
 /**
  * REDUCER
  */
-export default function(state = initialState, action) {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_ADDRESS:
-      return {...state, adresses: action.address}
+      return {
+        ...state,
+        addresses: action.address,
+        isLoading: false
+      }
 
     case MAKE_ADDRESS: {
       return {
@@ -98,7 +108,23 @@ export default function(state = initialState, action) {
       }
     }
 
+    case OPEN_MODAL: {
+      return {
+        ...state,
+        open: true
+      }
+    }
+
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        open: false
+      }
+    }
+
     default:
       return state
   }
 }
+
+export default reducer

@@ -5,19 +5,16 @@ import {Navbar} from './components'
 import Routes from './routes'
 import Layout from './components/Layout'
 import {fetchProducts} from './reducers/productsReducer'
+import {fetchAddresses} from './reducers/addressReducer'
 import {me} from './reducers/store'
-import {
-  setCart,
-  setItems,
-  requestCart,
-  setLocalCart
-} from './reducers/cartReducer'
+import {setCart, requestCart, setLocalCart} from './reducers/cartReducer'
 import CartModal from './components/Cart/CartModal'
 
 class App extends Component {
   componentDidMount() {
     const {
       fetchProducts,
+      fetchAddresses,
       me,
       requestCart,
       currentUser,
@@ -29,6 +26,7 @@ class App extends Component {
     me()
     fetchProducts()
     requestCart()
+    fetchAddresses()
 
     if (!currentUser) {
       setLocalCart()
@@ -71,6 +69,7 @@ export default withRouter(
     me,
     requestCart,
     setCart,
-    setLocalCart
+    setLocalCart,
+    fetchAddresses
   })(App)
 )
