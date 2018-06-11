@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {createLocalCart} from '../helpers'
 
 const ADD_ITEM = 'ADD_ITEM'
 const REQUEST_CART = 'REQUEST_CART'
@@ -17,6 +18,8 @@ const initialState = {
   cartQuantity: 0
 }
 
+// const localCart = JSON.parse(localStorage.getItem('cart'))
+
 export const requestCart = () => {
   return dispatch => {
     dispatch({
@@ -26,6 +29,8 @@ export const requestCart = () => {
 }
 
 export const setCart = userId => {
+  const localCart = JSON.parse(localStorage.getItem('cart'))
+
   return dispatch => {
     if (userId) {
       axios
@@ -38,6 +43,27 @@ export const setCart = userId => {
               cartItems: res.data[0].cartItems
             }
           })
+
+          if (localCart.cartItems && !res.data[0].cartItems.length) {
+            localCart.cartItems.forEach(item => {
+              axios
+                .post('/api/cart_items', {
+                  quantity: Number(item.quantity),
+                  cartId: res.data[0].id,
+                  productId: item.productId,
+                  userId
+                })
+                .then(res => {
+                  dispatch({
+                    type: ADD_ITEM,
+                    payload: res.data
+                  })
+                })
+            })
+          }
+
+          console.log('[LOCALSTORAGE]: Cart removed.')
+          localStorage.removeItem('cart')
         })
         .catch(err => {
           console.log(err)
@@ -49,38 +75,37 @@ export const setCart = userId => {
 export const setLocalCart = () => {
   return dispatch => {
     if (!localStorage.getItem('cart')) {
-      console.log('[LOCALSTORAGE]: Cart created.')
-      localStorage.setItem(
-        'cart',
-        JSON.stringify({
-          id: 'guestUserCart',
-          cartItems: []
-        })
-      )
+      createLocalCart()
     }
+
+    const localCart = JSON.parse(localStorage.getItem('cart'))
 
     dispatch({
       type: SET_CART,
       payload: {
         id: 'localCart',
-        cartItems: JSON.parse(localStorage.getItem('cart')).cartItems.map(
-          item => {
-            return {
-              ...item,
-              productId: Number(item.productId)
-            }
+        cartItems: localCart.cartItems.map(item => {
+          return {
+            ...item,
+            productId: Number(item.productId)
           }
-        )
+        })
       }
     })
   }
 }
 
 export const addToCart = (productId, cartId, userId, product) => {
+  const localCart = JSON.parse(localStorage.getItem('cart'))
+
   return dispatch => {
     if (userId) {
       axios
-        .post('/api/cart_items', {productId, cartId, userId})
+        .post('/api/cart_items', {
+          productId,
+          cartId,
+          userId
+        })
         .then(res => {
           dispatch({
             type: ADD_ITEM,
@@ -91,9 +116,9 @@ export const addToCart = (productId, cartId, userId, product) => {
           console.log(err)
         })
     } else {
-      let localCart = JSON.parse(localStorage.getItem('cart'))
+      const length = localCart.cartItems.length
       const item = {
-        id: localCart.cartItems[localCart.cartItems.length - 1].id + 1,
+        id: length ? localCart.cartItems[length - 1].id + 1 : 1,
         productId: Number(productId),
         product,
         quantity: 1
@@ -111,7 +136,6 @@ export const addToCart = (productId, cartId, userId, product) => {
 }
 
 export const setItems = () => {
-  const localCart = JSON.parse(localStorage.getItem('cart'))
   return dispatch => {
     dispatch({
       type: SET_ITEMS,
@@ -121,6 +145,8 @@ export const setItems = () => {
 }
 
 export const deleteItem = (id, userId) => {
+  const localCart = JSON.parse(localStorage.getItem('cart'))
+
   return dispatch => {
     if (userId) {
       axios
@@ -135,7 +161,6 @@ export const deleteItem = (id, userId) => {
           console.log(err)
         })
     } else {
-      let localCart = JSON.parse(localStorage.getItem('cart'))
       localCart.cartItems = localCart.cartItems.filter(item => item.id !== id)
       localStorage.setItem('cart', JSON.stringify(localCart))
 
@@ -191,6 +216,9 @@ const reducer = (state = initialState, action) => {
           ? items
               .map(item => parseFloat(item.product.price) * item.quantity)
               .reduce((a, b) => a + b)
+          : 0,
+        cartQuantity: items.length
+          ? items.map(item => item.quantity).reduce((a, b) => a + b)
           : 0
       }
     case SET_LOCAL_CART:
@@ -202,7 +230,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: [],
-        totalPrice: 0
+        totalPrice: 0,
+        cartQuantity: 0
       }
     case SET_ITEMS:
       return {
@@ -214,7 +243,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: [...state.cartItems, action.payload],
         totalPrice: state.totalPrice + parseFloat(action.payload.product.price),
-        cartQuantity: state.cartQuantity + 0
+        cartQuantity: state.cartQuantity + 1
       }
     case DELETE_ITEM:
       const item = state.cartItems.find(item => item.id === action.payload)
@@ -224,7 +253,8 @@ const reducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter(item => {
           return item.id !== action.payload
         }),
-        totalPrice: state.totalPrice - item.product.price * item.quantity
+        totalPrice: state.totalPrice - item.product.price * item.quantity,
+        cartQuantity: state.cartQuantity - item.quantity
       }
     case ADD_QUANTITY:
       const cartItem = state.cartItems.find(
@@ -242,7 +272,9 @@ const reducer = (state = initialState, action) => {
         totalPrice:
           state.totalPrice +
           parseFloat(action.payload.product.price) *
-            (action.payload.quantity - cartItem.quantity)
+            (action.payload.quantity - cartItem.quantity),
+        cartQuantity:
+          state.cartQuantity + (action.payload.quantity - cartItem.quantity)
       }
     default:
       return state
