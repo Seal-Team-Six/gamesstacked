@@ -40,6 +40,14 @@ class Navbar extends React.Component {
     }
   }
 
+  cartQuantity() {
+    const {cartItems} = this.props
+
+    if (cartItems.length) {
+      return cartItems.map(item => item.quantity).reduce((a, b) => a + b)
+    }
+  }
+
   render() {
     const {cartItems} = this.props
 
@@ -54,7 +62,7 @@ class Navbar extends React.Component {
         <Menu.Menu position="right">
           {this.renderSessionLinks()}
           <Link to="/cart">
-            <Menu.Item>Cart({cartItems.length})</Menu.Item>
+            <Menu.Item>Cart({this.cartQuantity()})</Menu.Item>
           </Link>
         </Menu.Menu>
       </Menu>
