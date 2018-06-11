@@ -48,11 +48,6 @@ class Routes extends Component {
               path="/checkout/address"
               component={CheckoutContainer}
             />
-            <Route
-              exact
-              path="/checkout/credit"
-              component={CheckoutContainer}
-            />
             <Route component={Products} />
           </Switch>
         )}
