@@ -1,14 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
+import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import Products from './components/Products'
-import Home from './containers/Home'
 import Cart from './containers/Cart'
 import ProductDetails from './components/Products/ProductDetails'
-import moduleName from '../client/components/Products/'
-import CartSideBar from './components/Cart/CartSideBar'
 import {RegisterForm} from './components/Auth/RegisterForm'
 
 import {
@@ -61,7 +58,6 @@ class Routes extends Component {
         )}
         {/* Displays our Login component as a fallback */}
         <Route component={Products} />
-        {/* <Redirect to="/products" /> */}
       </Switch>
     )
   }
