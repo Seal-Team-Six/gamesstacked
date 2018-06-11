@@ -31,7 +31,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     googleConfig,
     (token, refreshToken, profile, done) => {
       const googleId = profile.id
-      const name = profile.displayName
+      const firstName = profile.displayName
       const email = profile.emails[0].value
 
       User.find({where: {googleId}})
@@ -39,7 +39,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
           foundUser =>
             foundUser
               ? done(null, foundUser)
-              : User.create({name, email, googleId}).then(createdUser =>
+              : User.create({firstName, email, googleId}).then(createdUser =>
                   done(null, createdUser)
                 )
         )
@@ -54,7 +54,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   router.get(
     '/callback',
     passport.authenticate('google', {
-      successRedirect: '/home',
+      successRedirect: '/products',
       failureRedirect: '/login'
     })
   )

@@ -18,7 +18,7 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-const editUser = () => ({type: EDIT_USER})
+const editUser = editedUser => ({type: EDIT_USER, editedUser})
 
 /**
  * THUNK CREATORS
@@ -65,6 +65,7 @@ export const notGoogleRegister = (
 export const notGoogleEdit = (id, user) => {
   return async dispatch => {
     const {data} = await axios.put(`/api/users/${id}`, user)
+    console.log('()()()()()()()', data)
     console.log('%%%%%% updated user on from server!')
     dispatch(editUser(data))
   }
@@ -89,7 +90,7 @@ export default function(state = defaultUser, action) {
     case REMOVE_USER:
       return defaultUser
     case EDIT_USER:
-      return action.user //////this might not be the correct return
+      return action.editedUser
     default:
       return state
   }

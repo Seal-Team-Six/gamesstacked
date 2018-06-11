@@ -17,7 +17,7 @@ import {
   requestCart,
   setLocalCart
 } from './reducers/cartReducer'
-import {Account} from './components/Account/Account'
+import Account from './components/Account/Account'
 import CheckoutContainer from './components/CheckoutContainer'
 
 /**
@@ -38,13 +38,7 @@ class Routes extends Component {
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
-            <Route
-              exact
-              path="/user"
-              render={history => (
-                <Account history={history} user={this.props.user} />
-              )}
-            />
+            <Route exact path="/user" component={Account} />
             <Route exact path="/home" component={UserHome} />
             <Route
               exact
@@ -75,7 +69,8 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user
     // that has a truthy id. Otherwise, state.user will be an empty object, and
     // state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    user: state.user
   }
 }
 
