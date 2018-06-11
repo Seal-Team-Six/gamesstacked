@@ -3,11 +3,12 @@ const {Card} = require('../db/models')
 
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+// api/cards
+router.get('/:userId', async (req, res, next) => {
   try {
     const cards = await Card.findAll({
       where: {
-        userId: req.body.userId
+        userId: req.params.userId
       }
     })
     res.send(cards)
@@ -20,7 +21,7 @@ router.post('/', async (req, res, next) => {
   try {
     const createdCard = await Card.create(req.body)
     if (createdCard) {
-      res.sendStatus(201)
+      res.send(createdCard)
     }
   } catch (err) {
     next(err)
@@ -35,7 +36,7 @@ router.put('/:cardId', async (req, res, next) => {
       }
     })
     if (updatedCard) {
-      res.sendStatus(201)
+      res.send(updatedCard)
     }
   } catch (err) {
     next(err)
