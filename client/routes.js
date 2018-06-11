@@ -7,6 +7,7 @@ import Products from './components/Products'
 import Cart from './containers/Cart'
 import ProductDetails from './components/Products/ProductDetails'
 import {RegisterForm} from './components/Auth/RegisterForm'
+import ThankYou from './components/ThankYou'
 
 import {
   setCart,
