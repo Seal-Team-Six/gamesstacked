@@ -7,17 +7,12 @@ const OrderItem = require('./orderItems')
 
 // Order Schema Setup
 const Order = db.define('order', {
-  orderStatus: Sequelize.STRING,
-  subTotal: Sequelize.INTEGER,
-  ccName: Sequelize.STRING,
-  ccNumber: Sequelize.STRING,
-  expiryMo: Sequelize.STRING,
-  expiryYr: Sequelize.STRING,
-  ccCvv: Sequelize.STRING
+  orderStatus: Sequelize.ENUM('shipped', 'paid', 'error'),
+  subTotal: Sequelize.FLOAT
 })
 
 // Creates order items and destroys cart and cart items after order is created
-Order.afterCreate(async (order, options) => {
+Order.afterCreate(async order => {
   const {userId, id} = order
 
   const cartItems = await CartItem.findAll({where: {userId}})
