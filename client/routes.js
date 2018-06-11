@@ -12,7 +12,6 @@ import {RegisterForm} from './components/Auth/RegisterForm'
 import {setCart, setItems, requestCart} from './reducers/cartReducer'
 import {Account} from './components/Account/Account'
 import CheckoutContainer from './components/CheckoutContainer'
-import CreditCardInfo from './components/CreditCards/CreditCardInfo'
 
 /**
  * COMPONENT
@@ -44,7 +43,6 @@ class Routes extends Component {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/credit" component={CreditCardInfo} />
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>

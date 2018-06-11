@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-  Card,
-  Grid,
-  Form,
-  Radio,
-  Icon,
-  Divider,
-  CardContent,
-  Table
-} from 'semantic-ui-react'
+import {connect} from 'react-redux'
+import {Card, Grid, Form, Icon, Table} from 'semantic-ui-react'
 
 class CreditCardInfo extends React.Component {
   cardRow(card) {
@@ -27,6 +19,8 @@ class CreditCardInfo extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+
     return (
       <Form>
         <Grid centered>
@@ -62,4 +56,12 @@ class CreditCardInfo extends React.Component {
   }
 }
 
-export default CreditCardInfo
+const mapStateToProps = state => {
+  return state
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreditCardInfo)
