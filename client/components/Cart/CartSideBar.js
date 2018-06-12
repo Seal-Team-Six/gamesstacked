@@ -15,7 +15,7 @@ class CartSideBar extends React.Component {
               <List.Content floated="right">
                 ${totalPrice.toFixed(2)}
               </List.Content>
-              <List.Content>Subtotal ({cartItems.length})</List.Content>
+              <List.Content>Subtotal</List.Content>
             </List.Item>
             <List.Item>
               <List.Content floated="right">Free</List.Content>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {createLocalCart} from '../helpers'
 
 /**
  * ACTION TYPES
@@ -76,6 +77,7 @@ export const logout = () => dispatch =>
     .then(_ => {
       dispatch(removeUser())
       history.push('/login')
+      createLocalCart()
     })
     .catch(err => console.log(err))
 
