@@ -29,7 +29,7 @@ class Addresses extends Component {
     const filteredUser = address.addresses.filter(ele => ele.id === user.id)
 
     const shipping = 1.99
-
+    const cartItems = cart.cartItems
     console.log('props', this.props)
 
     return (
@@ -106,14 +106,18 @@ class Addresses extends Component {
         <Grid.Row>
           <Grid.Column width={8}>
             <h4>Name of Product</h4>
-            <Grid divided="vertically">
-              <Grid.Row columns={2}>
-                <Grid.Column>
-                  <Image src="/assets/images/wireframe/paragraph.png" />
-                </Grid.Column>
-                <Grid.Column>Quantity: 1</Grid.Column>
-              </Grid.Row>
-            </Grid>
+            {cartItems.map(cartItem => {
+              return (
+                <Grid divided="vertically" key={cartItem.id}>
+                  <Grid.Row columns={2}>
+                    <Grid.Column>
+                      <Image src={`http://${cartItem.product.cover.url}`} />
+                    </Grid.Column>
+                    <Grid.Column>Quantity: 1</Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              )
+            })}
           </Grid.Column>
         </Grid.Row>
       </Grid>
