@@ -64,7 +64,7 @@ class Account extends Component {
               return (
                 <li key={order.id}>
                   <div>
-                    <b>Previous Orders: {order.subTotal}</b>
+                    <b>Previous Sub Total: {order.subTotal}</b>
                   </div>
                 </li>
               )
