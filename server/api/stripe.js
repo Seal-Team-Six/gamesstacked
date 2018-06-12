@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const STRIPE_SECRET = require('../../secrets')
+const {STRIPE_SECRET} = require('../../secrets')
 const stripe = require('stripe')
 
 const configedStripe = stripe(process.env.STRIPE_SECRET || STRIPE_SECRET)
