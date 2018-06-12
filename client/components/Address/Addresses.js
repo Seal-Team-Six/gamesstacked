@@ -99,7 +99,7 @@ class Addresses extends Component {
                 </Table.Row>
               </Table.Body>
             </Table>
-            <Stripe />
+            <Stripe ownProps={this.props.ownProps} />
           </Grid.Column>
         </Grid.Row>
 
