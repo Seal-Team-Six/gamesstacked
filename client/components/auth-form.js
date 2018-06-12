@@ -2,47 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment
-} from 'semantic-ui-react'
-import SocialButton from './UI/SocialButton'
-import {withRouter, Link} from 'react-router-dom'
 
-/**
- * COMPONENT
- */
+import {Grid, Button, Form, Message, Segment, Header} from 'semantic-ui-react'
+import SocialButton from './UI/SocialButton'
+import {Link} from 'react-router-dom'
 
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    // <div>
-    //   <Form onSubmit={handleSubmit} name={name}>
-    //     <div>
-    //       <input name="email" type="text" placeholder="Email" />
-    //     </div>
-    //     <div>
-    //       <input name="password" type="password" placeholder="Password" />
-    //     </div>
-    //     <div>
-    //       <Button type="submit">{displayName}</Button>
-    //     </div>
-    //     {error && error.response && <div> {error.response.data} </div>}
-    //   </Form>
-    //   <SocialButton
-    //     href="/auth/google"
-    //     displayName={displayName}
-    //     className="google plus"
-    //     name="Google"
-    //   />
-    // </div>
-
     <div className="login-form">
       <style>{`
       body > div,
@@ -99,13 +67,6 @@ const AuthForm = props => {
   )
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = state => {
   return {
     name: 'login',
@@ -137,9 +98,6 @@ const mapDispatch = dispatch => {
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
-/**
- * PROP TYPES
- */
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,

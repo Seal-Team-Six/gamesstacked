@@ -15,7 +15,6 @@ export default {
   products,
   cart,
   modal,
-  cards,
   orders,
   users
 }

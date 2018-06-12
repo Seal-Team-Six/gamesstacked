@@ -66,8 +66,6 @@ export const notGoogleRegister = (
 export const notGoogleEdit = (id, user) => {
   return async dispatch => {
     const {data} = await axios.put(`/api/users/${id}`, user)
-    console.log('()()()()()()()', data)
-    console.log('%%%%%% updated user on from server!')
     dispatch(editUser(data))
   }
 }

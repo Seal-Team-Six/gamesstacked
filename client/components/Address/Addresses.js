@@ -1,17 +1,7 @@
 import React, {Component} from 'react'
-import {
-  Grid,
-  Card,
-  Icon,
-  Button,
-  Table,
-  Modal,
-  Container,
-  Image
-} from 'semantic-ui-react'
+import {Grid, Button, Table, Modal, Image} from 'semantic-ui-react'
 import {openModal} from '../../reducers/addressReducer'
 import {EditAddressForm} from './EditAddressForm'
-import AddAddressForm from './AddAddressForm'
 import {connect} from 'react-redux'
 import Stripe from '../CreditCards/Stripe'
 
@@ -24,16 +14,13 @@ class Addresses extends Component {
   }
 
   show = size => () => this.setState({size, open: true})
-  close = () => {
-    console.log('hello world')
-  }
+  close = () => {}
 
   render() {
     const {user, address, cart} = this.props
     const filteredUser = address.addresses.filter(ele => ele.id === user.id)
     const {open, size} = this.state
     const cartItems = cart.cartItems
-    console.log('props', this.props)
 
     return (
       <Grid container celled>

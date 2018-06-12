@@ -89,7 +89,6 @@ export const setCart = userId => {
             }
           })
 
-          console.log('[LOCALSTORAGE]: Cart removed.')
           localStorage.removeItem('cart')
         })
         .catch(err => {

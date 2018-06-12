@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
 import {Container, Button} from 'semantic-ui-react'
 import {fetchOrders} from '../../reducers/orderReducer'
@@ -30,11 +28,9 @@ class Account extends Component {
   render() {
     const {user} = this.props
     const {orders} = this.props
-    console.log('**************', this.props)
     const theseOrders = orders.filter(
       order => order.userId === parseInt(user.id)
     )
-    // console.log(theseOrders)
 
     if (!orders.length) return 'Loading'
     return (
