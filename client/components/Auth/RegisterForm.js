@@ -1,32 +1,48 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import PropTypes from 'prop-types';
 import {auth, notGoogleRegister} from '../../reducers/store'
-import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
 import SocialButton from '../UI/SocialButton'
-// import Signup from '../auth-form'
 import {Field, reduxForm} from 'redux-form'
+
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+  Input,
+  Container
+} from 'semantic-ui-react'
 
 /**
  * COMPONENT
  */
 
 const FIELDS = [
-  {label: 'First Name', name: 'firstName'},
-  {label: 'Last Name', name: 'lastName'},
-  {label: 'Email', name: 'email'},
-  {label: 'Password', name: 'password'},
+  {label: 'First Name', name: 'firstName', icon: 'user'},
+  {label: 'Last Name', name: 'lastName', icon: 'bug'},
+  {label: 'Email', name: 'email', icon: 'mail'},
+  {label: 'Password', name: 'password', icon: 'lock'},
   {label: 'Password Confirmation', name: 'passwordConfirm'}
 ]
 
 class RegForm extends Component {
   renderField(field) {
-    const {label, type, input, meta: {error, touched}} = field
+    const {label, type, icon, input, meta: {error, touched}} = field
+    console.log(field)
     return (
-      <Form.Group>
-        <Input type={type} placeholder={label} {...input} />
+      <div>
+        <Form.Input
+          iconPosition="left"
+          icon={icon}
+          type={type}
+          placeholder={label}
+          {...input}
+        />
         <div className="error">{touched ? error : ''}</div>
-      </Form.Group>
+      </div>
     )
   }
 
@@ -34,38 +50,83 @@ class RegForm extends Component {
     const {name, displayName, handleSubmit, error} = this.props
 
     return (
-      <div>
-        <div>
-          <Container>
-            <Form
-              onSubmit={handleSubmit(this.props.onHandleSubmit.bind(this))}
-              name={name}
-            >
-              {FIELDS.map(field => {
-                return (
-                  <Field
-                    key={field.label}
-                    type={field.name.includes('password') ? 'password' : 'text'}
-                    component={this.renderField}
-                    label={field.label}
-                    name={field.name}
-                  />
-                )
-              })}
-              <div>
-                <Button type="submit">{displayName}</Button>
-              </div>
-              {error && error.response && <div> {error.response.data} </div>}
-            </Form>
-            <SocialButton
-              href="/auth/google"
-              displayName={displayName}
-              className="google plus"
-              name="Google"
-            />
-          </Container>
-        </div>
-        <div>{/* <Signup /> */}</div>
+      <div className="login-form">
+        <style>{`
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+  height: 100%;
+}
+`}</style>
+        <Grid
+          textAlign="center"
+          style={{height: '100%'}}
+          verticalAlign="middle"
+        >
+          <Grid.Column style={{maxWidth: 450}}>
+            <Header as="h2" color="teal" textAlign="center">
+              <Image src="https://cdn.onlinewebfonts.com/svg/img_332705.png" />{' '}
+              Register your new account
+            </Header>
+            <Segment stacked>
+              <Form
+                onSubmit={handleSubmit(this.props.onHandleSubmit.bind(this))}
+                name={name}
+                size="large"
+              >
+                {/* <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="E-mail address"
+                  name="email"
+                />
+
+                <Form.Input
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                /> */}
+
+                {FIELDS.map(field => {
+                  return (
+                    <Field
+                      key={field.label}
+                      type={
+                        field.name.includes('password') ? 'password' : 'text'
+                      }
+                      component={this.renderField}
+                      label={field.label}
+                      name={field.name}
+                      icon={field.icon}
+                    />
+                  )
+                })}
+
+                <div className="formGroup">
+                  <Button type="submit" color="teal" fluid size="large">
+                    {displayName}
+                  </Button>
+                </div>
+
+                {error && error.response && <div> {error.response.data} </div>}
+              </Form>
+
+              <SocialButton
+                href="/auth/google"
+                displayName={displayName}
+                className="google plus"
+                name="Google"
+              />
+            </Segment>
+            <Message>
+              Read Terms <a> Read</a>
+            </Message>
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }

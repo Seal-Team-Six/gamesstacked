@@ -3,32 +3,66 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
 
-import {Button, Form} from 'semantic-ui-react'
+import {Grid, Button, Form, Message, Segment, Header} from 'semantic-ui-react'
 import SocialButton from './UI/SocialButton'
+import {Link} from 'react-router-dom'
 
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <Form onSubmit={handleSubmit} name={name}>
-        <div>
-          <input name="email" type="text" placeholder="Email" />
-        </div>
-        <div>
-          <input name="password" type="password" placeholder="Password" />
-        </div>
-        <div>
-          <Button type="submit">{displayName}</Button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </Form>
-      <SocialButton
-        href="/auth/google"
-        displayName={displayName}
-        className="google plus"
-        name="Google"
-      />
+    <div className="login-form">
+      <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+      <Grid textAlign="center" style={{height: '100%'}} verticalAlign="middle">
+        <Grid.Column style={{maxWidth: 450}}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src="https://cdn.onlinewebfonts.com/svg/img_332705.png" />{' '}
+            Log-in to your account
+          </Header>
+          <Segment stacked>
+            <Form onSubmit={handleSubmit} name={name} size="large">
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+              />
+              <div className="formGroup">
+                <Button type="submit" color="teal" fluid size="large">
+                  {displayName}
+                </Button>
+              </div>
+
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+
+            <SocialButton
+              href="/auth/google"
+              displayName={displayName}
+              className="google plus"
+              name="Google"
+            />
+          </Segment>
+          <Message>
+            New to us? <Link to="/register"> Sign Up</Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
     </div>
   )
 }
@@ -36,7 +70,7 @@ const AuthForm = props => {
 const mapLogin = state => {
   return {
     name: 'login',
-    displayName: 'Login',
+    displayName: 'Sign in',
     error: state.user.error
   }
 }
@@ -64,9 +98,6 @@ const mapDispatch = dispatch => {
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
-/**
- * PROP TYPES
- */
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,

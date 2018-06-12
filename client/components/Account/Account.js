@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {EditAccountForm} from '../Auth/EditAccountForm'
-import {Container} from 'semantic-ui-react'
+import {Container, Button} from 'semantic-ui-react'
+import {fetchOrders} from '../../reducers/orderReducer'
 
 /**
  * COMPONENT
  */
+
 class Account extends Component {
   constructor(props) {
     super(props)
@@ -13,6 +15,10 @@ class Account extends Component {
       isHidden: true
     }
   }
+  componentDidMount() {
+    this.props.fetchOrders()
+  }
+
   toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden
@@ -21,7 +27,14 @@ class Account extends Component {
 
   render() {
     const {user} = this.props
+    const {orders} = this.props
+    console.log('**************', this.props)
+    const theseOrders = orders.filter(
+      order => order.userId === parseInt(user.id)
+    )
+    // console.log(theseOrders)
 
+    if (!orders.length) return 'Loading'
     return (
       <Container>
         <div>
@@ -33,11 +46,28 @@ class Account extends Component {
           </div>
 
           <div>
-            <button type="button" onClick={this.toggleHidden.bind(this)}>
+            <Button
+              className="formGroup"
+              onClick={this.toggleHidden.bind(this)}
+            >
               Edit Account Info
-            </button>
+            </Button>
             {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
           </div>
+        </div>
+
+        <div>
+          <ul>
+            {theseOrders.map(order => {
+              return (
+                <li key={order.id}>
+                  <div>
+                    <b>Previous Sub Total: {order.subTotal}</b>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </Container>
     )
@@ -49,8 +79,9 @@ class Account extends Component {
  */
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    orders: state.orders.collection
   }
 }
 
-export default connect(mapState, null)(Account)
+export default connect(mapState, {fetchOrders})(Account)
