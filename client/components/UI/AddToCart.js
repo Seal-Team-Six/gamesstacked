@@ -35,7 +35,6 @@ class AddToCart extends React.Component {
 
   render() {
     const {cartId, user, match: {params}} = this.props
-    // console.log('[ADD TO CART]:', this.props)
     return (
       <Button
         className="product-cover-button"
