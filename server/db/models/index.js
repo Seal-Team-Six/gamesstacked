@@ -4,7 +4,6 @@ const User = require('./user')
 const Cart = require('./Cart')
 const CartItems = require('./CartItems')
 const Address = require('./address')
-const Card = require('./card')
 const Genre = require('./genre')
 const Product = require('./product')
 const Order = require('./order')
@@ -39,9 +38,6 @@ Product.hasMany(CartItems)
 CartItems.belongsTo(User)
 User.hasMany(CartItems)
 
-Card.belongsTo(User)
-User.hasMany(Card)
-
 Product.belongsToMany(Genre, {through: 'productgenre'})
 Genre.belongsToMany(Product, {through: 'productgenre'})
 
@@ -65,7 +61,6 @@ module.exports = {
   Cart,
   CartItems,
   Address,
-  Card,
   Order,
   OrderItem
 }
