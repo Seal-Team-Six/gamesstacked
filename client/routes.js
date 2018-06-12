@@ -18,6 +18,9 @@ import {
 import Account from './components/Account/Account'
 import CheckoutContainer from './components/CheckoutContainer'
 
+import AuthenticateAdmin from './hoc/AdminAuthentication'
+import AdminRoutes from './components/Admin/AdminRoutes'
+
 /**
  * COMPONENT
  */
@@ -32,13 +35,17 @@ class Routes extends Component {
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/cart" component={Cart} />{' '}
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/checkout" component={CheckoutContainer} />
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
             <Route exact path="/user" component={Account} />
-            <Route exact path="/home" component={UserHome} />
-            <Route exact path="/checkout" component={CheckoutContainer} />
+            <Route
+              exact
+              path="/admin"
+              component={AuthenticateAdmin(AdminRoutes)}
+            />
             <Route component={Products} />
           </Switch>
         )}
