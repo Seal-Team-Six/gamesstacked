@@ -49,8 +49,6 @@ describe('thunk creators', () => {
       mockAxios.onGet('/api/address').replyOnce(200, addressExample)
       return store.dispatch(fetchAddresses()).then(() => {
         const actions = store.getActions()
-        console.log(actions)
-
         expect(actions[0].type).to.be.equal('GOT_ADDRESS')
         expect(actions[0].address).to.be.deep.equal(addressExample)
       })
