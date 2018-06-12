@@ -13,8 +13,8 @@ class ProductsList extends React.Component {
             {products.map(product => {
               return (
                 <Grid.Column
-                  mobile={16}
-                  tablet={8}
+                  mobile={8}
+                  tablet={4}
                   computer={4}
                   key={product.id}
                 >
