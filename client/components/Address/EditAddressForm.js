@@ -65,8 +65,13 @@ class EditForm extends Component {
     const {label, type, input, meta: {error, touched}} = field
 
     return (
-      <Form.Group>
-        <Input type={type} placeholder={label} {...input} />
+      <Form.Group widths="equal">
+        <Form.Field
+          control={Input}
+          type={type}
+          placeholder={label}
+          {...input}
+        />
         <div className="error">{touched ? error : ''}</div>
       </Form.Group>
     )
@@ -95,7 +100,9 @@ class EditForm extends Component {
                 )
               })}
               <div>
-                <Button type="submit">Add Address</Button>
+                <Button positive type="submit">
+                  Add Address
+                </Button>
               </div>
               {error && error.response && <div>{error.response.data}</div>}
             </Form>

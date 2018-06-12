@@ -26,4 +26,4 @@ deploy:
   provider: heroku
   app: gamesstacked # see README
   api_key:
-    secure: M80PMCwYylim5v1Q/wM1eQYyyf6XvxD2SlqjDrfjXtey6RNIMCRquY+TWvsQIaZ7pXMc+nrrudIrYWVk62sfe2TBmWlw0G9rP6ghhTSSPCfHfxQ/GAnmzgxQPB/NW4T9RGgdnPZ1cM+rZ+/g5jp/ZWW5uYpvQk48D3I5SWm6GbQgp45REt1xcZI7i8tw2Ebu3zQ9UTy02U21W94QQ/ZwiY73Qh4PQ4lz+BKXJQ3l5gTHFzcObmlL0U6JByodfPiF0jgze5WB5MJKIzt+Vvj0vXLRN2mNGXv5pYTAf5/Wyatx7YbxwNqSI1TUwz5/rlIyKm6SHIfHZUTMYCCDHb6/iUIi0YicMc7oFgA1keKEn3+iRz7/n+kp/q6iLTfnt2lhpd7/SsmVZpzvBETCy/cyna9j8nM5rrbESjSgXmFyv/Wn6Ggz1XzCpeoPpKPsmnpafA0HVXNOO82wiPIC8bwljdbXk1WmMoYw5XMPwtYDwO48vcGKmpcgFygPvDiQQv1gFwp4gmAgSm8Vt+NcSIEudsMBAXrV+kOysN32CmWBRtpEOEcPsdEC86P0KIT7SRFLojHrHWIubgpa1rIrngZqXa3F7D0Hy/5TqOhqmNP3XbAnmvcq6BnuaanaagN+ceNQr4f3DXy+GgDosv3414G2bxa0WUPNxqCGgAqjxjgGGjY= # see README
+    secure: 193bad88-29ff-4bd9-9322-784d4784fc00 # see README
