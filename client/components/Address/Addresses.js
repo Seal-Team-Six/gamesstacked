@@ -18,22 +18,32 @@ import Stripe from '../CreditCards/Stripe'
 class Addresses extends Component {
   constructor(props) {
     super(props)
-    // this.state = {   isHidden: true }
+    this.state = {
+      open: false
+    }
   }
-  // toggleHidden() {   this.setState({     isHidden: !this.state.isHidden   }) }
 
   show = size => () => this.setState({size, open: true})
+  close = () => {
+    console.log('hello world')
+  }
 
   render() {
     const {user, address, cart} = this.props
     const filteredUser = address.addresses.filter(ele => ele.id === user.id)
-
-    const shipping = 1.99
+    const {open, size} = this.state
     const cartItems = cart.cartItems
     console.log('props', this.props)
 
     return (
       <Grid container celled>
+        <Modal size={size} open={open} onClose={this.close}>
+          <Modal.Header>Edit Address</Modal.Header>
+          <Modal.Content>
+            <EditAddressForm userAddress={filteredUser} close={close} />
+          </Modal.Content>
+        </Modal>
+
         <Grid.Row>
           <Grid.Column width={8}>
             <Grid divided="vertically">
@@ -57,18 +67,9 @@ class Addresses extends Component {
                   </address>
                 </Grid.Column>
                 <Grid.Column>
-                  <p>Payment Method</p>
-                  <Grid divided="vertically">
-                    <Grid.Row columns={2}>
-                      <Grid.Column>
-                        <Image src="http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png" />
-                      </Grid.Column>
-                      <Grid.Column>
-                        <p>Master Card ...2474</p>
-                        <p>Exp: 01/2019</p>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
+                  <Button fluid onClick={this.show('small')}>
+                    Edit Address
+                  </Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -83,18 +84,12 @@ class Addresses extends Component {
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell>Shipping</Table.Cell>
-                  <Table.Cell>${shipping}</Table.Cell>
-                </Table.Row>
-                <Table.Row>
                   <Table.Cell>
                     Order total({cart.cartQuantity}
                     )
                   </Table.Cell>
                   <Table.Cell>
-                    ${(
-                      parseFloat(cart.totalPrice) + parseFloat(shipping)
-                    ).toFixed(2)}
+                    ${parseFloat(cart.totalPrice).toFixed(2)}
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -111,9 +106,14 @@ class Addresses extends Component {
                 <Grid divided="vertically" key={cartItem.id}>
                   <Grid.Row columns={2}>
                     <Grid.Column>
-                      <Image src={`http://${cartItem.product.cover.url}`} />
+                      <Image
+                        src={`http://${cartItem.product.cover.url}`}
+                        style={{
+                          width: '75px'
+                        }}
+                      />
                     </Grid.Column>
-                    <Grid.Column>Quantity: 1</Grid.Column>
+                    <Grid.Column>Quantity: {cartItem.quantity}</Grid.Column>
                   </Grid.Row>
                 </Grid>
               )
