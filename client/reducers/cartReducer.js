@@ -36,21 +36,26 @@ export const setCart = userId => {
       axios
         .post('/api/cart', userId)
         .then(res => {
+          const {id, cartItems} = res.data[0]
           dispatch({
             type: SET_CART,
             payload: {
-              id: res.data[0].id,
-              cartItems: res.data[0].cartItems
+              id,
+              cartItems
             }
           })
 
-          if (localCart.cartItems && !res.data[0].cartItems.length) {
-            localCart.cartItems.forEach(item => {
+          localCart.cartItems.forEach(localItem => {
+            if (
+              !cartItems
+                .map(item => item.productId)
+                .includes(localItem.productId)
+            ) {
               axios
                 .post('/api/cart_items', {
-                  quantity: Number(item.quantity),
+                  quantity: Number(localItem.quantity),
                   cartId: res.data[0].id,
-                  productId: item.productId,
+                  productId: localItem.productId,
                   userId
                 })
                 .then(res => {
@@ -59,8 +64,29 @@ export const setCart = userId => {
                     payload: res.data
                   })
                 })
-            })
-          }
+            } else if (
+              cartItems
+                .map(item => item.productId)
+                .includes(localItem.productId)
+            ) {
+              const cartItem = cartItems.find(
+                item => item.productId === localItem.productId
+              )
+              axios
+                .put(`/api/cart_items/${cartItem.id}`, {
+                  quantity: cartItem.quantity + localItem.quantity
+                })
+                .then(res => {
+                  dispatch({
+                    type: ADD_QUANTITY,
+                    payload: res.data.item
+                  })
+                })
+                .catch(err => {
+                  console.log(err)
+                })
+            }
+          })
 
           console.log('[LOCALSTORAGE]: Cart removed.')
           localStorage.removeItem('cart')
@@ -172,19 +198,32 @@ export const deleteItem = (id, userId) => {
   }
 }
 
-export const addQuantity = (id, quantity) => {
+export const addQuantity = (id, quantity, userId) => {
+  const localCart = JSON.parse(localStorage.getItem('cart'))
+
   return dispatch => {
-    axios
-      .put(`/api/cart_items/${id}`, {quantity})
-      .then(res => {
-        dispatch({
-          type: ADD_QUANTITY,
-          payload: res.data.item
+    if (userId) {
+      axios
+        .put(`/api/cart_items/${id}`, {quantity})
+        .then(res => {
+          dispatch({
+            type: ADD_QUANTITY,
+            payload: res.data.item
+          })
         })
+        .catch(err => {
+          console.log(err)
+        })
+    } else {
+      const cartItem = localCart.cartItems.find(item => item.id === id)
+      cartItem.quantity += Number(quantity - cartItem.quantity)
+      localStorage.setItem('cart', JSON.stringify(localCart))
+
+      dispatch({
+        type: ADD_QUANTITY,
+        payload: cartItem
       })
-      .catch(err => {
-        console.log(err)
-      })
+    }
   }
 }
 
