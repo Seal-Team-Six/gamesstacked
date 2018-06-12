@@ -7,11 +7,9 @@ class AdminRoutes extends React.Component {
     const {path} = this.props.match
 
     return (
-      // <Switch>
-      // 	<Route path={`${path}`} exact component={Campuses} />
-      // </Switch>
-
-      <div>Admin</div>
+      <Switch>
+        <Route path={`${path}`} exact component={Orders} />
+      </Switch>
     )
   }
 }
