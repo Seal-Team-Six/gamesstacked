@@ -36,7 +36,6 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       const lastName = splitName[1]
       const email = profile.emails[0].value
       const imageUrl = profile.photos ? profile.photos[0].value : null
-      console.log(profile)
       User.find({where: {googleId}})
         .then(
           foundUser =>

@@ -28,11 +28,9 @@ class Account extends Component {
   render() {
     const {user} = this.props
     const {orders} = this.props
-    console.log('**************', this.props)
     const theseOrders = orders.filter(
       order => order.userId === parseInt(user.id)
     )
-    // console.log(theseOrders)
 
     if (!orders.length) return 'Loading'
     return (

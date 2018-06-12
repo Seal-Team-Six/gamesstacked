@@ -14,16 +14,13 @@ class Addresses extends Component {
   }
 
   show = size => () => this.setState({size, open: true})
-  close = () => {
-    console.log('hello world')
-  }
+  close = () => {}
 
   render() {
     const {user, address, cart} = this.props
     const filteredUser = address.addresses.filter(ele => ele.id === user.id)
     const {open, size} = this.state
     const cartItems = cart.cartItems
-    console.log('props', this.props)
 
     return (
       <Grid container celled>
