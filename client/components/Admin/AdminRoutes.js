@@ -3,15 +3,17 @@ import {connect} from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 
 import {fetchOrders, requestOrders} from '../../reducers/orderReducer'
+import {fetchUsers} from '../../reducers/usersReducer'
 import Admin from './'
 const {Dashboard, Orders, SingleOrder} = Admin
 
 class AdminRoutes extends React.Component {
   componentDidMount() {
-    const {fetchOrders, requestOrders} = this.props
+    const {fetchOrders, requestOrders, fetchUsers} = this.props
 
     requestOrders()
     fetchOrders()
+    fetchUsers()
   }
   render() {
     const {path} = this.props.match
@@ -43,5 +45,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   fetchOrders,
-  requestOrders
+  requestOrders,
+  fetchUsers
 })(AdminRoutes)

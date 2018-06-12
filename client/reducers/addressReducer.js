@@ -35,9 +35,9 @@ export const closeModal = () => ({
 /**
  * THUNK CREATORS
  */
-export const fetchAddresses = address => {
+export const fetchAddresses = () => {
   return async dispatch => {
-    const {data} = await axios.get(`/api/address`, address)
+    const {data} = await axios.get(`/api/address`)
     dispatch(gotAddress(data))
   }
 }
