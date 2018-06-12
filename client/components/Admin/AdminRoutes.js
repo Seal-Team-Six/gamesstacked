@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Link} from 'react-router-dom'
 
 import {fetchOrders, requestOrders} from '../../reducers/orderReducer'
 import {fetchUsers} from '../../reducers/usersReducer'
@@ -16,11 +16,13 @@ class AdminRoutes extends React.Component {
   render() {
     const {path} = this.props.match
     return (
-      <Switch>
-        <Route exact path={`${path}`} component={Dashboard} />
-        <Route exact path={`${path}/orders`} component={Orders} />
-        <Route path={`${path}/orders/:id`} component={SingleOrder} />
-      </Switch>
+      <div>
+        <Switch>
+          <Route exact path={`${path}`} component={Dashboard} />
+          <Route exact path={`${path}/orders`} component={Orders} />
+          <Route path={`${path}/orders/:id`} component={SingleOrder} />
+        </Switch>
+      </div>
     )
   }
 }
