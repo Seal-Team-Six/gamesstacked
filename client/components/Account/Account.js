@@ -8,7 +8,7 @@ import {Container} from 'semantic-ui-react'
 /**
  * COMPONENT
  */
-export class Account extends Component {
+class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -22,7 +22,7 @@ export class Account extends Component {
   }
 
   render() {
-    const user = this.props.user
+    const {user} = this.props
 
     return (
       <Container>
@@ -51,7 +51,7 @@ export class Account extends Component {
  */
 const mapState = state => {
   return {
-    user: state.user.firstName
+    user: state.user
   }
 }
 
