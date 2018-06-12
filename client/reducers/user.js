@@ -71,16 +71,15 @@ export const notGoogleEdit = (id, user) => {
   }
 }
 
-export const logout = () => dispatch => {
+export const logout = () => dispatch =>
   axios
     .post('/auth/logout')
     .then(_ => {
       dispatch(removeUser())
       history.push('/login')
+      createLocalCart()
     })
     .catch(err => console.log(err))
-  createLocalCart()
-}
 
 /**
  * REDUCER
