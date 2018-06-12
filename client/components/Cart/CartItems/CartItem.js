@@ -14,7 +14,7 @@ class CartItem extends React.Component {
   }
 
   render() {
-    const {cartItem: {product, id, quantity}, deleteItem} = this.props
+    const {cartItem: {product, id, quantity}, deleteItem, user} = this.props
 
     return (
       <Table.Row>
@@ -35,7 +35,7 @@ class CartItem extends React.Component {
           />
         </Table.Cell>
         <Table.Cell>
-          <Icon onClick={() => deleteItem(id)} link name="delete" />
+          <Icon onClick={() => deleteItem(id, user.id)} link name="delete" />
         </Table.Cell>
         <Table.Cell textAlign="right">${product.price}</Table.Cell>
       </Table.Row>
@@ -43,7 +43,13 @@ class CartItem extends React.Component {
   }
 }
 
-export default connect(null, {
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {
   deleteItem,
   addQuantity
 })(CartItem)
