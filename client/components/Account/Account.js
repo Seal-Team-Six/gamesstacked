@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
-import {Container} from 'semantic-ui-react'
+import {Container, Button} from 'semantic-ui-react'
 
 /**
  * COMPONENT
  */
+
 class Account extends Component {
   constructor(props) {
     super(props)
@@ -35,9 +36,9 @@ class Account extends Component {
           </div>
 
           <div>
-            <button onClick={this.toggleHidden.bind(this)}>
+            <Button class="formGroup" onClick={this.toggleHidden.bind(this)}>
               Edit Account Info
-            </button>
+            </Button>
             {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
           </div>
         </div>

@@ -8,15 +8,15 @@ import {Account} from './Account'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
-
+const user = {firstName: 'team6'}
 describe('Account', () => {
   let userAccount
 
   beforeEach(() => {
-    userAccount = shallow(<Account firstName="team6" />)
+    userAccount = shallow(<Account user />)
   })
 
-  it('renders the email in an h3', () => {
+  it('renders the first name in an h3', () => {
     expect(userAccount.find('h3').text()).to.be.equal('Welcome, team6')
   })
 })

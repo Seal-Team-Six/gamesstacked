@@ -157,3 +157,7 @@ div.column.hidden {
   display: flex;
   width: 100%;
 }
+
+.formGroup {
+  margin-bottom: 15px;
+}

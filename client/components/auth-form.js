@@ -43,11 +43,6 @@ const AuthForm = props => {
     // </div>
 
     <div className="login-form">
-      {/*
-      Heads up! The styles below are necessary for the correct render of this example.
-      You can do same with CSS, the main idea is that all the elements up to the `Grid`
-      below must have a height of 100%.
-    */}
       <style>{`
       body > div,
       body > div > div,
@@ -61,8 +56,8 @@ const AuthForm = props => {
             <Image src="https://cdn.onlinewebfonts.com/svg/img_332705.png" />{' '}
             Log-in to your account
           </Header>
-          <Form onSubmit={handleSubmit} name={name} size="large">
-            <Segment stacked>
+          <Segment stacked>
+            <Form onSubmit={handleSubmit} name={name} size="large">
               <Form.Input
                 fluid
                 icon="user"
@@ -78,21 +73,22 @@ const AuthForm = props => {
                 type="password"
                 name="password"
               />
+              <div className="formGroup">
+                <Button type="submit" color="teal" fluid size="large">
+                  {displayName}
+                </Button>
+              </div>
 
-              <Button type="submit" color="teal" fluid size="large">
-                {displayName}
-              </Button>
-            </Segment>
-            {error && error.response && <div> {error.response.data} </div>}
-          </Form>
-          <div>
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+
             <SocialButton
               href="/auth/google"
               displayName={displayName}
               className="google plus"
               name="Google"
             />
-          </div>
+          </Segment>
           <Message>
             New to us? <a href="#"> Sign Up</a>
           </Message>
