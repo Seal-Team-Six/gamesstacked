@@ -1,15 +1,17 @@
 import user from './user'
-import addressReducer from './addressReducer'
+import addresses from './addressReducer'
 import products from './productsReducer'
 import cart from './cartReducer'
 import modal from './modalReducer'
+import cards from './cardReducer'
 import {reducer as reduxForm} from 'redux-form'
 
 export default {
   form: reduxForm,
   user,
-  addressReducer,
+  addresses,
   products,
   cart,
-  modal
+  modal,
+  cards
 }
