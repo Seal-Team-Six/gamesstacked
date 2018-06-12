@@ -4,6 +4,7 @@ const productSeed = require('../server/db/seeds/productSeed')
 const userSeed = require('../server/db/seeds/userSeed')
 const addressSeed = require('../server/db/seeds/addressSeed')
 const cardSeed = require('../server/db/seeds/cardSeed')
+const orderSeed = require('../server/db/seeds/orderSeed')
 
 const seed = async () => {
   await db.sync({force: true})
@@ -12,6 +13,7 @@ const seed = async () => {
   await cardSeed()
   await genreSeed()
   await productSeed()
+  await orderSeed()
 }
 
 // Execute the `seed` function, IF we ran this module directly (`node seed`).

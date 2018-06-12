@@ -40,6 +40,16 @@ class Navbar extends React.Component {
     }
   }
 
+  renderAdminLinks() {
+    if (this.props.admin) {
+      return (
+        <Link to="/admin">
+          <Menu.Item>Admin</Menu.Item>
+        </Link>
+      )
+    }
+  }
+
   cartQuantity() {
     const {cartItems} = this.props
 
@@ -60,6 +70,7 @@ class Navbar extends React.Component {
           </Menu.Item>
         </Link>
         <Menu.Menu position="right">
+          {this.renderAdminLinks()}
           {this.renderSessionLinks()}
           <Link to="/cart">
             <Menu.Item>Cart({cartQuantity})</Menu.Item>
@@ -75,7 +86,8 @@ const mapState = state => {
 
   return {
     isLoggedIn: !!state.user.id,
-    cartQuantity
+    cartQuantity,
+    admin: state.user.admin
   }
 }
 
