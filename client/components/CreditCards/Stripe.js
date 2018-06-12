@@ -3,6 +3,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import StripeCheckout from 'react-stripe-checkout'
 
+import {resetCart} from '../../reducers/cartReducer'
+
 const CURRENCY = 'USD'
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
@@ -26,6 +28,7 @@ class Checkout extends React.Component {
         subTotal: amount,
         userId
       })
+      this.props.resetCart()
       ownProps.history.push('/thankyou')
     } catch (err) {
       throw err
@@ -57,4 +60,5 @@ const mapStateToProps = (state, ownProps) => {
     ...ownProps
   }
 }
-export default connect(mapStateToProps)(Checkout)
+
+export default connect(mapStateToProps, {resetCart})(Checkout)
