@@ -123,8 +123,7 @@ body > div > div > div.login-form {
               />
             </Segment>
             <Message>
-              Read Terms{' '}
-              <a href="https://en.wikipedia.org/wiki/Tyrannosaurus"> Read</a>
+              Read Terms <a> Read</a>
             </Message>
           </Grid.Column>
         </Grid>

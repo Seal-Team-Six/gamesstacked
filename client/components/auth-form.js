@@ -12,6 +12,7 @@ import {
   Segment
 } from 'semantic-ui-react'
 import SocialButton from './UI/SocialButton'
+import {withRouter, Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -90,7 +91,7 @@ const AuthForm = props => {
             />
           </Segment>
           <Message>
-            New to us? <a href="#"> Sign Up</a>
+            New to us? <Link to="/register"> Sign Up</Link>
           </Message>
         </Grid.Column>
       </Grid>
