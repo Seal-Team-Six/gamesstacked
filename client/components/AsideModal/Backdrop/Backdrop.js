@@ -4,6 +4,8 @@ import {toggleModal} from '../../../reducers/modalReducer'
 
 class Backdrop extends React.Component {
   render() {
+    console.log(this.props)
+
     return this.props.showModal ? (
       <div onClick={this.props.back} className="backdrop" />
     ) : null

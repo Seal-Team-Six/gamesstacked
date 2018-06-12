@@ -23,11 +23,10 @@ class AsideModal extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   const {showModal} = state.modal
 
-  return {
-    showModal
-  }
+  return {showModal}
 }
 
 export default connect(mapStateToProps)(AsideModal)
