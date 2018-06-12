@@ -1,12 +1,5 @@
 import React, {Component} from 'react'
-import {
-  Grid,
-  Container,
-  Image,
-  Button,
-  Statistic,
-  Header
-} from 'semantic-ui-react'
+import {Grid, Container, Image, Statistic, Header} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchProduct, resetProduct} from '../../reducers/productsReducer'
 import AddToCart from '../UI/AddToCart'
@@ -23,14 +16,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const {
-      selectedProduct,
-      user,
-      cartId,
-      addToCart,
-      match: {params},
-      match
-    } = this.props
+    const {selectedProduct, match} = this.props
 
     const ratings = score => {
       if (score >= 75) {
