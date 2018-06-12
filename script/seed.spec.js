@@ -1,8 +1,8 @@
-// 'use strict'
-// /* global describe beforeEach it */
+'use strict'
+/* global describe beforeEach it */
 
-// const seed = require('./seed')
+const seed = require('./seed')
 
-// xdescribe('seed script', () => {
-//   xit('completes successfully', seed)
-// })
+describe('seed script', () => {
+  it('completes successfully', seed)
+})
