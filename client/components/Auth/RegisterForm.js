@@ -11,9 +11,7 @@ import {
   Header,
   Image,
   Message,
-  Segment,
-  Input,
-  Container
+  Segment
 } from 'semantic-ui-react'
 
 /**
@@ -31,7 +29,6 @@ const FIELDS = [
 class RegForm extends Component {
   renderField(field) {
     const {label, type, icon, input, meta: {error, touched}} = field
-    console.log(field)
     return (
       <div>
         <Form.Input
@@ -74,23 +71,6 @@ body > div > div > div.login-form {
                 name={name}
                 size="large"
               >
-                {/* <Form.Input
-                  fluid
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="E-mail address"
-                  name="email"
-                />
-
-                <Form.Input
-                  fluid
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                /> */}
-
                 {FIELDS.map(field => {
                   return (
                     <Field
