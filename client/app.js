@@ -9,6 +9,7 @@ import {fetchAddresses} from './reducers/addressReducer'
 import {me} from './reducers/store'
 import {setCart, requestCart, setLocalCart} from './reducers/cartReducer'
 import CartModal from './components/Cart/CartModal'
+import Alert from './components/UI/Alert'
 
 class App extends Component {
   componentDidMount() {
