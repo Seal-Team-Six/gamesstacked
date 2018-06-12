@@ -7,7 +7,7 @@ class SocialButton extends React.Component {
 
     return (
       <a href={href}>
-        <Button fluid color={className}>
+        <Button color={className}>
           <Icon name={className} /> {displayName} with {name}
         </Button>
       </a>

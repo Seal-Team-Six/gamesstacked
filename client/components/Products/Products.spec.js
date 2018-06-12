@@ -21,17 +21,17 @@
 
 //       it('returns properly formatted action', () => {
 
-//         const game = getRandomPet(GAMES);
+//         const game = getRandomGame(GAMES);
 
 //         expect(fetchProducts(game)).to.be.deep.equal({
 //           type: 'FETCH_PRODUCTS_SUCCESS',
 //           game
-//         });
+//         })
 
-//       });
+//       })
 
-//     });
-// }
+//     })
+
 //     // describe('adoptPet', () => {
 
 //     //   it('returns properly formatted action', () => {
@@ -46,3 +46,5 @@
 //     //   });
 
 //     // })
+
+// })

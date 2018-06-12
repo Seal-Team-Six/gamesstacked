@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 // import PropTypes from 'prop-types';
 import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
 import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
-import SocialButton from '../UI/SocialButton'
+import SocialButtonNonFluid from '../UI/SocialButtonNonFluid'
 
 import {Field, reduxForm, initialize} from 'redux-form'
 
@@ -75,7 +75,7 @@ class EditForm extends Component {
               </div>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
-            <SocialButton
+            <SocialButtonNonFluid
               href="/auth/google"
               displayName={displayName}
               className="google plus"
