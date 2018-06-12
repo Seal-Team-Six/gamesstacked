@@ -9,19 +9,12 @@ const {Dashboard, Orders, SingleOrder} = Admin
 
 class AdminRoutes extends React.Component {
   componentDidMount() {
-    const {fetchOrders, requestOrders, fetchUsers} = this.props
-
-    requestOrders()
-    fetchOrders()
-    fetchUsers()
+    this.props.requestOrders()
+    this.props.fetchOrders()
+    this.props.fetchUsers()
   }
   render() {
     const {path} = this.props.match
-
-    // if (this.props.isLoading) {
-    //   return <div>Loading Orders</div>
-    // }
-
     return (
       <Switch>
         <Route exact path={`${path}`} component={Dashboard} />

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Product from './Product'
-import {Grid, Image} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 import SidebarContainer from '../Sidebar/SidebarContainer'
 
 class ProductsList extends Component {

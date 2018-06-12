@@ -6,7 +6,7 @@ import {addToCart, addQuantity} from '../../reducers/cartReducer'
 import {toggleModal} from '../../reducers/modalReducer'
 
 class AddToCart extends React.Component {
-  addOrEdit(id, cartId, userId, product) {
+  addOrEdit(id, cartId, userId) {
     const {
       cartItems,
       isCartLoading,

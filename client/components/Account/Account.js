@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
 import {Container} from 'semantic-ui-react'
 
@@ -35,7 +33,7 @@ class Account extends Component {
           </div>
 
           <div>
-            <button onClick={this.toggleHidden.bind(this)}>
+            <button type="button" onClick={this.toggleHidden.bind(this)}>
               Edit Account Info
             </button>
             {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
