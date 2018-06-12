@@ -47,7 +47,8 @@ class Checkout extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    amount: state.cart.totalPrice * 100
+    amount: state.cart.totalPrice * 100,
+    state
   }
 }
 export default connect(mapStateToProps)(Checkout)

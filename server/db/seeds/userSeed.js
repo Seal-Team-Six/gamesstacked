@@ -23,7 +23,8 @@ const userSeed = async () => {
         email: 'team6@6.com',
         password: 'password',
         imageUrl:
-          'https://pbs.twimg.com/profile_images/1431161157/guy-fawkes_400x400.jpeg'
+          'https://pbs.twimg.com/profile_images/1431161157/guy-fawkes_400x400.jpeg',
+        admin: true
       }
     ]
 
