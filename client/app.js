@@ -12,7 +12,6 @@ import {
   requestCart,
   setLocalCart
 } from './reducers/cartReducer'
-
 import CartModal from './components/Cart/CartModal'
 
 class App extends Component {

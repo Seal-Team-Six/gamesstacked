@@ -41,6 +41,7 @@ export const postAddress = address => {
     const newAddress = res.data
     console.log('%%%%%% added address to server!')
     dispatch(addAddress(newAddress))
+    // history.push('/checkout/address')
   }
 }
 
