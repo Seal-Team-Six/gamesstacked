@@ -64,8 +64,27 @@ export const setCart = userId => {
                     payload: res.data
                   })
                 })
-            } else {
-              console.log('Nope')
+            } else if (
+              cartItems
+                .map(item => item.productId)
+                .includes(localItem.productId)
+            ) {
+              const cartItem = cartItems.find(
+                item => item.productId === localItem.productId
+              )
+              axios
+                .put(`/api/cart_items/${cartItem.id}`, {
+                  quantity: cartItem.quantity + localItem.quantity
+                })
+                .then(res => {
+                  dispatch({
+                    type: ADD_QUANTITY,
+                    payload: res.data.item
+                  })
+                })
+                .catch(err => {
+                  console.log(err)
+                })
             }
           })
 
