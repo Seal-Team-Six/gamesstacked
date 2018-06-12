@@ -3,6 +3,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import StripeCheckout from 'react-stripe-checkout'
 
+import {resetCart} from '../../reducers/cartReducer'
+
 const CURRENCY = 'USD'
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
@@ -12,31 +14,37 @@ const PAYMENT_SERVER_URL =
 const STRIPE_PUBLISHABLE = 'pk_test_cMXkonpTxlK3zQrxdXftZM79'
 
 class Checkout extends React.Component {
-  onToken = amount => async token => {
+  onToken = (amount, userId) => async token => {
     try {
-      const {history} = this.props
+      console.log('asdsafd', this.props)
+      const {ownProps} = this.props
       await axios.post(PAYMENT_SERVER_URL, {
         source: token.id,
         currency: CURRENCY,
         amount
       })
-      history.push('/thankyou')
+      await axios.post('/api/orders', {
+        orderStatus: 'paid',
+        subTotal: amount,
+        userId
+      })
+      this.props.resetCart()
+      ownProps.history.push('/thankyou')
     } catch (err) {
       throw err
     }
   }
 
   render() {
-    console.log(this.props)
-    const {amount} = this.props
+    console.log('asdsafd', this.props)
+    const {amount, userId} = this.props
     return (
       <StripeCheckout
         name="Games Stacked"
         description="All the games!"
         image="https://thumbs.dreamstime.com/b/game-controller-outline-icon-linear-style-sign-mobile-concept-web-design-joystick-simple-line-vector-symbol-logo-111073281.jpg"
         amount={amount}
-        token={this.onToken(amount)}
-        close={this.onClose}
+        token={this.onToken(amount, userId)}
         currency={CURRENCY}
         stripeKey={STRIPE_PUBLISHABLE}
         allowRememberMe={false}
@@ -45,10 +53,12 @@ class Checkout extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     amount: state.cart.totalPrice * 100,
-    state
+    userId: state.user.id,
+    ...ownProps
   }
 }
-export default connect(mapStateToProps)(Checkout)
+
+export default connect(mapStateToProps, {resetCart})(Checkout)

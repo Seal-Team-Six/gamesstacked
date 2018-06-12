@@ -3,24 +3,16 @@ import {connect} from 'react-redux'
 import Addresses from './Address/Addresses'
 
 class CheckoutContainer extends React.Component {
-  componentDidMount() {
-    // TODO: WRITE THUNK FOR ADDRESS AND CREDIT HERE
-  }
-
   render() {
-    const {match} = this.props
     return (
       <div>
-        <Addresses />
+        <Addresses ownProps={this.props.ownProps} />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {state}
+const mapStateToProps = (state, ownProps) => {
+  return {state, ownProps}
 }
-
-// TODO: WRITE DISPATCH HERE
-
 export default connect(mapStateToProps)(CheckoutContainer)

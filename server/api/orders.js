@@ -23,6 +23,30 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: OrderItem,
+          include: [
+            {
+              model: Product
+            }
+          ]
+        }
+      ]
+    })
+
+    res.send(order)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:userId', async (req, res, next) => {
   try {
     const orders = await Order.findAll({
