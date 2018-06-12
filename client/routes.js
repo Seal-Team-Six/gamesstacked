@@ -32,17 +32,13 @@ class Routes extends Component {
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/cart" component={Cart} />{' '}
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
             <Route exact path="/user" component={Account} />
             <Route exact path="/home" component={UserHome} />
-            <Route
-              exact
-              path="/checkout/address"
-              component={CheckoutContainer}
-            />
+            <Route exact path="/checkout" component={CheckoutContainer} />
             <Route component={Products} />
           </Switch>
         )}
