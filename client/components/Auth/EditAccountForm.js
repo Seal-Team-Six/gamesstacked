@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 // import PropTypes from 'prop-types';
 import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
 import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
-import SocialButton from '../UI/SocialButton'
+import SocialButtonNonFluid from '../UI/SocialButtonNonFluid'
 
 import {Field, reduxForm, initialize} from 'redux-form'
 
@@ -37,7 +37,6 @@ class EditForm extends Component {
 
   renderField(field) {
     const {label, type, input, meta: {error, touched}} = field
-    // console.log(field)
 
     return (
       <Form.Group>
@@ -49,7 +48,6 @@ class EditForm extends Component {
 
   render() {
     const {name, displayName, handleSubmit, error, user} = this.props
-    // console.log('%%%%%%%%%', this.props.user)
     return (
       <div>
         <div>
@@ -75,7 +73,7 @@ class EditForm extends Component {
               </div>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
-            <SocialButton
+            <SocialButtonNonFluid
               href="/auth/google"
               displayName={displayName}
               className="google plus"

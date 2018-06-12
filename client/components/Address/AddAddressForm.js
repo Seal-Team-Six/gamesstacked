@@ -115,11 +115,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 function validate(formProps) {
-  const errors = {},
-    vowels = ['a', 'e', 'i', 'o'],
-    invalidChar = ['!' || '@' || '#' || '$' || '%' || '^' || '*']
+  const errors = {}
+  const vowels = ['a', 'e', 'i', 'o']
+  const invalidChar = ['!' || '@' || '#' || '$' || '%' || '^' || '*']
 
-  // Required fields
   FIELDS.forEach(field => {
     const firstLetter = field.name.split('')[0]
 
@@ -129,15 +128,10 @@ function validate(formProps) {
     }
   })
 
-  // Address field must only contain valid characters
   if (formProps.addressOne && formProps.addressOne.includes(invalidChar)) {
     errors.addressOne = 'Must only contain valid characters, a-z, 1-9'
   }
 
-  // if (formProps.addressTwo && formProps.addressTwo.includes(invalidChar)) {
-  // errors.addressTwo = 'Must only contain valid characters, a-z, 1-9' } if
-  // (formProps.city && formProps.city.includes(invalidChar)) { errors.addressTwo
-  // = 'Must only contain valid characters, a-z, 1-9' }
   return errors
 }
 const form = reduxForm({form: 'addAddress', validate: validate})(AddForm)

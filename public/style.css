@@ -33,11 +33,6 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .cart h2 {
   text-transform: uppercase;
   padding: 50px 0;
@@ -161,4 +156,8 @@ div.column.hidden {
 .checkout-content {
   display: flex;
   width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 15px;
 }

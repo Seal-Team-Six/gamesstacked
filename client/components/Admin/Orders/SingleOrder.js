@@ -6,14 +6,14 @@ import FetchOrder from '../../../hoc/fetchOrder'
 
 class SingleOrder extends React.Component {
   render() {
-    const {selectedOrder, orderItems, user, addresses} = this.props
+    const {selectedOrder, orderItems, addresses} = this.props
 
     if (!selectedOrder.id && !this.props.user) {
       return <div>Loading</div>
     }
 
     const address = addresses.find(
-      address => address.userId === selectedOrder.user.id
+      addr => addr.userId === selectedOrder.user.id
     )
 
     return (
@@ -61,16 +61,14 @@ class SingleOrder extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   const {selectedOrder} = state.orders
   const {collection} = state.users
   const {addresses} = state.addresses
-  console.log(addresses)
   return {
     selectedOrder,
     orderItems: selectedOrder.orderItems,
     collection,
-    // user: collection.find(user => user.id === selectedOrder.userId)
     addresses
   }
 }

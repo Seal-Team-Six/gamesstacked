@@ -8,9 +8,7 @@ import {toggleModal} from '../../reducers/modalReducer'
 
 class CartModal extends React.Component {
   handleBack = () => {
-    const {toggleModal} = this.props
-
-    toggleModal()
+    this.props.toggleModal()
   }
 
   render() {

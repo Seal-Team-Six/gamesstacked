@@ -16,7 +16,6 @@ const STRIPE_PUBLISHABLE = 'pk_test_cMXkonpTxlK3zQrxdXftZM79'
 class Checkout extends React.Component {
   onToken = (amount, userId) => async token => {
     try {
-      console.log('asdsafd', this.props)
       const {ownProps} = this.props
       await axios.post(PAYMENT_SERVER_URL, {
         source: token.id,
@@ -36,7 +35,6 @@ class Checkout extends React.Component {
   }
 
   render() {
-    console.log('asdsafd', this.props)
     const {amount, userId} = this.props
     return (
       <StripeCheckout

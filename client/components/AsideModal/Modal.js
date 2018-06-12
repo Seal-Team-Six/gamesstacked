@@ -13,7 +13,9 @@ class AsideModal extends React.Component {
         <Backdrop back={back} showModal={showModal} />
         <div className={`aside-modal ${classes}`}>
           <div onClick={back} className="cancel-form">
-            <button className="md-btn md-fab mb-2 white">X</button>
+            <button type="button" className="md-btn md-fab mb-2 white">
+              X
+            </button>
           </div>
           {children}
         </div>

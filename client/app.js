@@ -9,41 +9,30 @@ import {fetchAddresses} from './reducers/addressReducer'
 import {me} from './reducers/store'
 import {setCart, requestCart, setLocalCart} from './reducers/cartReducer'
 import CartModal from './components/Cart/CartModal'
-import Alert from './components/UI/Alert'
 
 class App extends Component {
   componentDidMount() {
-    const {
-      fetchProducts,
-      fetchAddresses,
-      me,
-      requestCart,
-      currentUser,
-      setLocalCart,
-      setCart,
-      user
-    } = this.props
+    const {currentUser} = this.props
 
-    me()
-    fetchProducts()
-    requestCart()
-    fetchAddresses()
+    this.props.me()
+    this.props.fetchProducts()
+    this.props.requestCart()
+    this.props.fetchAddresses()
 
     if (!currentUser) {
-      setLocalCart()
+      this.props.setLocalCart()
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const {setCart, user} = this.props
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const {user} = this.props
 
     if (nextProps.user.id !== user.id) {
-      setCart(nextProps.user.id)
+      this.props.setCart(nextProps.user.id)
     }
   }
 
   render() {
-    // if (!this.props.user.id) { return <div>Loading</div> }
     return (
       <Layout>
         <CartModal />
