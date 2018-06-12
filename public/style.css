@@ -73,20 +73,6 @@ form div {
   margin-bottom: 1vh;
 }
 
-.product-content h1 {
-  /* top: 26vh;
-  left: 33vw;
-  color: #fff;
-  font-size: 4em;
-  text-shadow: 1px 1px 1px rgb(88, 88, 88); */
-}
-
-.product-content p {
-  /* top: 45vh;
-  left: 33vw;
-  width: 59vw; */
-}
-
 .rating p {
   font-size: 4em;
 }
@@ -162,4 +148,17 @@ div.column.hidden {
 
 .thank-you {
   padding-top: 30vh;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.checkout-title {
+  width: 100%;
+}
+
+.checkout-content {
+  display: flex;
+  width: 100%;
 }
