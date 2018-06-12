@@ -37,7 +37,6 @@ class EditForm extends Component {
 
   renderField(field) {
     const {label, type, input, meta: {error, touched}} = field
-    // console.log(field)
 
     return (
       <Form.Group>
@@ -49,7 +48,6 @@ class EditForm extends Component {
 
   render() {
     const {name, displayName, handleSubmit, error, user} = this.props
-    // console.log('%%%%%%%%%', this.props.user)
     return (
       <div>
         <div>

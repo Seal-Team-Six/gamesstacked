@@ -72,9 +72,6 @@ class Account extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     user: state.user,

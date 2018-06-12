@@ -3,7 +3,15 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../reducers/store'
 
-import {Grid, Button, Form, Message, Segment, Header} from 'semantic-ui-react'
+import {
+  Grid,
+  Button,
+  Form,
+  Message,
+  Segment,
+  Header,
+  Image
+} from 'semantic-ui-react'
 import SocialButton from './UI/SocialButton'
 import {Link} from 'react-router-dom'
 
