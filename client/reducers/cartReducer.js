@@ -37,11 +37,12 @@ export const setCart = userId => {
         .post('/api/cart', userId)
         .then(res => {
           const {id, cartItems} = res.data[0]
+          const items = res.data[1] ? [] : res.data[0].cartItems
           dispatch({
             type: SET_CART,
             payload: {
               id,
-              cartItems
+              cartItems: items
             }
           })
 
