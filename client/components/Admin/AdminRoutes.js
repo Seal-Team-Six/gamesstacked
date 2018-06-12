@@ -2,13 +2,29 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 
+import {fetchOrders, requestOrders} from '../../reducers/orderReducer'
+import Admin from './'
+const {Dashboard, Orders, SingleOrder} = Admin
+
 class AdminRoutes extends React.Component {
+  componentDidMount() {
+    const {fetchOrders, requestOrders} = this.props
+
+    requestOrders()
+    fetchOrders()
+  }
   render() {
     const {path} = this.props.match
 
+    // if (this.props.isLoading) {
+    //   return <div>Loading Orders</div>
+    // }
+
     return (
       <Switch>
-        <Route path={`${path}`} exact component={Orders} />
+        <Route exact path={`${path}`} component={Dashboard} />
+        <Route exact path={`${path}/orders`} component={Orders} />
+        <Route path={`${path}/orders/:id`} component={SingleOrder} />
       </Switch>
     )
   }
@@ -16,11 +32,16 @@ class AdminRoutes extends React.Component {
 
 function mapStateToProps(state) {
   const {admin} = state.user
+  const {isLoading} = state.orders
 
   return {
     user: state.user,
-    admin
+    admin,
+    isLoading
   }
 }
 
-export default connect(mapStateToProps)(AdminRoutes)
+export default connect(mapStateToProps, {
+  fetchOrders,
+  requestOrders
+})(AdminRoutes)

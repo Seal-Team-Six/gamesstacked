@@ -41,11 +41,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             <Route exact path="/user" component={Account} />
-            <Route
-              exact
-              path="/admin"
-              component={AuthenticateAdmin(AdminRoutes)}
-            />
+            <Route path="/admin" component={AuthenticateAdmin(AdminRoutes)} />
             <Route component={Products} />
           </Switch>
         )}
