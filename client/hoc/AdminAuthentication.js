@@ -1,18 +1,18 @@
-// Higher Order Component
-
 import React from 'react'
 import {connect} from 'react-redux'
+
+// import Alert from '../UI/Alert'
 
 export default function(ComposedComponent) {
   class AdminAuthentication extends React.Component {
     componentWillMount() {
-      if (!this.props.user.admin) {
+      if (!this.props.admin) {
         this.props.history.push('/')
       }
     }
 
     componentWillUpdate(nextProps) {
-      if (!nextProps.user.admin) {
+      if (!nextProps.admin) {
         this.props.history.push('/')
       }
     }
@@ -23,7 +23,11 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return {user: state.user}
+    const {admin} = state.user
+
+    return {
+      admin
+    }
   }
 
   return connect(mapStateToProps)(AdminAuthentication)
