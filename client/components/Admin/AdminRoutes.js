@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch, Link} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 import {fetchOrders, requestOrders} from '../../reducers/orderReducer'
 import {fetchUsers} from '../../reducers/usersReducer'

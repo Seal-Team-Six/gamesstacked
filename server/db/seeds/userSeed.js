@@ -1,18 +1,6 @@
 const {User} = require('../models')
-const db = require('../')
 
 const faker = require('faker')
-
-// Helpers functions
-const floor = function(random) {
-  return Math.floor(random)
-}
-
-const random = function(min = 0, max) {
-  return Math.random() * (max - min + 1) + min
-}
-
-// Database seed
 
 const userSeed = async () => {
   try {
@@ -34,8 +22,6 @@ const userSeed = async () => {
         firstName: `${faker.name.firstName()}`,
         lastName: `${faker.name.lastName()}`,
         email: `${faker.internet.email()}`,
-        // imageUrl: `${faker.image.imageUrl()}`,
-        // phone: `${faker.phone.phoneNumber()}`,
         password: `password`
       })
     }

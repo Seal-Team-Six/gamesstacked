@@ -10,7 +10,7 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
     res.status(500).send({error: stripeErr})
   } else {
-    res.redirect(200, '/products')
+    res.status(200).send({success: stripeRes})
   }
 }
 

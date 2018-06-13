@@ -15,8 +15,8 @@ const orderSeed = async () => {
   for (let i = 0; i < 10; i++) {
     orderData.push({
       orderStatus: orderStatus[floor(random(0, orderStatus.length - 1))],
-      subTotal: Number(random(10, 200).toFixed(2)),
-      userId: floor(random(1, 10))
+      subTotal: Number(random(500, 2000).toFixed(2)),
+      userId: i + 1
     })
   }
 
@@ -25,7 +25,7 @@ const orderSeed = async () => {
   for (let i = 0; i < 20; i++) {
     await OrderItem.create({
       orderId: floor(random(1, 10)),
-      quantity: floor(random(1, 5)),
+      quantity: floor(random(2, 5)),
       productId: floor(random(1, 10))
     })
   }

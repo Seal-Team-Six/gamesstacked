@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import PropTypes from 'prop-types';
-import {auth, notGoogleRegister, notGoogleEdit} from '../../reducers/store'
-import {Icon, Button, Input, List, Container, Form} from 'semantic-ui-react'
-import SocialButtonNonFluid from '../UI/SocialButtonNonFluid'
+import {Field, reduxForm} from 'redux-form'
 
-import {Field, reduxForm, initialize} from 'redux-form'
+import {notGoogleEdit} from '../../reducers/store'
+import {Button, Input, Container, Form} from 'semantic-ui-react'
+import SocialButtonNonFluid from '../UI/SocialButtonNonFluid'
 
 /**
  * COMPONENT
@@ -16,8 +15,6 @@ const FIELDS = [
   {label: 'Last Name', name: 'lastName'},
   {label: 'Email', name: 'email'},
   {label: 'Image', name: 'imageUrl'}
-  //   {label: 'Password', name: 'password'},
-  //   {label: 'Password Confirmation', name: 'passwordConfirm'}
 ]
 
 class EditForm extends Component {
@@ -91,7 +88,6 @@ const mapStateToProps = state => {
     name: 'signup',
     displayName: 'Sign Up',
     error: state.user.error
-    // user: state.user
   }
 }
 

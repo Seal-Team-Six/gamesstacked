@@ -2,24 +2,18 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login} from './components'
 import Products from './components/Products'
 import Cart from './containers/Cart'
 import ProductDetails from './components/Products/ProductDetails'
 import {RegisterForm} from './components/Auth/RegisterForm'
 import ThankYou from './components/ThankYou'
-
-import {
-  setCart,
-  setItems,
-  requestCart,
-  setLocalCart
-} from './reducers/cartReducer'
 import Account from './components/Account/Account'
 import CheckoutContainer from './components/CheckoutContainer'
 
 import AuthenticateAdmin from './hoc/AdminAuthentication'
 import AdminRoutes from './components/Admin/AdminRoutes'
+import SingleOrderNonAdmin from './components/Admin/Orders/SingleOrderNonAdmin'
 
 /**
  * COMPONENT
@@ -37,6 +31,7 @@ class Routes extends Component {
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={CheckoutContainer} />
+
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
@@ -44,10 +39,10 @@ class Routes extends Component {
             <Route exact path="/checkout" component={CheckoutContainer} />
             <Route exact path="/thankyou" component={ThankYou} />
             <Route path="/admin" component={AuthenticateAdmin(AdminRoutes)} />
+            <Route path="/orders/:id" component={SingleOrderNonAdmin} />
             <Route component={Products} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
         <Route component={Products} />
       </Switch>
     )
@@ -59,9 +54,6 @@ class Routes extends Component {
  */
 const mapState = state => {
   return {
-    // Being 'logged in' for our purposes will be defined has having a state.user
-    // that has a truthy id. Otherwise, state.user will be an empty object, and
-    // state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     user: state.user
   }
@@ -72,10 +64,6 @@ const mapState = state => {
 
 export default withRouter(connect(mapState)(Routes))
 
-/**
- * PROP TYPES
- */
 Routes.propTypes = {
-  // loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

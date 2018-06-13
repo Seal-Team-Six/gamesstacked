@@ -56,7 +56,6 @@ class EditForm extends Component {
       city: this.props.userAddress[0].city,
       state: this.props.userAddress[0].state,
       zip: this.props.userAddress[0].zip
-      // userId: this.props.user.id
     }
     this.props.initialize(initData)
   }
@@ -142,10 +141,6 @@ function validate(formProps) {
     errors.addressOne = 'Must only contain valid characters, a-z, 1-9'
   }
 
-  // if (formProps.addressTwo && formProps.addressTwo.includes(invalidChar)) {
-  // errors.addressTwo = 'Must only contain valid characters, a-z, 1-9' } if
-  // (formProps.city && formProps.city.includes(invalidChar)) { errors.addressTwo
-  // = 'Must only contain valid characters, a-z, 1-9' }
   return errors
 }
 const form = reduxForm({form: 'addAddress', validate: validate})(EditForm)

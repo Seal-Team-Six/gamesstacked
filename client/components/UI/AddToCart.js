@@ -24,7 +24,7 @@ class AddToCart extends React.Component {
       item => item.productId === selectedProduct.id
     )
     if (cartItem) {
-      addQuantity(cartItem.id, cartItem.quantity + 1)
+      addQuantity(cartItem.id, cartItem.quantity + 1, userId)
     } else {
       addToCart(id, cartId, userId, selectedProduct)
     }

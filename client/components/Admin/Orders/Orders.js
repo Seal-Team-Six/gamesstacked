@@ -6,6 +6,7 @@ import {Container, Table} from 'semantic-ui-react'
 class Orders extends React.Component {
   render() {
     const {orders} = this.props
+    console.log(orders)
 
     return (
       <Container>
@@ -25,8 +26,13 @@ class Orders extends React.Component {
               return (
                 <Table.Row key={order.id}>
                   <Table.Cell>{order.id}</Table.Cell>
-                  <Table.Cell>${order.subTotal}</Table.Cell>
-                  <Table.Cell>{order.orderItems.length}</Table.Cell>
+                  <Table.Cell>${(order.subTotal / 100).toFixed(2)}</Table.Cell>
+                  <Table.Cell>
+                    {order.orderItems.reduce(
+                      (acc, curr) => acc + curr.quantity,
+                      0
+                    )}
+                  </Table.Cell>
                   <Table.Cell>{order.orderStatus}</Table.Cell>
                   <Table.Cell textAlign="right">
                     <Link to={`/admin/orders/${order.id}`}>Show</Link>
