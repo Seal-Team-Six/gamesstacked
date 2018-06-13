@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Grid, Button, Table, Modal, Image} from 'semantic-ui-react'
-import {openModal, closeModal} from '../../reducers/addressReducer'
+import {openModal} from '../../reducers/addressReducer'
 import {EditAddressForm} from './EditAddressForm'
 import {connect} from 'react-redux'
 import Stripe from '../CreditCards/Stripe'

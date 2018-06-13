@@ -1,4 +1,3 @@
-const db = require('../db')
 const {Genre} = require('../models')
 
 const genres = [

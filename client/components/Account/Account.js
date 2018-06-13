@@ -27,13 +27,10 @@ class Account extends Component {
   }
 
   render() {
-    const {user} = this.props
-    const {orders} = this.props
-    console.log('**************', this.props)
+    const {user, orders} = this.props
     const theseOrders = orders.filter(
       order => order.userId === parseInt(user.id)
     )
-    // console.log(theseOrders)
 
     if (!orders.length) return 'Loading'
     return (
@@ -73,10 +70,15 @@ class Account extends Component {
               return (
                 <Table.Row key={order.id}>
                   <Table.Cell>{order.id}</Table.Cell>
-                  <Table.Cell>${order.subTotal}</Table.Cell>
-                  <Table.Cell>{order.orderItems.length}</Table.Cell>
+                  <Table.Cell>${(order.subTotal / 100).toFixed(2)}</Table.Cell>
+                  <Table.Cell>
+                    {order.orderItems.reduce(
+                      (acc, curr) => acc + curr.quantity,
+                      0
+                    )}
+                  </Table.Cell>
                   <Table.Cell>{order.orderStatus}</Table.Cell>
-                  <Table.Cell textAlign="right">
+                  <Table.Cell>
                     <Link to={`/orders/${order.id}`}>Show</Link>
                   </Table.Cell>
                 </Table.Row>
@@ -89,9 +91,6 @@ class Account extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     user: state.user,

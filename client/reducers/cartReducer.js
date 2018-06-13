@@ -177,7 +177,7 @@ export const deleteItem = (id, userId) => {
     if (userId) {
       axios
         .delete(`/api/cart_items/${id}`)
-        .then(res => {
+        .then(() => {
           dispatch({
             type: DELETE_ITEM,
             payload: id
