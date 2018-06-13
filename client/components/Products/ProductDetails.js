@@ -72,9 +72,13 @@ class ProductDetails extends Component {
               <Grid.Column className="rating" computer={4} textAlign="center">
                 <Statistic color={ratings(selectedProduct.totalRating)}>
                   <Statistic.Value>
-                    {Math.floor(selectedProduct.totalRating) !== 0
-                      ? Math.floor(selectedProduct.totalRating)
-                      : 'Rating not available'}
+                    {Math.floor(selectedProduct.totalRating) !== 0 ? (
+                      Math.floor(selectedProduct.totalRating)
+                    ) : (
+                      <Header as="h2" style={{padding: '15px'}}>
+                        Rating not available
+                      </Header>
+                    )}
                   </Statistic.Value>
                   <Statistic.Label>User Rating</Statistic.Label>
                 </Statistic>

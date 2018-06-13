@@ -18,8 +18,6 @@ const initialState = {
   cartQuantity: 0
 }
 
-// const localCart = JSON.parse(localStorage.getItem('cart'))
-
 export const requestCart = () => {
   return dispatch => {
     dispatch({
@@ -177,7 +175,7 @@ export const deleteItem = (id, userId) => {
     if (userId) {
       axios
         .delete(`/api/cart_items/${id}`)
-        .then(res => {
+        .then(() => {
           dispatch({
             type: DELETE_ITEM,
             payload: id

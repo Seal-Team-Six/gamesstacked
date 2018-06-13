@@ -1,5 +1,4 @@
 const {Address} = require('../models')
-const db = require('../')
 
 const addresses = [
   {

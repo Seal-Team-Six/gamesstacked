@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {Card, Divider, Button, List} from 'semantic-ui-react'
 
 class CartSideBar extends React.Component {
@@ -34,8 +35,12 @@ class CartSideBar extends React.Component {
                 {title}
               </Button>
             </Link>
-            <Divider horizontal>or</Divider>
-            <Link to="/login">Sign in</Link> for more perks.
+            {!this.props.user.id && (
+              <div>
+                <Divider horizontal>or</Divider>
+                <Link to="/login">Sign in</Link> for more perks.
+              </div>
+            )}
           </Card.Description>
         </Card.Content>
       </Card>
@@ -43,4 +48,10 @@ class CartSideBar extends React.Component {
   }
 }
 
-export default CartSideBar
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(CartSideBar)

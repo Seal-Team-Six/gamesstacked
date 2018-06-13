@@ -1,4 +1,3 @@
-const db = require('../db')
 const {Product, Genre} = require('../models')
 
 const products = [

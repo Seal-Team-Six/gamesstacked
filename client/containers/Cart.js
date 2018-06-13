@@ -3,18 +3,17 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import CartItems from '../components/Cart/CartItems/CartItems'
 import TableCart from '../components/Cart/TableCart'
-import CartSummary from '../components/Cart/CartSummary'
 import CartSideBar from '../components/Cart/CartSideBar'
 import {toggleModal} from '../reducers/modalReducer'
 
-import {Button, Container, Table, Grid} from 'semantic-ui-react'
+import {Button, Container, Grid} from 'semantic-ui-react'
 
 class Cart extends React.Component {
   componentDidMount() {
-    const {toggleModal, showModal} = this.props
+    const {showModal} = this.props
 
     if (showModal) {
-      toggleModal()
+      this.props.toggleModal()
     }
   }
 
@@ -60,8 +59,6 @@ class Cart extends React.Component {
   }
 
   render() {
-    const {cartItems, totalPrice} = this.props
-
     return (
       <Container>
         <div className="cart">

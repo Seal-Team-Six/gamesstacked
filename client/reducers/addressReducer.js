@@ -47,7 +47,6 @@ export const postAddress = address => {
     const res = await axios.post(`/api/address`, address)
     const newAddress = res.data
     dispatch(addAddress(newAddress))
-    // history.push('/checkout/address')
   }
 }
 
@@ -60,7 +59,7 @@ export const putAddress = (id, address) => {
 
 export const removeAddress = (id, address) => {
   return async dispatch => {
-    const {data} = await axios.delete(`/api/address/${id}`, address)
+    await axios.delete(`/api/address/${id}`, address)
     dispatch(deleteAddress(id))
   }
 }

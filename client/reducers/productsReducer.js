@@ -42,7 +42,7 @@ export const fetchProduct = id => {
   }
 }
 
-export const resetProduct = id => {
+export const resetProduct = () => {
   return dispatch => {
     dispatch({type: RESET_PRODUCT})
   }
@@ -81,7 +81,7 @@ const reducer = (state = initialState, action) => {
     case EDIT_PRODUCT:
       return {
         ...state,
-        products: state.products.map((product, idx) => {
+        products: state.products.map(product => {
           if (product.id === action.payload.id) {
             return action.payload
           }

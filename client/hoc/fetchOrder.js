@@ -6,7 +6,7 @@ import {requestOrders, fetchOrder, resetOrder} from '../reducers/orderReducer'
 export default function(ComposedComponent) {
   class FetchOrder extends React.Component {
     componentDidMount() {
-      const {requestOrder, fetchOrder, match: {params}} = this.props
+      const {fetchOrder, match: {params}} = this.props
 
       requestOrders()
       fetchOrder(params.id)
