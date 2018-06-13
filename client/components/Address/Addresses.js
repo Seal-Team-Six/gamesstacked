@@ -25,7 +25,7 @@ class Addresses extends Component {
 
   show = size => () => this.setState({size, open: true})
   close = () => {
-    console.log('hello world')
+    return this.props.open
   }
 
   render() {
