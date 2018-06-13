@@ -1,46 +1,25 @@
 import React, {Component} from 'react'
-import {
-  Grid,
-  Card,
-  Icon,
-  Button,
-  Table,
-  Modal,
-  Container,
-  Image
-} from 'semantic-ui-react'
-import {openModal} from '../../reducers/addressReducer'
+import {Grid, Button, Table, Modal, Image} from 'semantic-ui-react'
+import {openModal, closeModal} from '../../reducers/addressReducer'
 import {EditAddressForm} from './EditAddressForm'
-import AddAddressForm from './AddAddressForm'
 import {connect} from 'react-redux'
 import Stripe from '../CreditCards/Stripe'
 
 class Addresses extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      open: false
-    }
-  }
-
-  show = size => () => this.setState({size, open: true})
-  close = () => {
-    return this.props.open
-  }
+  show = () => this.props.modal()
 
   render() {
     const {user, address, cart} = this.props
     const filteredUser = address.addresses.filter(ele => ele.id === user.id)
-    const {open, size} = this.state
+    const {open} = this.props
     const cartItems = cart.cartItems
-    console.log('props', this.props)
 
     return (
       <Grid container celled>
-        <Modal size={size} open={open} onClose={this.close}>
+        <Modal open={open}>
           <Modal.Header>Edit Address</Modal.Header>
           <Modal.Content>
-            <EditAddressForm userAddress={filteredUser} close={close} />
+            <EditAddressForm userAddress={filteredUser} close={this.close} />
           </Modal.Content>
         </Modal>
 
@@ -58,16 +37,18 @@ class Addresses extends Component {
                 <Grid.Column>
                   <p>Shipping Address</p>
                   <address>
-                    {filteredUser[0] && filteredUser[0].firstName}
+                    {filteredUser[0] && filteredUser[0].firstName}{' '}
                     {filteredUser[0] && filteredUser[0].lastName}
                     <p>{filteredUser[0] && filteredUser[0].addressOne}</p>
                     <p>{filteredUser[0] && filteredUser[0].addressTwo}</p>
-                    <span>{filteredUser[0] && filteredUser[0].state}</span>,
+                    <span>
+                      {filteredUser[0] && filteredUser[0].state}
+                    </span>,{' '}
                     <span>{filteredUser[0] && filteredUser[0].zip}</span>
                   </address>
                 </Grid.Column>
                 <Grid.Column>
-                  <Button fluid onClick={this.show('small')}>
+                  <Button fluid onClick={() => this.show('small')}>
                     Edit Address
                   </Button>
                 </Grid.Column>
@@ -124,6 +105,7 @@ class Addresses extends Component {
     )
   }
 }
+
 const mapState = state => {
   return {
     user: state.user,

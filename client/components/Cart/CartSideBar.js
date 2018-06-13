@@ -4,7 +4,7 @@ import {Card, Divider, Button, List} from 'semantic-ui-react'
 
 class CartSideBar extends React.Component {
   render() {
-    const {cartItems, totalPrice, path, title} = this.props
+    const {totalPrice, path, title} = this.props
 
     return (
       <Card>

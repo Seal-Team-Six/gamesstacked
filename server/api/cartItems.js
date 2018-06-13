@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Cart, CartItems, Product} = require('../db/models')
+const {CartItems, Product} = require('../db/models')
 module.exports = router
 
 router.post('/', (req, res, next) => {
@@ -29,7 +29,7 @@ router.delete('/:id', (req, res, next) => {
       id: req.params.id
     }
   })
-    .then(item => {
+    .then(() => {
       res.status(204).end()
     })
     .catch(err => {

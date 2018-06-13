@@ -35,9 +35,9 @@ export const closeModal = () => ({
 /**
  * THUNK CREATORS
  */
-export const fetchAddresses = address => {
+export const fetchAddresses = () => {
   return async dispatch => {
-    const {data} = await axios.get(`/api/address`, address)
+    const {data} = await axios.get(`/api/address`)
     dispatch(gotAddress(data))
   }
 }
@@ -46,7 +46,6 @@ export const postAddress = address => {
   return async dispatch => {
     const res = await axios.post(`/api/address`, address)
     const newAddress = res.data
-    console.log('%%%%%% added address to server!')
     dispatch(addAddress(newAddress))
     // history.push('/checkout/address')
   }
@@ -62,7 +61,6 @@ export const putAddress = (id, address) => {
 export const removeAddress = (id, address) => {
   return async dispatch => {
     const {data} = await axios.delete(`/api/address/${id}`, address)
-    console.log('%%%%%% deleted Address from server!')
     dispatch(deleteAddress(id))
   }
 }

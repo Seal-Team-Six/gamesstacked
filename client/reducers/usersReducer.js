@@ -12,7 +12,6 @@ export const fetchUsers = () => {
     axios
       .get('/api/users')
       .then(res => {
-        console.log(res)
         dispatch({
           type: FETCH_USERS,
           payload: res.data

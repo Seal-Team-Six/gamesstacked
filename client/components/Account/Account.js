@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
-import {Container} from 'semantic-ui-react'
+import {Container, Button, Table} from 'semantic-ui-react'
+import {fetchOrders} from '../../reducers/orderReducer'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
  */
+
 class Account extends Component {
   constructor(props) {
     super(props)
@@ -15,6 +16,10 @@ class Account extends Component {
       isHidden: true
     }
   }
+  componentDidMount() {
+    this.props.fetchOrders()
+  }
+
   toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden
@@ -23,7 +28,14 @@ class Account extends Component {
 
   render() {
     const {user} = this.props
+    const {orders} = this.props
+    console.log('**************', this.props)
+    const theseOrders = orders.filter(
+      order => order.userId === parseInt(user.id)
+    )
+    // console.log(theseOrders)
 
+    if (!orders.length) return 'Loading'
     return (
       <Container>
         <div>
@@ -35,12 +47,43 @@ class Account extends Component {
           </div>
 
           <div>
-            <button onClick={this.toggleHidden.bind(this)}>
+            <Button
+              className="formGroup"
+              onClick={this.toggleHidden.bind(this)}
+            >
               Edit Account Info
-            </button>
+            </Button>
             {!this.state.isHidden && <EditAccountForm user={this.props.user} />}
           </div>
         </div>
+
+        <h2>Order History</h2>
+        <Table unstackable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Order ID</Table.HeaderCell>
+              <Table.HeaderCell>Amount</Table.HeaderCell>
+              <Table.HeaderCell>Items</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>View</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {theseOrders.map(order => {
+              return (
+                <Table.Row key={order.id}>
+                  <Table.Cell>{order.id}</Table.Cell>
+                  <Table.Cell>${order.subTotal}</Table.Cell>
+                  <Table.Cell>{order.orderItems.length}</Table.Cell>
+                  <Table.Cell>{order.orderStatus}</Table.Cell>
+                  <Table.Cell textAlign="right">
+                    <Link to={`/orders/${order.id}`}>Show</Link>
+                  </Table.Cell>
+                </Table.Row>
+              )
+            })}
+          </Table.Body>
+        </Table>
       </Container>
     )
   }
@@ -51,8 +94,9 @@ class Account extends Component {
  */
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    orders: state.orders.collection
   }
 }
 
-export default connect(mapState, null)(Account)
+export default connect(mapState, {fetchOrders})(Account)

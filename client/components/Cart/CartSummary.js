@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {Card, Grid, Button} from 'semantic-ui-react'
+import {Card} from 'semantic-ui-react'
 
 class CartSummary extends React.Component {
   render() {

@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {List, Table} from 'semantic-ui-react'
+import React from 'react'
+import {Table} from 'semantic-ui-react'
 import CartItem from './CartItem'
 
 class CartItems extends React.Component {

@@ -6,7 +6,7 @@ import {addToCart, addQuantity} from '../../reducers/cartReducer'
 import {toggleModal} from '../../reducers/modalReducer'
 
 class AddToCart extends React.Component {
-  addOrEdit(id, cartId, userId, product) {
+  addOrEdit(id, cartId, userId) {
     const {
       cartItems,
       isCartLoading,
@@ -17,7 +17,6 @@ class AddToCart extends React.Component {
     } = this.props
 
     if (isCartLoading) {
-      console.log('YOU MUST LOG IN')
       return
     }
 
@@ -35,7 +34,6 @@ class AddToCart extends React.Component {
 
   render() {
     const {cartId, user, match: {params}} = this.props
-    // console.log('[ADD TO CART]:', this.props)
     return (
       <Button
         className="product-cover-button"
