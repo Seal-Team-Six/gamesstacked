@@ -34,7 +34,10 @@ const Product = db.define('product', {
     allowNull: true
   },
   cover: {
-    type: Sequelize.JSONB
+    type: Sequelize.JSONB,
+    defaultValue: {
+      url: 'flavorwire.files.wordpress.com/2015/09/o-bill-facebook.jpg?w=1920'
+    }
   }
 })
 

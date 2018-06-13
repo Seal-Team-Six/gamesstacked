@@ -22,9 +22,9 @@ const orderSeed = async () => {
 
   await Order.bulkCreate(orderData, {returning: true})
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 20; i++) {
     await OrderItem.create({
-      orderId: Math.round(random(1, 10)),
+      orderId: floor(random(1, 10)),
       quantity: floor(random(2, 5)),
       productId: floor(random(1, 10))
     })
