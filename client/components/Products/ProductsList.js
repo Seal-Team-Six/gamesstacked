@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import _ from 'lodash'
 import Product from './Product'
 import {Grid} from 'semantic-ui-react'
 import SidebarContainer from '../Sidebar/SidebarContainer'
@@ -11,9 +12,10 @@ class ProductsList extends Component {
     }
   }
 
-  getSearchTerm = term => {
-    this.setState({term: term})
-  }
+  // getSearchTerm = term => {   this.setState({term: term}) }
+  getSearchTerm = _.debounce(term => {
+    this.setState({term})
+  }, 300)
 
   render() {
     const {products} = this.props
