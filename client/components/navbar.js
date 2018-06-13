@@ -73,7 +73,9 @@ class Navbar extends React.Component {
           {this.renderAdminLinks()}
           {this.renderSessionLinks()}
           <Link to="/cart">
-            <Menu.Item>Cart({cartQuantity})</Menu.Item>
+            <Menu.Item>
+              <Icon name="shopping cart" size="large" />({cartQuantity})
+            </Menu.Item>
           </Link>
         </Menu.Menu>
       </Menu>

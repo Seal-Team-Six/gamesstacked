@@ -35,17 +35,25 @@ class Addresses extends Component {
             <Grid divided="vertically">
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <p>Shipping Address</p>
-                  <address>
-                    {filteredUser[0] && filteredUser[0].firstName}{' '}
-                    {filteredUser[0] && filteredUser[0].lastName}
-                    <p>{filteredUser[0] && filteredUser[0].addressOne}</p>
-                    <p>{filteredUser[0] && filteredUser[0].addressTwo}</p>
-                    <span>
-                      {filteredUser[0] && filteredUser[0].state}
-                    </span>,{' '}
-                    <span>{filteredUser[0] && filteredUser[0].zip}</span>
-                  </address>
+                  <h4>Shipping Address</h4>
+                  {!user.id ? (
+                    <address>
+                      <p>Ian Wang</p>
+                      <p>21 Jump Street</p>
+                      <p>NY, New York 10014</p>
+                    </address>
+                  ) : (
+                    <address>
+                      {filteredUser[0] && filteredUser[0].firstName}{' '}
+                      {filteredUser[0] && filteredUser[0].lastName}
+                      <p>{filteredUser[0] && filteredUser[0].addressOne}</p>
+                      <p>{filteredUser[0] && filteredUser[0].addressTwo}</p>
+                      <span>
+                        {filteredUser[0] && filteredUser[0].state}
+                      </span>,{' '}
+                      <span>{filteredUser[0] && filteredUser[0].zip}</span>
+                    </address>
+                  )}
                 </Grid.Column>
                 <Grid.Column>
                   <Button fluid onClick={() => this.show('small')}>
