@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {EditAccountForm} from '../Auth/EditAccountForm'
-import {Container, Button} from 'semantic-ui-react'
+import {Container, Button, Table} from 'semantic-ui-react'
 import {fetchOrders} from '../../reducers/orderReducer'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -28,9 +29,11 @@ class Account extends Component {
   render() {
     const {user} = this.props
     const {orders} = this.props
+    console.log('**************', this.props)
     const theseOrders = orders.filter(
       order => order.userId === parseInt(user.id)
     )
+    // console.log(theseOrders)
 
     if (!orders.length) return 'Loading'
     return (
@@ -54,24 +57,41 @@ class Account extends Component {
           </div>
         </div>
 
-        <div>
-          <ul>
+        <h2>Order History</h2>
+        <Table unstackable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Order ID</Table.HeaderCell>
+              <Table.HeaderCell>Amount</Table.HeaderCell>
+              <Table.HeaderCell>Items</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>View</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
             {theseOrders.map(order => {
               return (
-                <li key={order.id}>
-                  <div>
-                    <b>Previous Sub Total: {order.subTotal}</b>
-                  </div>
-                </li>
+                <Table.Row key={order.id}>
+                  <Table.Cell>{order.id}</Table.Cell>
+                  <Table.Cell>${order.subTotal}</Table.Cell>
+                  <Table.Cell>{order.orderItems.length}</Table.Cell>
+                  <Table.Cell>{order.orderStatus}</Table.Cell>
+                  <Table.Cell textAlign="right">
+                    <Link to={`/orders/${order.id}`}>Show</Link>
+                  </Table.Cell>
+                </Table.Row>
               )
             })}
-          </ul>
-        </div>
+          </Table.Body>
+        </Table>
       </Container>
     )
   }
 }
 
+/**
+ * CONTAINER
+ */
 const mapState = state => {
   return {
     user: state.user,

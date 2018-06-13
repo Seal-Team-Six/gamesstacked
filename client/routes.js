@@ -20,6 +20,7 @@ import CheckoutContainer from './components/CheckoutContainer'
 
 import AuthenticateAdmin from './hoc/AdminAuthentication'
 import AdminRoutes from './components/Admin/AdminRoutes'
+import SingleOrderNonAdmin from './components/Admin/Orders/SingleOrderNonAdmin'
 
 /**
  * COMPONENT
@@ -37,6 +38,7 @@ class Routes extends Component {
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={CheckoutContainer} />
+
         {/* Routes placed here are only available after logging in */}
         {isLoggedIn && (
           <Switch>
@@ -44,6 +46,7 @@ class Routes extends Component {
             <Route exact path="/checkout" component={CheckoutContainer} />
             <Route exact path="/thankyou" component={ThankYou} />
             <Route path="/admin" component={AuthenticateAdmin(AdminRoutes)} />
+            <Route path="/orders/:id" component={SingleOrderNonAdmin} />
             <Route component={Products} />
           </Switch>
         )}
