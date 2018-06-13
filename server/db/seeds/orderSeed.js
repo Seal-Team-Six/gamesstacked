@@ -25,7 +25,7 @@ const orderSeed = async () => {
   for (let i = 0; i < 20; i++) {
     await OrderItem.create({
       orderId: floor(random(1, 10)),
-      quantity: floor(random(2, 5)),
+      quantity: floor(random(1, 5)),
       productId: floor(random(1, 10))
     })
   }
