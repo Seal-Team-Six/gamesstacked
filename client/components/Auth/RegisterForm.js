@@ -170,13 +170,3 @@ const form = reduxForm({
   validate: validate
 })(RegForm)
 export const RegisterForm = connect(mapSignup, mapDispatch)(form)
-
-/**
- * PROP TYPES
- */
-// RegisterForm.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   displayName: PropTypes.string.isRequired,
-//   handleSubmit: PropTypes.func.isRequired,
-//   error: PropTypes.object
-// };

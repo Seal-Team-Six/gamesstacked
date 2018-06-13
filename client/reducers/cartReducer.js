@@ -18,8 +18,6 @@ const initialState = {
   cartQuantity: 0
 }
 
-// const localCart = JSON.parse(localStorage.getItem('cart'))
-
 export const requestCart = () => {
   return dispatch => {
     dispatch({

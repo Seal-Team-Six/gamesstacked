@@ -24,8 +24,6 @@ const db = require('../db')
  * instead of: const User = require('../db/models/user')
  */
 
-// This is a comment to test travis
-
 Cart.belongsTo(User)
 User.hasMany(Cart)
 

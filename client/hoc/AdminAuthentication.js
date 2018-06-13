@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-// import Alert from '../UI/Alert'
-
 export default function(ComposedComponent) {
   class AdminAuthentication extends React.Component {
     componentWillMount() {

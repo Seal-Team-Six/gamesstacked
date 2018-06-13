@@ -88,7 +88,6 @@ const mapStateToProps = state => {
     name: 'signup',
     displayName: 'Sign Up',
     error: state.user.error
-    // user: state.user
   }
 }
 
