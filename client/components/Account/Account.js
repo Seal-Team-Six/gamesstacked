@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {RegisterForm} from '../Auth/RegisterForm'
 import {EditAccountForm} from '../Auth/EditAccountForm'
 import {Container, Button, Table} from 'semantic-ui-react'
-import {fetchOrders, fetchOrder} from '../../reducers/orderReducer'
+import {fetchOrders} from '../../reducers/orderReducer'
 import {Link} from 'react-router-dom'
-import {SingleOrderNonAdmin} from '../Admin/Orders'
+
 /**
  * COMPONENT
  */
@@ -15,8 +13,7 @@ class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isHidden: true,
-      orderHidden: true
+      isHidden: true
     }
   }
   componentDidMount() {
@@ -26,11 +23,6 @@ class Account extends Component {
   toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden
-    })
-  }
-  toggleOrderDetails() {
-    this.setState({
-      isHidden: !this.state.orderHidden
     })
   }
 
@@ -84,38 +76,18 @@ class Account extends Component {
                   <Table.Cell>${order.subTotal}</Table.Cell>
                   <Table.Cell>{order.orderItems.length}</Table.Cell>
                   <Table.Cell>{order.orderStatus}</Table.Cell>
-
-                  {/* <Button
-                    className="formGroup"
-                    onClick={this.toggleOrderDetails.bind(this)}
-                  >
-                    Show
-                  </Button> */}
-
                   <Table.Cell textAlign="right">
                     <Link to={`/orders/${order.id}`}>Show</Link>
-                    {/* <Button> Show</Button> */}
                   </Table.Cell>
-                  {/* {!this.state.isHidden && (<SingleOrderNonAdmin selectOrder={order.id} />)} */}
                 </Table.Row>
               )
             })}
           </Table.Body>
         </Table>
-        {/* <SingleOrderNonAdmin /> */}
       </Container>
     )
   }
 }
-
-/*///// show order
-
-this.props.fetchOrder()
-
-
-
-
-*/
 
 /**
  * CONTAINER
