@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import _ from 'lodash'
 import Product from './Product'
 import {Grid} from 'semantic-ui-react'
 import SidebarContainer from '../Sidebar/SidebarContainer'
@@ -11,9 +12,9 @@ class ProductsList extends Component {
     }
   }
 
-  getSearchTerm = term => {
-    this.setState({term: term})
-  }
+  getSearchTerm = _.debounce(term => {
+    this.setState({term})
+  }, 300)
 
   render() {
     const {products} = this.props
@@ -25,21 +26,26 @@ class ProductsList extends Component {
 
     return (
       <div>
-        <Grid container columns={2} divided>
+        <Grid container>
+          <Grid.Column width={16}>
+            <SidebarContainer func={this.getSearchTerm} />
+          </Grid.Column>
           <Grid.Row>
-            <Grid.Column width={12}>
+            <Grid.Column>
               <Grid columns={4}>
                 {searchTerm.map(product => {
                   return (
-                    <Grid.Column key={product.id}>
+                    <Grid.Column
+                      key={product.id}
+                      mobile={16}
+                      tablet={6}
+                      computer={4}
+                    >
                       <Product product={product} />
                     </Grid.Column>
                   )
                 })}
               </Grid>
-            </Grid.Column>
-            <Grid.Column width={4}>
-              <SidebarContainer func={this.getSearchTerm} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

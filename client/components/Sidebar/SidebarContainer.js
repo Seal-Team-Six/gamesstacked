@@ -11,7 +11,6 @@ class SideBarComponent extends Component {
     return (
       <Form>
         <Form.Field>
-          <label>Search</label>
           <input
             placeholder="Search for a game"
             onChange={this.handleChange}

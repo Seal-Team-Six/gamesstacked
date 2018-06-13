@@ -161,3 +161,7 @@ div.column.hidden {
 .formGroup {
   margin-bottom: 15px;
 }
+
+address p {
+  margin-bottom: 0;
+}
