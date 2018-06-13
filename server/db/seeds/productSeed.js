@@ -678,23 +678,23 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/g6kbluv2fv1jbtqh6taz.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/g6kbluv2fv1jbtqh6taz.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/fs8zks8ncaxdfik4gtcf.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/fs8zks8ncaxdfik4gtcf.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/tbkmdn91qp06zrqgnqms.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/tbkmdn91qp06zrqgnqms.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ueeypjhgxnzb4eygnrmg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ueeypjhgxnzb4eygnrmg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hedqiofuz3bz1aaftb0r.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hedqiofuz3bz1aaftb0r.jpg'
       }
     ],
     videos: [
@@ -707,7 +707,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/wf8qgvgczk7dngq3r4sp.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/wf8qgvgczk7dngq3r4sp.jpg'
     }
   },
   {
@@ -731,7 +731,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/mininymulptpqzjycpgr.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/mininymulptpqzjycpgr.jpg'
     },
     price: Math.floor(Math.random() * 60) + 0.99,
     inventory: Math.floor(Math.random() * 100)
@@ -756,14 +756,14 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/rvdll6o649jr162pdd7o.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/rvdll6o649jr162pdd7o.jpg'
       }
     ],
     price: Math.floor(Math.random() * 60) + 0.99,
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/jzewstrjzrpn3jfpwxfz.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/jzewstrjzrpn3jfpwxfz.jpg'
     }
   },
   {
@@ -780,35 +780,35 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/qcb5bldw1sp4gtl451xk.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/qcb5bldw1sp4gtl451xk.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cm5x3syzgrt379z5ifyv.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cm5x3syzgrt379z5ifyv.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/l8o2ov1tff4uobguoyna.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/l8o2ov1tff4uobguoyna.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/kud2olbyyni7jf1rvvbd.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/kud2olbyyni7jf1rvvbd.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/sfey6gxckwusrckwnktb.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/sfey6gxckwusrckwnktb.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ijzwikrisldorm66ig4n.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ijzwikrisldorm66ig4n.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/oskr9l5vipjefhpvdweb.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/oskr9l5vipjefhpvdweb.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/v3wuuxckbwarrkfwqphs.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/v3wuuxckbwarrkfwqphs.jpg'
       }
     ],
     videos: [
@@ -821,7 +821,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/frtg9tiifgat9zndnxvo.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/frtg9tiifgat9zndnxvo.jpg'
     }
   },
   {
@@ -854,46 +854,46 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/yccrbupcmwdtcigpv6xv.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/yccrbupcmwdtcigpv6xv.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ohd9sgx1jlruppbdmkxh.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ohd9sgx1jlruppbdmkxh.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/kv8yaqynhxpu9f4jdpiy.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/kv8yaqynhxpu9f4jdpiy.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hsxrly9dp8zwkfrf1t3e.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hsxrly9dp8zwkfrf1t3e.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/bacqhqbiqcs3eqzufulw.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/bacqhqbiqcs3eqzufulw.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vrsaqbxvip4nxd6pn2lc.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vrsaqbxvip4nxd6pn2lc.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/bt5jlh5kkeyd0mwonaxw.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/bt5jlh5kkeyd0mwonaxw.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/xeodyqaukcohjomj6pkj.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/xeodyqaukcohjomj6pkj.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/z9f9s3d7tuyl8rjyr7nt.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/z9f9s3d7tuyl8rjyr7nt.jpg'
       }
     ],
     price: Math.floor(Math.random() * 60) + 0.99,
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/vp3myjndurjzr4sb9ztn.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/vp3myjndurjzr4sb9ztn.jpg'
     }
   },
   {
@@ -912,58 +912,58 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/tqr4geotftoxwdqsv3fc.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/tqr4geotftoxwdqsv3fc.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/qfs28fqefshcfcy0pttg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/qfs28fqefshcfcy0pttg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/heh7gcblg3em5bxwmjlu.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/heh7gcblg3em5bxwmjlu.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/jdemdrebexgpodrwjawz.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/jdemdrebexgpodrwjawz.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/eequ3efbewtmbipca4xi.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/eequ3efbewtmbipca4xi.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/yql4uubmidrk3sw9ccvg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/yql4uubmidrk3sw9ccvg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/pym3zmhvdraphxdimvds.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/pym3zmhvdraphxdimvds.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/pf5vlq10w3gyhgkdvkvd.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/pf5vlq10w3gyhgkdvkvd.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/g4zv21z70svsmlf1seyh.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/g4zv21z70svsmlf1seyh.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hk9vmtxxvnrfnt9300zm.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hk9vmtxxvnrfnt9300zm.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cbvsbdwieyoufc5oea5q.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cbvsbdwieyoufc5oea5q.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vrh7eyxko71o0jcwgvk8.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vrh7eyxko71o0jcwgvk8.jpg'
       }
     ],
     price: Math.floor(Math.random() * 60) + 0.99,
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/fmfrl2iwe5szsw6zmrui.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/fmfrl2iwe5szsw6zmrui.jpg'
     }
   },
   {
@@ -981,7 +981,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/cub4dlbwab4kemwil0zz.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/cub4dlbwab4kemwil0zz.jpg'
     }
   },
   {
@@ -998,14 +998,14 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/bytlgkgtbmolnc9cvvp7.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/bytlgkgtbmolnc9cvvp7.jpg'
       }
     ],
     price: Math.floor(Math.random() * 60) + 0.99,
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/xvsjq5u9pp7krfhtcsnv.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/xvsjq5u9pp7krfhtcsnv.jpg'
     }
   },
   {
@@ -1022,7 +1022,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/droy80fjldy8ou9uiezx.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/droy80fjldy8ou9uiezx.jpg'
     }
   },
   {
@@ -1039,7 +1039,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/gtofg2cqq1he99nimyo8.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/gtofg2cqq1he99nimyo8.jpg'
     }
   },
   {
@@ -1059,7 +1059,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/fw84f9qfhlwdx1gyig4s.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/fw84f9qfhlwdx1gyig4s.jpg'
     }
   },
   {
@@ -1085,7 +1085,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/tcujgjfpkzbrmlqarfza.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/tcujgjfpkzbrmlqarfza.jpg'
     }
   },
   {
@@ -1105,7 +1105,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/l32i8dd6nfiexylmzlaj.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/l32i8dd6nfiexylmzlaj.jpg'
     }
   },
   {
@@ -1122,7 +1122,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/rpprjg9f6r7zv6lp7jj3.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/rpprjg9f6r7zv6lp7jj3.jpg'
     }
   },
   {
@@ -1142,7 +1142,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/ndpdbymaotovbonye8zh.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/ndpdbymaotovbonye8zh.jpg'
     }
   },
   {
@@ -1161,32 +1161,32 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/g1onvv65nbemrxoltyya.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/g1onvv65nbemrxoltyya.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/mh2fs9hwo4lcr8whvfah.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/mh2fs9hwo4lcr8whvfah.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vuk2qwo6uivwyyxbaqkp.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vuk2qwo6uivwyyxbaqkp.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hiaderayjnln8omeq8w8.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hiaderayjnln8omeq8w8.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/afdciiddgdpejj9lqpzs.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/afdciiddgdpejj9lqpzs.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/xh47fherqnfabvpxgbzi.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/xh47fherqnfabvpxgbzi.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/kz8p8pm6fehjbloxa6ih.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/kz8p8pm6fehjbloxa6ih.jpg'
     }
   },
   {
@@ -1203,7 +1203,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/nzonyv8kxavsev5nmkkm.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/nzonyv8kxavsev5nmkkm.jpg'
     }
   },
   {
@@ -1228,19 +1228,19 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vrhrnif7e8nn2gy61zmg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vrhrnif7e8nn2gy61zmg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ymhwoff8klxpxekccwji.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ymhwoff8klxpxekccwji.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/aziwtkukbkydayirxbzd.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/aziwtkukbkydayirxbzd.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/bzaazyymcersos1ooidd.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/bzaazyymcersos1ooidd.jpg'
       }
     ],
     videos: [
@@ -1251,7 +1251,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/fake7ncywh8afhenybc1.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/fake7ncywh8afhenybc1.jpg'
     }
   },
   {
@@ -1268,7 +1268,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/zesjql4xhtodm8idcm7e.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/zesjql4xhtodm8idcm7e.jpg'
     }
   },
   {
@@ -1285,7 +1285,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/p3bpp6qt7mbtil0vdyzf.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/p3bpp6qt7mbtil0vdyzf.jpg'
     }
   },
   {
@@ -1307,51 +1307,51 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vhgrcxyypeqamas15yyg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vhgrcxyypeqamas15yyg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/mclt02nksroqpa0qbrn9.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/mclt02nksroqpa0qbrn9.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/z1cravxvcb5aobh9m8ao.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/z1cravxvcb5aobh9m8ao.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/snqnfspcphljo9slecpm.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/snqnfspcphljo9slecpm.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/bazsmxwpwmomws4edvjp.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/bazsmxwpwmomws4edvjp.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/jmcrb3qyfmh3nzzryidx.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/jmcrb3qyfmh3nzzryidx.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/wlu7tzikdii0p0mr3wqw.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/wlu7tzikdii0p0mr3wqw.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/imf2nlr73vwqmw5btdeg.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/imf2nlr73vwqmw5btdeg.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ftnxqh4a5ojui8wnofkf.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ftnxqh4a5ojui8wnofkf.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cvmduedifu3u4pwdwymv.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cvmduedifu3u4pwdwymv.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/dfveh3a9i4sh9fxbvrjq.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/dfveh3a9i4sh9fxbvrjq.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ctgumlb57sqiumyetqxq.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ctgumlb57sqiumyetqxq.jpg'
       }
     ],
     videos: [
@@ -1363,7 +1363,7 @@ const products = [
 
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/zstbtknsspigdjtul0uu.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/zstbtknsspigdjtul0uu.jpg'
     }
   },
   {
@@ -1388,56 +1388,56 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cku1zpsup4fuf5k09ary.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cku1zpsup4fuf5k09ary.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/tb7ydy0fgfkxbk7ypioy.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/tb7ydy0fgfkxbk7ypioy.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/evmzr7tajfmldcvndlau.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/evmzr7tajfmldcvndlau.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/tun6lbhk7krkdlmojv7o.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/tun6lbhk7krkdlmojv7o.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/j44ckm57zdrfljdaz6mb.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/j44ckm57zdrfljdaz6mb.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/voijxk779fzxrotkxf5n.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/voijxk779fzxrotkxf5n.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/zennzjpva7l5smwjdg39.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/zennzjpva7l5smwjdg39.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/v8wlypudqfdnjo6hffmt.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/v8wlypudqfdnjo6hffmt.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/aoz8g62besxgh4k72zqa.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/aoz8g62besxgh4k72zqa.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/epeue7ymeofuvfobvdqo.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/epeue7ymeofuvfobvdqo.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/p7db8sbledbfkmb3uvah.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/p7db8sbledbfkmb3uvah.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/rf6blyn1rjmkdmmqtvoz.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/rf6blyn1rjmkdmmqtvoz.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/gxqkdvdufqt5rs3aueex.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/gxqkdvdufqt5rs3aueex.jpg'
     }
   },
   {
@@ -1454,7 +1454,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/qasoceylxx8npnvrz5dg.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/qasoceylxx8npnvrz5dg.jpg'
     }
   },
   {
@@ -1474,7 +1474,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/yybt37hlawx17fzzbniw.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/yybt37hlawx17fzzbniw.jpg'
     }
   },
   {
@@ -1500,31 +1500,31 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/rsvavjuvt4ydg3md4ejr.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/rsvavjuvt4ydg3md4ejr.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/kytxxrxw7d1h77jujhs8.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/kytxxrxw7d1h77jujhs8.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hb5wdis198zwtmgkmbcl.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hb5wdis198zwtmgkmbcl.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/zxfnr6a7h4sdfq0uu9cc.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/zxfnr6a7h4sdfq0uu9cc.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/memlibzx2sahlaqzk0bs.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/memlibzx2sahlaqzk0bs.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/fziwfjf9kw84ibdmkt4u.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/fziwfjf9kw84ibdmkt4u.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/wto5ctpiya6bpzehtvjj.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/wto5ctpiya6bpzehtvjj.jpg'
       }
     ],
     price: Math.floor(Math.random() * 60) + 0.99,
@@ -1537,7 +1537,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/a7tdw7z3uunsawtfvc0t.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/a7tdw7z3uunsawtfvc0t.jpg'
     }
   },
   {
@@ -1556,11 +1556,11 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/zntmpoa2eslja0dyqixr.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/zntmpoa2eslja0dyqixr.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vu4kn00wfnzjwbpwvzf7.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vu4kn00wfnzjwbpwvzf7.jpg'
       }
     ],
     videos: [
@@ -1575,7 +1575,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/lq7ydlvreddtkl8xjpmq.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/lq7ydlvreddtkl8xjpmq.jpg'
     }
   },
   {
@@ -1601,7 +1601,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/p51atvpygc58tqdmqkua.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/p51atvpygc58tqdmqkua.jpg'
     }
   },
   {
@@ -1619,7 +1619,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/dge0nq1yup9bzhcdzc1o.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/dge0nq1yup9bzhcdzc1o.jpg'
     }
   },
   {
@@ -1640,12 +1640,12 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/rgh5xkbfk9w4vd3pumsk.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/rgh5xkbfk9w4vd3pumsk.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/trdbmmojcff90nmljlbk.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/trdbmmojcff90nmljlbk.jpg'
     }
   },
   {
@@ -1670,24 +1670,24 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/nazlv6bmvhbxyvsxe4sz.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/nazlv6bmvhbxyvsxe4sz.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/osjvsfkp6glto5o5kqri.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/osjvsfkp6glto5o5kqri.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/dbdgrlyp3rz347yg4iuw.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/dbdgrlyp3rz347yg4iuw.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/giquhpf1rlenobvywnde.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/giquhpf1rlenobvywnde.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/xs70jj5t5zn38hsroi6h.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/xs70jj5t5zn38hsroi6h.jpg'
     }
   },
   {
@@ -1710,7 +1710,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/rdcujfejqcptlpmrxwrr.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/rdcujfejqcptlpmrxwrr.jpg'
     }
   },
   {
@@ -1727,7 +1727,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/xl2is3zowroxbabf9zsi.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/xl2is3zowroxbabf9zsi.jpg'
     }
   },
   {
@@ -1765,7 +1765,7 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/pl3u5epvwi67ebmljnix.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/pl3u5epvwi67ebmljnix.jpg'
       }
     ],
     videos: [
@@ -1776,7 +1776,7 @@ const products = [
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/kmquxkdkhlwiajw2fwdx.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/kmquxkdkhlwiajw2fwdx.jpg'
     }
   },
   {
@@ -1799,7 +1799,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/quffgprx2kmuvbibwank.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/quffgprx2kmuvbibwank.jpg'
     }
   },
   {
@@ -1816,7 +1816,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/vl2y3zgelluio4klakdk.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/vl2y3zgelluio4klakdk.jpg'
     }
   },
   {
@@ -1835,16 +1835,16 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/vjane0uwan5jbm6waz1l.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/vjane0uwan5jbm6waz1l.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/ndgrr0mugxv9pq1tczik.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/ndgrr0mugxv9pq1tczik.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/nbpmmukhsej8tbwgzxyo.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/nbpmmukhsej8tbwgzxyo.jpg'
     }
   },
   {
@@ -1861,7 +1861,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/xig7kmleag1zukemckjr.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/xig7kmleag1zukemckjr.jpg'
     }
   },
   {
@@ -1877,7 +1877,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/duvmu1zpcxwadgw1qfop.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/duvmu1zpcxwadgw1qfop.jpg'
     }
   },
   {
@@ -1902,12 +1902,12 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/hrg37vf4vypeontnhcyx.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/hrg37vf4vypeontnhcyx.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/xhw5subj6nydgkudf4id.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/xhw5subj6nydgkudf4id.jpg'
     }
   },
   {
@@ -1929,32 +1929,32 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/napmwaatysvxxv0hjouq.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/napmwaatysvxxv0hjouq.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/tuozu566mgzfouvyq2vu.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/tuozu566mgzfouvyq2vu.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/rtt4mrzlto4s0zcueeaf.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/rtt4mrzlto4s0zcueeaf.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/uztjhrnciy8gqg570wqw.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/uztjhrnciy8gqg570wqw.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cg0hba0lxnrdlpam4kxy.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cg0hba0lxnrdlpam4kxy.jpg'
       },
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/cbtzygcougkounyudycf.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/cbtzygcougkounyudycf.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/pauzljnav6qdihvzeopq.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/pauzljnav6qdihvzeopq.jpg'
     }
   },
   {
@@ -1974,7 +1974,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/y3usbmeozwzkgk0ht8oq.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/y3usbmeozwzkgk0ht8oq.jpg'
     }
   },
   {
@@ -1997,7 +1997,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/vt4a1gwgvt88td3atuvb.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/vt4a1gwgvt88td3atuvb.jpg'
     }
   },
   {
@@ -2014,7 +2014,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/g2mupjq6ox9egbeb2upo.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/g2mupjq6ox9egbeb2upo.jpg'
     }
   },
   {
@@ -2036,12 +2036,12 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/gix9mmt3fume4yfinh81.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/gix9mmt3fume4yfinh81.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/fupcrv1ispybstrgestl.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/fupcrv1ispybstrgestl.jpg'
     }
   },
   {
@@ -2058,7 +2058,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/sddyowfvvbj72catiinh.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/sddyowfvvbj72catiinh.jpg'
     }
   },
   {
@@ -2076,12 +2076,12 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/omg2gstccr0xkojzmkpt.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/omg2gstccr0xkojzmkpt.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/vfkizc9su8rblo0wfb4p.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/vfkizc9su8rblo0wfb4p.jpg'
     }
   },
   {
@@ -2097,12 +2097,12 @@ const products = [
     screenshots: [
       {
         url:
-          '//images.igdb.com/igdb/image/upload/t_thumb/zofp0ujxyzhuez6zati0.jpg'
+          '//images.igdb.com/igdb/image/upload/t_screenshot_big/zofp0ujxyzhuez6zati0.jpg'
       }
     ],
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/bczgxktesd16gdj2izu9.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/bczgxktesd16gdj2izu9.jpg'
     }
   },
   {
@@ -2119,7 +2119,7 @@ const products = [
     inventory: Math.floor(Math.random() * 100),
     cover: {
       url:
-        '//images.igdb.com/igdb/image/upload/t_thumb/cb6yvkzgamafifb9etq9.jpg'
+        '//images.igdb.com/igdb/image/upload/t_screenshot_big/cb6yvkzgamafifb9etq9.jpg'
     }
   }
 ]
