@@ -1,17 +1,21 @@
-GamesStacked
+# GamesStacked
 
-Team Members:
-Mike McDevitt
-Nousit Syhakhom
-Kenneth Zhu
-Ian Knepper
+_GamesStacked is an e-commerce store where users can browse games and purchase using credit cards with Stripe._
 
-GamesStacked is an CRUD e-commerce store, users can browse games and purchase using credit cards.
+## Team Members
 
-Stack used:
-React / Redux
-Sequelize
-Express
-Node
+* Ian Knepper
+* Michael McDevitt
+* Nousit Syhakhom
+* Kenneth Zhu
 
-Deployed: gamesstacked.herokuapp.com
+## Stack
+
+* React / Redux
+* Sequelize
+* Express
+* Node
+
+## Visit our Site
+
+Please visit GamesStacked at [gamesstacked.herokuapp.com](http://gamesstacked.herokuapp.com)
